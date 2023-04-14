@@ -2,13 +2,17 @@
 // components
 import AppHeader from "./components/AppHeader.vue";
 import Component1 from "./components/Component1.vue";
+import Component2 from "./components/Component2.vue";
+import AppFooter from "./components/AppFooter.vue";
 import { store } from "./store.js";
 
 export default {
     name: "App",
     components: {
-        Component1,
         AppHeader,
+        Component1,
+        Component2,
+        AppFooter
     },
     data() {
         return {
@@ -21,10 +25,9 @@ export default {
 
 <template>
     <AppHeader />
-    <Main class="p-5 container">
-        <router-view></router-view>
-    </Main>
     <Component1 />
+    <Component2 />
+    <AppFooter />
 </template>
 
 <style lang="scss">
