@@ -14,9 +14,16 @@ export default {
 </script>
 
 <template>
+    <div>Ciao from Homepage</div>
     <div>
-        Ciao from Homepage
+        <a :href="this.store.backEndLink + '/login'"> VAi su login </a>
     </div>
+
+    <div>
+        <a :href="this.store.backEndLink + '/register'"> Vai su register </a>
+    </div>
+
+
 </template>
 
 <style lang="scss">
