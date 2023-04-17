@@ -54,7 +54,7 @@ export default {
             </div>
         </div>
         
-        <div class="footer-bottom">
+        <div class="footer-bottom text-center">
             <p>&copy; 2023 DeliveBoo - Tutti i diritti riservati.</p>
         </div>
     </footer>
