@@ -1,136 +1,72 @@
 <script>
 import { store } from "../store.js";
+import axios from "axios";
 
 export default {
-    name: 'Component2',
-    components: {
-
-    },
+    name: "Component2",
+    components: {},
     data() {
         return {
-            store
-        }
+            store,
+            types: [],
+        };
     },
-    methods:{
-        
+    methods: {
+        getTypes() {
+            axios.get(this.store.backEndLink + "/api/types").then((resp) => {
+                // console.log(resp);
+                this.types = resp.data.types;
+                // console.log(this.types)
+            });
+        },
     },
-}
+    created() {
+        this.getTypes();
+    },
+};
 </script>
 
 <template>
     <main class="container">
         <section id="header" class="jumbotron text-center">
-            <h1><label for="exampleDataList" class="form-label">Cerca un ristorante</label></h1>
-            <div class="d-flex justify-content-center">
+            <h1>
+                <label for="exampleDataList" class="form-label"
+                    >Cerca per categoria</label
+                >
+            </h1>
+            <!-- <div class="d-flex justify-content-center">
                 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cerca un ristorante...">
-            </div>
+            </div> -->
         </section>
 
         <section class="gallery py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
 
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
+                    <div
+                        v-for="type in types"
+                        class="col-lg-3 mb-3 text-center"
+                    >
+                        <router-link class="text-decoration-none text-dark"
+                            :to="{
+                                name: 'type-show',
+                                params: { name: type.name },
+                            }"
+                        >
+                            <div class="card ">
+                                <div class="card-body">
+                                    <img
+                                        :src="
+                                            type.full_image_path
+                                        "
+                                        alt=""
+                                    />
+                                    <h5 class="card-title mt-3">
+                                        {{ type.name }}
+                                    </h5>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Title Restaurant/Fast Food</h5>
-                                <a href="#" class="btn btn-info text-white">Vai nella sezione</a>
-                            </div>
-                        </div>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -139,13 +75,17 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    main {
-        border: 2px dashed black;
-        background-color: lightgoldenrodyellow;
+main {
+    border: 2px dashed black;
+    background-color: lightgoldenrodyellow;
 
-        .form-control {
-            width: 450px;
-            border-radius: 30px 30px;
-        }
+    .form-control {
+        width: 450px;
+        border-radius: 30px 30px;
     }
+
+    img {
+        width: 100%;
+    }
+}
 </style>
