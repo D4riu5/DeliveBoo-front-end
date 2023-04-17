@@ -21,9 +21,9 @@ export default {
 
 <template>
     <AppHeader />
-    <Main class="p-5 container">
+    <div class="p-5 container">
         <router-view></router-view>
-    </Main>
+    </div>
     <AppFooter />
 </template>
 
