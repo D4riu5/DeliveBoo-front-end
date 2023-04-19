@@ -43,7 +43,16 @@ export default {
 
         <ul>
             <li v-for="restaurant in type.restaurants">
-                {{ restaurant.name }}
+                <router-link
+                    :to="{
+                        name: 'restaurant-menu',
+                        params: {
+                            id: restaurant.id,
+                        },
+                    }"
+                >
+                    {{ restaurant.name }}
+                </router-link>
             </li>
         </ul>
     </div>

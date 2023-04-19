@@ -13,15 +13,18 @@ export default {
     },
     methods: {
         getTypes() {
-            axios.get(this.store.backEndLink + "/api/types").then((resp) => {
-                // console.log(resp);
-                this.types = resp.data.types;
-                // console.log(this.types)
+            axios
+                .get(this.store.backEndLink + "/api/types")
+                .then((resp) => {
+                // console.log(resp.data.types);
+                    this.types = resp.data.types;
+
             });
         },
     },
     created() {
         this.getTypes();
+
     },
 };
 </script>
@@ -42,25 +45,20 @@ export default {
         <section class="gallery py-4">
             <div class="container">
                 <div class="row">
-
                     <div
                         v-for="type in types"
                         class="col-lg-3 mb-3 text-center"
                     >
-                        <router-link class="text-decoration-none text-dark"
+                        <router-link
+                            class="text-decoration-none text-dark"
                             :to="{
                                 name: 'type-show',
                                 params: { name: type.name },
                             }"
                         >
-                            <div class="card ">
+                            <div class="card">
                                 <div class="card-body">
-                                    <img
-                                        :src="
-                                            type.full_image_path
-                                        "
-                                        alt=""
-                                    />
+                                    <img :src="type.full_image_path" alt="" />
                                     <h5 class="card-title mt-3">
                                         {{ type.name }}
                                     </h5>
