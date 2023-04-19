@@ -18,7 +18,7 @@ export default {
             axios
                 .get(
                     this.store.backEndLink +
-                        `/api/restaurants/${this.$route.params.id}/foods`
+                    `/api/restaurants/${this.$route.params.id}/foods`
                 )
                 .then((resp) => {
                     if (resp.data.restaurant && resp.data.foods) {
@@ -27,7 +27,7 @@ export default {
                     } else {
                         this.$router.push({ name: "not-found" });
                     }
-                    
+
                 });
         },
     },
@@ -38,12 +38,13 @@ export default {
 </script>
 
 <template>
-<div v-if="foods.length">
-    <h1>{{ restaurant.name }}</h1>
+    <div v-if="foods.length">
+        <h1>{{ restaurant.name }}</h1>
 
-    <ul>
-      <li v-for="food in foods" :key="food.id">{{ food.name }}</li>
-    </ul>
-  </div></template>
+        <ul>
+            <li v-for="food in foods" :key="food.id">{{ food.name }}</li>
+        </ul>
+    </div>
+</template>
 
 <style lang="scss"></style>
