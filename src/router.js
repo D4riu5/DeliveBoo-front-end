@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 // pages
 import AppHomepage from './pages/AppHomepage.vue';
 import TypeShow from './pages/TypeShow.vue';
+import RestaurantMenu from './pages/RestaurantMenu.vue';
 import NotFound from './pages/NotFound.vue';
 
 
@@ -18,6 +19,11 @@ const router = createRouter({
             path: '/categoria/:name',
             name: 'type-show',
             component: TypeShow
+        },
+        {
+            path: '/Attivita:id',
+            name: 'restaurant-menu',
+            component: RestaurantMenu
         },
         {
             path: '/:pathMatch(.*)*',
