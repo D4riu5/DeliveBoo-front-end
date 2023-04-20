@@ -174,7 +174,7 @@ export default {
                         Close
                     </button>
                     <button type="button" class="btn btn-primary">
-                        Save changes
+                        PAGA (Napoli 6 🍐 in 3 partite ) 
                     </button>
                 </div>
             </div>
