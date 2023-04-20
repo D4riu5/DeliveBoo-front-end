@@ -21,6 +21,20 @@ export default {
                 this.darkTheme = false;
             }
         },
+
+        // SHOPPING CART
+        removeFromCart(index) {
+            this.store.cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(this.store.cart));
+        },
+    },
+    computed: {
+        cartCount() {
+            return this.store.cart.length;
+        },
+    },
+    mounted() {
+        this.store.cart = JSON.parse(localStorage.getItem("cart") || "[]");
     },
 };
 </script>
@@ -50,6 +64,19 @@ export default {
             </div>
 
             <div>
+                <!-- Button trigger modal -->
+                <button
+                    v-if="$route.path.includes('/Attivita')"
+                    type="button"
+                    class="btn btn-primary mx-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                >
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge bg-secondary ms-2">{{ cartCount }}</span>
+                </button>
+
+                <!-- Button trigger Offcanvas -->
                 <button
                     class="btn btn-primary"
                     type="button"
@@ -62,7 +89,7 @@ export default {
             </div>
         </nav>
     </header>
-
+    <!-- OFFCANVAS -->
     <div
         class="offcanvas offcanvas-end"
         tabindex="-1"
@@ -105,6 +132,55 @@ export default {
             </div>
         </div>
     </div>
+    <!-- OFFCANVAS -->
+
+    <!-- SHOPPING CART MODAL -->
+    <div
+        class="modal fade modal-lg"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Shopping Cart
+                    </h1>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li v-for="(item, index) in store.cart" :key="index">
+                            {{ item.name }}
+                            <button @click="removeFromCart(index)">
+                                Remove from cart
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SHOPPING CART MODAL -->
 </template>
 
 <style lang="scss" scoped>
