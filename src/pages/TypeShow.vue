@@ -9,7 +9,6 @@ export default {
     data() {
         return {
             store,
-            type: null,
         };
     },
     methods: {
@@ -22,7 +21,7 @@ export default {
                 .then((resp) => {
                     // console.log(resp)
                     if (resp.data.type) {
-                        this.type = resp.data.type;
+                        this.store.type = resp.data.type;
                     } else {
                         // this.type = null;
                         // console.log(resp)
@@ -38,11 +37,11 @@ export default {
 </script>
 
 <template>
-    <div v-if="type && type.name">
-        <h2>Lista ristoranti in categoria {{ type.name }}:</h2>
+    <div v-if="store.type && store.type.name">
+        <h2>Lista ristoranti in categoria {{ store.type.name }}:</h2>
 
         <ul>
-            <li v-for="restaurant in type.restaurants">
+            <li v-for="restaurant in store.type.restaurants">
                 <router-link
                     :to="{
                         name: 'restaurant-menu',

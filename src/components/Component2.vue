@@ -8,7 +8,6 @@ export default {
     data() {
         return {
             store,
-            types: [],
         };
     },
     methods: {
@@ -17,7 +16,7 @@ export default {
                 .get(this.store.backEndLink + "/api/types")
                 .then((resp) => {
                 // console.log(resp.data.types);
-                    this.types = resp.data.types;
+                    this.store.types = resp.data.types;
 
             });
         },
@@ -46,7 +45,7 @@ export default {
             <div class="container">
                 <div class="row">
                     <div
-                        v-for="type in types"
+                        v-for="type in store.types"
                         class="col-lg-3 mb-3 text-center"
                     >
                         <router-link
