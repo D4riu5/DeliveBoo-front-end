@@ -17,7 +17,7 @@ export default {
             axios
                 .get(
                     this.store.backEndLink +
-                    `/api/restaurants/${this.$route.params.id}/foods`
+                        `/api/restaurants/${this.$route.params.id}/foods`
                 )
                 .then((resp) => {
                     if (resp.data.restaurant && resp.data.foods) {
@@ -26,22 +26,34 @@ export default {
                     } else {
                         this.$router.push({ name: "not-found" });
                     }
-
                 });
         },
 
         // SHOPPING CART
         addToCart(item) {
             if (
-                this.store.cart.some(
-                    (cartItem) => cartItem.restaurant_id !== item.restaurant_id
-                )
+                this.store.cart.length &&
+                this.store.cart[0].restaurant_id !== item.restaurant_id
             ) {
-                alert("Puoi ordinare da un solo Ristorante alla volta! Svuota il carello per ordinare da un altro ristorante!");
+                alert(
+                    "Puoi ordinare da un solo Ristorante alla volta! Svuota il carello per ordinare da un altro ristorante!"
+                );
                 return;
             }
 
-            this.store.cart.push(item);
+            // Check if the item already exists in the cart
+            const cartItemIndex = this.store.cart.findIndex(
+                (cartItem) => cartItem.id === item.id
+            );
+
+            // If the item already exists in the cart, increase its quantity by 1
+            if (cartItemIndex >= 0) {
+                this.store.cart[cartItemIndex].quantity++;
+            } else {
+                // If the item doesn't exist in the cart, add it with a quantity of 1
+                this.store.cart.push({ ...item, quantity: 1 });
+            }
+
             localStorage.setItem("cart", JSON.stringify(this.store.cart));
         },
     },
