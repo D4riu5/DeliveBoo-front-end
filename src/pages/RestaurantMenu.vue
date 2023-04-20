@@ -17,7 +17,7 @@ export default {
             axios
                 .get(
                     this.store.backEndLink +
-                        `/api/restaurants/${this.$route.params.id}/foods`
+                    `/api/restaurants/${this.$route.params.id}/foods`
                 )
                 .then((resp) => {
                     if (resp.data.restaurant && resp.data.foods) {
@@ -26,6 +26,7 @@ export default {
                     } else {
                         this.$router.push({ name: "not-found" });
                     }
+
                 });
         },
 
