@@ -24,13 +24,22 @@ export default {
 
         // SHOPPING CART
         removeFromCart(index) {
-            this.store.cart.splice(index, 1);
+            let item = this.store.cart[index];
+            if (item.quantity > 1) {
+                item.quantity--;
+            } else {
+                this.store.cart.splice(index, 1);
+            }
             localStorage.setItem("cart", JSON.stringify(this.store.cart));
         },
     },
     computed: {
         cartCount() {
-            return this.store.cart.length;
+            let count = 0;
+            this.store.cart.forEach((item) => {
+                count += item.quantity;
+            });
+            return count;
         },
     },
     mounted() {
@@ -158,7 +167,7 @@ export default {
                 <div class="modal-body">
                     <ul>
                         <li v-for="(item, index) in store.cart" :key="index">
-                            {{ item.name }}
+                            {{ item.name }} x {{ item.quantity }}
                             <button @click="removeFromCart(index)">
                                 Remove from cart
                             </button>
@@ -174,7 +183,7 @@ export default {
                         Close
                     </button>
                     <button type="button" class="btn btn-primary">
-                        PAGA (Napoli 6 🍐 in 3 partite ) 
+                        PAGA (Napoli 6 🍐 in 3 partite )
                     </button>
                 </div>
             </div>

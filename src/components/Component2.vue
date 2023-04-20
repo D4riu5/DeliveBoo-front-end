@@ -89,7 +89,7 @@ export default {
                     </div>
 
                     <!-- RIGHT SIDE -->
-                    <div class="bg-secondary flex-grow-1 ms-2">
+                    <div class="bg-secondary flex-grow-1 ms-2 p-3">
                         <ul>
                             <li
                                 v-for="restaurant in filteredRestaurants"
