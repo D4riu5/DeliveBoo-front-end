@@ -74,7 +74,10 @@ export default {
             <div class="d-flex align-items-center">
                 <!-- Button trigger modal -->
                 <button
-                    v-if="$route.path.includes('/Attivita')"
+                    v-if="
+                        $route.path.includes('/Attivita') ||
+                        $route.path.includes('/checkout')
+                    "
                     type="button"
                     class="btn btn-primary mx-2"
                     data-bs-toggle="modal"
@@ -186,7 +189,11 @@ export default {
                             name: 'checkout',
                         }"
                     >
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                        >
                             PAGA (Napoli 6 🍐 in 3 partite )
                         </button>
                     </router-link>
