@@ -4,7 +4,7 @@ import axios from "axios";
 import { store } from "../store";
 
 export default {
-    name: "AppHomepage",
+    name: "TypeShow",
     components: {},
     data() {
         return {

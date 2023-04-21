@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import AppHomepage from './pages/AppHomepage.vue';
 import TypeShow from './pages/TypeShow.vue';
 import RestaurantMenu from './pages/RestaurantMenu.vue';
+import Checkout from './pages/Checkout.vue';
 import NotFound from './pages/NotFound.vue';
 
 
@@ -24,6 +25,11 @@ const router = createRouter({
             path: '/Attivita:id',
             name: 'restaurant-menu',
             component: RestaurantMenu
+        },
+        {
+            path: '/checkout',
+            name: 'checkout',
+            component: Checkout
         },
         {
             path: '/:pathMatch(.*)*',
