@@ -58,7 +58,7 @@ export default {
     <main class="container">
         <section id="header" class="jumbotron text-center">
             <h1>
-                <label for="exampleDataList" class="form-label"
+                <label for="exampleDataList" class="p-2 form-label"
                     >Cerca per categoria</label
                 >
             </h1>
