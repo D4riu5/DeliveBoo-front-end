@@ -27,9 +27,9 @@ export default {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
+                        <div class="card border-danger">
+                            <div class="img-container d-flex justify-content-center p-2">
+                                <img src="./../img/3.png" alt="Image" class="image card-img-top">
                             </div>
 
                             <div class="card-body">
@@ -40,9 +40,9 @@ export default {
                     </div>
 
                     <div class="col-lg-4 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
+                        <div class="card border-danger">
+                            <div class="img-container d-flex justify-content-center p-2">
+                                <img src="./../img/4.png" alt="Image" class="image card-img-top">
                             </div>
 
                             <div class="card-body">
@@ -53,9 +53,9 @@ export default {
                     </div>
 
                     <div class="col-lg-4 mb-3">
-                        <div class="card">
-                            <div class="img-container">
-                                <img src="" alt="Image" class="image card-img-top">
+                        <div class="card border-danger">
+                            <div class="img-container d-flex justify-content-center p-2">
+                                <img src="./../img/5.png" alt="Image" class="image card-img-top">
                             </div>
 
                             <div class="card-body">
@@ -74,5 +74,19 @@ export default {
     main {
         background-color: lightgreen;
         border: 2px dashed black;
+
+        h1 {
+            color: rgb(252, 69, 106);
+        }
+
+        img {
+            width: 50%;
+            height: 50%;  
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            transition: 0.3s ease;
+        }
     }
 </style>
