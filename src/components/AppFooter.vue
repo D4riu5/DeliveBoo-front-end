@@ -62,10 +62,9 @@ export default {
 
 <style lang="scss" scoped>
     footer {
-        background-color: lightgray;
+        background-color: rgba(252, 69, 106, 0.74);
         color: black;
         padding: 40px 0;
-        border: 2px dashed black;
     }
     .footer-container {
         display: flex;

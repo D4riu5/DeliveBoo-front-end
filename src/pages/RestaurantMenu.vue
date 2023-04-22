@@ -67,7 +67,7 @@ export default {
 </script>
 
 <template>
-    <div v-if="store.foods.length">
+    <div class="container" v-if="store.foods.length">
         <h1>{{ store.restaurant.name }}</h1>
 
         <ul>

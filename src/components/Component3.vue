@@ -19,8 +19,8 @@ export default {
 
 <template>
     <main class="container">
-        <section id="header" class="text-center">
-            <h1>Come *nome sito* lavora</h1>
+        <section id="header" class="py-3 text-center">
+            <h1>Come Comida GO lavora</h1>
         </section>
 
         <section class="gallery py-4">
