@@ -66,20 +66,20 @@ export default {
                     </strong>
                 </h5>
                 <ul class="d-flex flex-column">
-                    <li><a href="#">El Baffo Criminal</a></li>
-                    <li><a href="#">Chupitòn</a></li>
-                    <li><a href="#">Katsuya</a></li>
-                    <li><a href="#">Skylin</a></li>
-                    <li><a href="#">GreenGyros</a></li>
-                    <li><a href="#">Il Mulino New York</a></li>
-                    <li><a href="#">Aladdin s Eatery</a></li>
-                    <li><a href="#">Oseyo</a></li>
-                    <li><a href="#">Le Bernardin</a></li>
-                    <li><a href="#">Erythraia</a></li>
-                    <li><a href="#">Hustler Pub</a></li>
-                    <li><a href="#">Rajehsh</a></li>
-                    <li><a href="#">Kebab da Frank</a></li>
-                    <li><a href="#">El Chorrillano</a></li>
+                    <li><a href="http://localhost:5174/Attivita1">El Baffo Criminal</a></li>
+                    <li><a href="http://localhost:5174/Attivita5">Chupitòn</a></li>
+                    <li><a href="http://localhost:5174/Attivita10">Katsuya</a></li>
+                    <li><a href="http://localhost:5174/Attivita11">Skylin</a></li>
+                    <li><a href="http://localhost:5174/Attivita21">GreenGyros</a></li>
+                    <li><a href="http://localhost:5174/Attivita3">Il Mulino New York</a></li>
+                    <li><a href="http://localhost:5174/Attivita16">Aladdin s Eatery</a></li>
+                    <li><a href="http://localhost:5174/Attivita18">Oseyo</a></li>
+                    <li><a href="http://localhost:5174/Attivita20">Le Bernardin</a></li>
+                    <li><a href="http://localhost:5174/Attivita22">Erythraia</a></li>
+                    <li><a href="http://localhost:5174/Attivita14">Hustler Pub</a></li>
+                    <li><a href="http://localhost:5174/Attivita24">Rajehsh</a></li>
+                    <li><a href="http://localhost:5174/Attivita15">Kebab da Frank</a></li>
+                    <li><a href="http://localhost:5174/Attivita29">El Chorrillano</a></li>
                 </ul>
             </div>
             
