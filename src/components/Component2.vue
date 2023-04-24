@@ -55,12 +55,11 @@ export default {
 </script>
 
 <template>
-    <main class="container">
-        <section id="header" class="jumbotron text-center">
-            <h1>
-                <label for="exampleDataList" class="p-2 form-label"
-                    >Cerca per categoria</label
-                >
+    <main>
+        <!-- TITLE -->
+        <section class="text-center">
+            <h1 class="py-3">
+                Cerca il tuo ristorante
             </h1>
             <!-- <div class="d-flex justify-content-center">
                 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cerca un ristorante...">
@@ -89,8 +88,31 @@ export default {
                     </div>
 
                     <!-- RIGHT SIDE -->
-                    <div class="bg-secondary flex-grow-1 ms-2 p-3">
-                        <ul>
+                    <div class="my-container restaurants_box">
+                        <div class="restaurantsContainer">
+                            <div class="restaurantWrapper">
+                                <div class="restaurant wrapperProperties" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
+                                    <router-link :to="{name: 'restaurant-menu', params: {id: restaurant.id}}">
+                                        <div class="restaurant-img">
+                                            <img :src="restaurant.image" :alt="restaurant.name">
+                                        </div>
+
+                                        <div class="restaurant-info">
+                                            <div class="restaurant-info-name">
+                                                <div class="name">
+                                                    {{ restaurant.name }}
+                                                </div>
+                                            </div>
+
+                                            <div class="restaurant-address">
+                                                <i class="fa-solid fa-location-dot"></i>{{ restaurant.address }}
+                                            </div>
+                                        </div>
+                                    </router-link>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <ul>
                             <li
                                 v-for="restaurant in filteredRestaurants"
                                 :key="restaurant.id"
@@ -107,7 +129,7 @@ export default {
                                     {{ restaurant.name }}
                                 </router-link>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>
@@ -117,8 +139,9 @@ export default {
 
 <style lang="scss" scoped>
 main {
-    border: 2px dashed black;
-    background-color: lightgoldenrodyellow;
+    h1 {
+        color: #FC456A;
+    }
 
     .form-control {
         width: 450px;
@@ -142,6 +165,190 @@ main {
     }
     .active {
         background-color: red;
+    }
+}
+
+.restaurants_box {
+    .restaurantWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 25px;
+        height: 600px;
+        overflow-y: auto;
+
+        .name {
+            color: black;
+            font-size: 18px;
+        }
+
+        .wrapperProperties {
+            width: calc(100% / 4 - 20px);
+            display: flex;
+            margin: 15px 10px;
+            user-select: none;
+            border: 1px solid #FC456A;
+            border-radius: 10px;
+            box-shadow: 0px 5px 5px 0px #FC456A;
+
+            &:hover {
+                border-bottom: 5px solid #FC456A;
+            }
+        }
+    }
+}
+
+.restaurantsContainer {
+    flex-direction: row;
+}
+
+.restaurant {
+    max-width: 270px;
+    height: 230px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+
+    .restaurant-img {
+        height: 65%;
+        overflow: hidden;
+    }
+
+    .restaurant-info {
+        width: 100%;
+        height: 35%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .restaurant-info-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .restaurant-address {
+            display: flex;
+            align-items: center;
+            color: #898a8a;
+            font-size: 12px;
+            .fa-location-dot {
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    .my-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .restaurant {
+        min-width: 150px;
+        height: 230px;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+
+        .restaurant-img {
+            width: 200%;
+        }
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .restaurant-info {
+        .restaurant-info-name {
+            .name {
+                font-size: 13px;
+            }
+        }
+
+        .restaurant-address {
+            font-size: 12px;
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .restaurant {
+        height: 180px;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+
+        .restaurant-info {
+            .restaurant-info-name {
+                .name {
+                    font-size: 13px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 812px) {
+    .restaurant {
+        min-width: 210px;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        .restaurant-img {
+            width: 200%;
+        }
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .restaurant {
+        min-width: 45%;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        .restaurant-img {
+            width: 200%;
+        }
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .restaurant {
+        min-width: 90%;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        .restaurant-img {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .restaurantWrapper {
+        height: 625px;
+    }
+
+    .my-container {
+        margin-inline: 0;
+        width: 100%;
+    }
+    .restaurants_box {
+        .restaurantWrapper {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 0px;
+            height: 600px;
+            overflow-y: auto;
+            justify-content: center;
+        }
+    }
+}
+
+@media only screen and (max-width: 469px) {
+    .restaurantsContainer {
+        padding-top: 30px;
     }
 }
 </style>
