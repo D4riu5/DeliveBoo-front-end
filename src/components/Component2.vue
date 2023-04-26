@@ -72,7 +72,7 @@ export default {
                     <!-- LEFT SIDE -->
                     <div
                         id="TypesContainer"
-                        class="d-flex flex-wrap bg-dark p-3"
+                        class="d-flex flex-wrap rounded p-3"
                     >
                         <span
                             v-for="type in store.types"
@@ -149,20 +149,37 @@ main {
     }
 
     #TypesContainer {
-        width: 200px;
-    }
+  width: 200px;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: #ffffff;
 
-    .type-span {
-        display: inline-block;
-        padding: 8px 16px;
-        margin-right: 16px;
-        margin-bottom: 16px;
-        background-color: #f0f0f0;
-        border-radius: 4px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #FC456A, $alpha: 0.8);
+  }
+
+  .type-span {
+    display: block; /* Change from inline-block to block */
+    width: 100%; /* Set width to 100% */
+    padding: 15px 16px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover, &.active {
+      background-color: #f0f0f0;
+      color: #FC456A;
     }
+  }
+
+}
     .active {
         background-color: red;
     }
@@ -173,8 +190,17 @@ main {
         display: flex;
         flex-wrap: wrap;
         margin-left: 25px;
+        padding-right: 15px;
         height: 600px;
         overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($color: #FC456A, $alpha: 0.8);
+        }
 
         .name {
             color: black;
