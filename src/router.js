@@ -7,6 +7,7 @@ import RestaurantMenu from './pages/RestaurantMenu.vue';
 import Checkout from './pages/Checkout.vue';
 import NotFound from './pages/NotFound.vue';
 import success from './pages/Success.vue';
+import AboutUs from './pages/AboutUs.vue';
 
 
 const router = createRouter({
@@ -41,6 +42,11 @@ const router = createRouter({
             path: '/:pathMatch(.*)*',
             name: 'not-found',
             component: NotFound
+        },
+        {
+            path: '/about-us',
+            name: 'about-us',
+            component: AboutUs
         },
     ]
 });
