@@ -6,6 +6,7 @@ import TypeShow from './pages/TypeShow.vue';
 import RestaurantMenu from './pages/RestaurantMenu.vue';
 import Checkout from './pages/Checkout.vue';
 import NotFound from './pages/NotFound.vue';
+import test from './pages/test.vue';
 
 
 const router = createRouter({
@@ -30,6 +31,11 @@ const router = createRouter({
             path: '/checkout',
             name: 'checkout',
             component: Checkout
+        },
+        {
+            path: '/test',
+            name: 'test',
+            component: test
         },
         {
             path: '/:pathMatch(.*)*',
