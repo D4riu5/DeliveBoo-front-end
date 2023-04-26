@@ -189,7 +189,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
