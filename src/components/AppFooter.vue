@@ -107,8 +107,8 @@ export default {
 
 <style lang="scss" scoped>
     footer {
-        background-color: #E2E6E9;
-        color: black;
+        background-color: black;
+        color: #ffa500;
         padding: 40px 0;
     }
     .footer-container {
@@ -119,11 +119,9 @@ export default {
         margin: 0 auto;
     }
 
-    .footer-section{
-        
-        
+    .footer-section{    
         h5{
-            color: #333333;
+            color: #ffa500;
         }
         ul{
             text-align: start;
@@ -135,7 +133,7 @@ export default {
 
                 a{
                     text-decoration: none;
-                    color: black;
+                    color: white;
                 }
             }
         }
