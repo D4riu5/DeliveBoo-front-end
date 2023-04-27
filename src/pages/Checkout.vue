@@ -14,12 +14,14 @@ export default {
             dropInLoaded: false,
             showLoading: false,
             order: {
-                total_price: 500,
+                total_price: store.cart.reduce((total, item) => {
+                    return total + item.price * item.quantity;
+                }, 0),
                 status: "In Preparazione",
                 costumer_name: "",
                 delivery_address: "",
                 delivery_contact: "",
-                food: JSON.parse(localStorage.getItem("cart")),
+                food: store.cart,
             },
         };
     },
