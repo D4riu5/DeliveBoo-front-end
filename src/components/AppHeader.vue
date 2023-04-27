@@ -1,4 +1,5 @@
 <script>
+import { router } from "../router";
 import { store } from "../store.js";
 
 // Helpers
@@ -6,7 +7,7 @@ import axios from "axios";
 
 export default {
     name: "AppHeader",
-    components: {},
+    components: { router },
     data() {
         return {
             store,
@@ -67,7 +68,10 @@ export default {
                     <li><a href="#">Menú</a></li>
                     <li><a href="#">Ristoranti</a></li>
                     <li><a href="#">Cucine</a></li>
-                    <li><a href="#">Chi siamo</a></li>
+                    <li><router-link :to="{name: 'about-us'}">
+                            Chi siamo
+                        </router-link>
+                    </li>
                 </ul>
             </nav>
 

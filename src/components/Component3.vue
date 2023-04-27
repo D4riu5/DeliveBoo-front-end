@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-    <main class="container">
+    <main>
         <section id="header" class="py-3 text-center">
             <h1>Come Comida GO lavora</h1>
         </section>
@@ -72,8 +72,7 @@ export default {
 
 <style lang="scss" scoped>
     main {
-        background-color: lightgreen;
-        border: 2px dashed black;
+        background-color: #eee;
 
         h1 {
             color: rgb(252, 69, 106);
