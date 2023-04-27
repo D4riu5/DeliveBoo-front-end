@@ -23,6 +23,7 @@ export default {
                 delivery_contact: "",
                 food: store.cart,
             },
+            errors: '',
         };
     },
     methods: {
@@ -70,9 +71,22 @@ export default {
                                     console.log(response);
                                     // IF RESPONSE IS SUCCESSFUL redirect user to success page
                                     self.$router.push({ name: "success" });
+                                    self.errors = null;
+                                    self.store.cart = [];
+                                    localStorage.setItem("cart", JSON.stringify(self.store.cart));
                                 })
                                 .catch((error) => {
                                     console.log(error);
+                                    if (
+                                        error.response &&
+                                        error.response.status === 422
+                                    ) {
+                                        self.errors = Object.values(
+                                            error.response.data.errors
+                                        ).flat();
+                                    } else {
+                                        console.error(error);
+                                    }
                                 });
                         });
                     });
@@ -117,6 +131,15 @@ export default {
     <!-- LOADING -->
     <div v-if="showLoading" class="text-center my-5 py-3">
         <h1>LOADING...</h1>
+    </div>
+
+    <div v-if="errors.length" class="alert alert-danger">
+        <h3>
+            Errore form, torna indietro!
+        </h3>
+        <ul>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
+        </ul>
     </div>
 
     <form class="container my-5">
