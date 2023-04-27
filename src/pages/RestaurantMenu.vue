@@ -35,9 +35,7 @@ export default {
                 this.store.cart.length &&
                 this.store.cart[0].restaurant_id !== item.restaurant_id
             ) {
-                alert(
-                    "Puoi ordinare da un solo Ristorante alla volta! Svuota il carello per ordinare da un altro ristorante!"
-                );
+                $("#exampleModal").modal("show");
                 return;
             }
 
@@ -56,6 +54,11 @@ export default {
 
             localStorage.setItem("cart", JSON.stringify(this.store.cart));
         },
+        
+        emptyCart() {
+            this.store.cart = [];
+            localStorage.setItem("cart", JSON.stringify(this.store.cart));
+        },
     },
     created() {
         this.getFoods();
@@ -71,14 +74,18 @@ export default {
         <div class="restaurant-header">
             <div class="flex-info-res my-container">
                 <div class="restaurant-image">
-                    <img :src="store.restaurant.image" :alt="store.restaurant.name">
+                    <img
+                        :src="store.restaurant.image"
+                        :alt="store.restaurant.name"
+                    />
                 </div>
 
                 <ul class="restaurant-infos">
                     <li class="restaurant-name">{{ store.restaurant.name }}</li>
 
                     <li class="info-restaurant">
-                        <i class="fa-solid fa-location-dot"></i>{{ store.restaurant.address }}
+                        <i class="fa-solid fa-location-dot"></i
+                        >{{ store.restaurant.address }}
                     </li>
                 </ul>
             </div>
@@ -88,14 +95,20 @@ export default {
             <div class="my-container menu-wrapper">
                 <div class="menu-list">
                     <div class="my-boxes-wrapper">
-                        <div class="my-bigBox box-properties" v-for="food in store.foods" :key="food.id">
+                        <div
+                            class="my-bigBox box-properties"
+                            v-for="food in store.foods"
+                            :key="food.id"
+                        >
                             <div class="info-top">
                                 <div class="my-bigBox-img">
-                                    <img :src="food.image" :alt="food.name">
+                                    <img :src="food.image" :alt="food.name" />
                                 </div>
 
                                 <div class="my-bigBox-info-wrapper">
-                                    <div class="my-bigBox-info-name">{{ food.name }}</div>
+                                    <div class="my-bigBox-info-name">
+                                        {{ food.name }}
+                                    </div>
 
                                     <div class="my-bigBox-info-OtherInfo">
                                         <div class="foodDescription">
@@ -107,11 +120,18 @@ export default {
 
                             <div class="pay">
                                 <div class="foodPrice" v-if="food">
-                                    <span class="Pricebuble"> {{ food.price }}&euro;</span>
+                                    <span class="Pricebuble">
+                                        {{ food.price }}&euro;</span
+                                    >
                                 </div>
 
-                                <button id="add" class="addToCart_btn" @click="addToCart(food)">
-                                    <i class="fa-solid fa-cart-shopping"></i><span>Aggiungi al carrello</span>
+                                <button
+                                    id="add"
+                                    class="addToCart_btn"
+                                    @click="addToCart(food)"
+                                >
+                                    <i class="fa-solid fa-cart-shopping"></i
+                                    ><span>Aggiungi al carrello</span>
                                 </button>
                             </div>
                         </div>
@@ -128,175 +148,224 @@ export default {
                 </li>
             </ul>
         </div> -->
+
+        <!--Trying to buy from another restaurant Modal -->
+        <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            ATTENZIONE!
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Puoi ordinare da un solo ristorante alla volta! <br>
+                            Svuota il carrello per ordinare da un altro
+                            ristorante!
+                        </p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            data-bs-dismiss="modal"
+                            @click="emptyCart"
+                        >
+                            Svuota Carrello
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Chiudi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
 <style lang="scss" scoped>
-    section {
-        padding: 100px 0;
-    }
+section {
+    padding: 100px 0;
+}
 
-    .my-container {
-        display: flex;
-        flex-wrap: wrap;
+.my-container {
+    display: flex;
+    flex-wrap: wrap;
 
-        button {
-            padding: 50px 10px;
-            border: none;
-            border-radius: 10px;
-            background-color: white;
-            color: black;
-            font-size: 18px;
-        }
-    }
-
-    .restaurant-header {
+    button {
+        padding: 50px 10px;
+        border: none;
+        border-radius: 10px;
         background-color: white;
-        border: 1px solid rgba($color: #FC456A, $alpha: 0.7);
-        border-top: none;
-        box-shadow: 0px 5px 5px 0px rgba($color: #FC456A, $alpha: 0.7);
-        margin-bottom: 50px;
+        color: black;
+        font-size: 18px;
+    }
+}
 
-        .flex-info-res {
+.restaurant-header {
+    background-color: white;
+    border: 1px solid rgba($color: #fc456a, $alpha: 0.7);
+    border-top: none;
+    box-shadow: 0px 5px 5px 0px rgba($color: #fc456a, $alpha: 0.7);
+    margin-bottom: 50px;
+
+    .flex-info-res {
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .restaurant-image {
+        width: 500px;
+        border: 1px solid rgba($color: #fc456a, $alpha: 0.7);
+        box-shadow: 0px 5px 5px 0px rgba($color: #fc456a, $alpha: 0.7);
+        border-radius: 10px;
+
+        img {
+            display: block;
+            border-radius: 10px;
+        }
+    }
+
+    .restaurant-infos {
+        padding-left: 50px;
+        line-height: 30px;
+
+        .restaurant-name {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.food-cart {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border: 1px solid rgba($color: #fc456a, $alpha: 0.7);
+    box-shadow: 0px 5px 5px 0px rgba($color: #fc456a, $alpha: 0.7);
+
+    .menu-wrapper {
+        display: flex;
+    }
+
+    .menu-list {
+        width: 70%;
+        margin-right: 1%;
+
+        .my-boxes-wrapper {
             display: flex;
-            align-items: center;
-            padding: 20px 0;
+            flex-wrap: wrap;
+            margin-inline: -10px;
+
+            .box-properties {
+                user-select: none;
+            }
         }
 
-        .restaurant-image {
-            width: 500px;
-            border: 1px solid rgba($color: #FC456A, $alpha: 0.7);
-            box-shadow: 0px 5px 5px 0px rgba($color: #FC456A, $alpha: 0.7);
+        .my-bigBox {
+            width: calc(100% / 3 - 20px);
+            margin: 20px 10px;
+            background-color: #fff;
+            border: 1px solid rgba($color: #fc456a, $alpha: 0.7);
+            box-shadow: 0px 10px 5px 0px rgba($color: #fc456a, $alpha: 0.7);
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .info-top {
+            flex-grow: 1;
+        }
+
+        .my-bigBox-img {
+            width: 100%;
+            object-fit: cover;
+            background-color: white;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
 
             img {
                 display: block;
-                border-radius: 10px;
-            }
-        }
-
-        .restaurant-infos {
-            padding-left: 50px;
-            line-height: 30px;
-
-            .restaurant-name {
-                font-size: 40px;
-                font-weight: 700;
-                margin-bottom: 20px;
-            }
-        }
-    }
-
-    .food-cart {
-        display: flex;
-        justify-content: space-around;
-        background-color: white;
-        border: 1px solid rgba($color: #FC456A, $alpha: 0.7);
-        box-shadow: 0px 5px 5px 0px rgba($color: #FC456A, $alpha: 0.7);
-
-        .menu-wrapper {
-            display: flex;
-        }
-
-        .menu-list {
-            width: 70%;
-            margin-right: 1%;
-
-            .my-boxes-wrapper {
-                display: flex;
-                flex-wrap: wrap;
-                margin-inline: -10px;
-
-                .box-properties {
-                    user-select: none;
-                }
-            }
-
-            .my-bigBox {
-                width: calc(100% / 3 - 20px);
-                margin: 20px 10px;
-                background-color: #fff;
-                border: 1px solid rgba($color: #FC456A, $alpha: 0.7);
-                box-shadow: 0px 10px 5px 0px rgba($color: #FC456A, $alpha: 0.7);
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                position: relative;
-            }
-
-            .info-top {
-                flex-grow: 1;
-            }
-
-            .my-bigBox-img {
                 width: 100%;
+                height: 180px;
                 object-fit: cover;
-                background-color: white;
                 border-top-right-radius: 10px;
                 border-top-left-radius: 10px;
+            }
+        }
 
-                img {
-                    display: block;
-                    width: 100%;
-                    height: 180px;
-                    object-fit: cover;
-                    border-top-right-radius: 10px;
-                    border-top-left-radius: 10px;
-                }
+        .my-bigBox-info-wrapper {
+            padding: 10px;
+            color: #5a5a5a;
+            display: flex;
+            flex-direction: column;
+
+            .my-bigBox-info-name {
+                color: black;
+                font-size: 14px;
+                font-weight: bold;
             }
 
-            .my-bigBox-info-wrapper {
-                padding: 10px;
-                color: #5a5a5a;
+            .foodDescription {
+                color: #4a4a4a;
+                margin-bottom: 10px;
+            }
+
+            .my-bigBox-info-OtherInfo {
                 display: flex;
                 flex-direction: column;
+                font-size: 12px;
+            }
+        }
 
-                .my-bigBox-info-name {
-                    color: black;
-                    font-size: 14px;
-                    font-weight: bold;
-                }
+        .pay {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 10px 10px 10px;
 
-                .foodDescription {
-                    color: #4a4a4a;
-                    margin-bottom: 10px;
-                }
+            .foodPrice {
+                font-size: 15px;
+            }
 
-                .my-bigBox-info-OtherInfo {
-                    display: flex;
-                    flex-direction: column;
-                    font-size: 12px;
+            .addToCart_btn {
+                background-color: #fc456a;
+                border: 2px solid #fc456a;
+                color: #fff;
+                padding: 5px;
+                border-radius: 8px;
+
+                &:hover {
+                    background-color: #fff;
+                    border: 2px solid #fc456a;
+                    color: #fc456a;
                 }
             }
 
-            .pay {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 50px 10px 10px 10px;
-
-                .foodPrice {
-                    font-size: 15px;
-                }
-
-                .addToCart_btn {
-                    background-color: #FC456A;
-                    border: 2px solid #FC456A;
-                    color: #fff;
-                    padding: 5px;
-                    border-radius: 8px;
-
-                    &:hover {
-                        background-color: #fff;
-                        border: 2px solid #FC456A;
-                        color: #FC456A;
-                    }
-                }
-
-                .fa-cart-shopping {
-                    margin-right: 10px;
-                }
+            .fa-cart-shopping {
+                margin-right: 10px;
             }
         }
     }
+}
 </style>
