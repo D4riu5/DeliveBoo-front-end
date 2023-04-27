@@ -131,7 +131,7 @@ export default {
                                             />
                                         </div>
 
-                                        <div class="restaurant-info">
+                                        <div class="restaurant-info d-flex">
                                             <div class="restaurant-info-name">
                                                 <div class="name">
                                                     {{ restaurant.name }}
@@ -139,10 +139,13 @@ export default {
                                             </div>
 
                                             <div class="restaurant-address">
-                                                <i
-                                                    class="fa-solid fa-location-dot"
-                                                ></i
-                                                >{{ restaurant.address }}
+                                                <i class="fa-solid fa-location-dot"></i>{{ restaurant.address }}
+                                            </div>
+
+                                            <div class="category-badge d-flex flex-row flex-wrap">
+                                                <div class="me-2" v-for="type in restaurant.types">
+                                                    {{ type.name }}
+                                                </div>  
                                             </div>
                                         </div>
                                     </router-link>
@@ -191,19 +194,39 @@ main {
     }
 
     #TypesContainer {
+    width: 200px;
+    max-height: 600px;
+    overflow-y: auto;
+    background-color: #ffffff;
         width: 200px;
         max-height: 600px;
         overflow-y: auto;
         background-color: #ffffff;
 
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
         &::-webkit-scrollbar {
             width: 8px;
         }
 
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($color: #FC456A, $alpha: 0.8);
+    }
         &::-webkit-scrollbar-thumb {
             background-color: rgba($color: #fc456a, $alpha: 0.8);
         }
 
+    .type-span {
+        display: block; /* Change from inline-block to block */
+        width: 100%; /* Set width to 100% */
+        padding: 15px 16px;
+        border: 1px solid #f0f0f0;
+        border-radius: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
         .type-span {
             display: block; /* Change from inline-block to block */
             width: 100%; /* Set width to 100% */
@@ -215,17 +238,24 @@ main {
             cursor: pointer;
             transition: background-color 0.2s ease-in-out;
 
+        &:hover, &.active {
+        background-color: #f0f0f0;
+        color: #FC456A;
+        }
+    }
+
+    }
             &:hover,
             &.active {
                 background-color: #f0f0f0;
                 color: #fc456a;
             }
         }
-    }
+}
     .active {
         background-color: red;
     }
-}
+
 
 .restaurants_box {
     .restaurantWrapper {
@@ -271,7 +301,7 @@ main {
 
 .restaurant {
     max-width: 270px;
-    height: 230px;
+    height: 260px;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
@@ -303,6 +333,16 @@ main {
                 margin-right: 5px;
             }
         }
+
+        .category-badge{
+            // background-color: #f0f0f0;
+            color: #FC456A;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
     }
 }
 
@@ -313,19 +353,37 @@ main {
     }
 
     .restaurant {
-        min-width: 150px;
-        height: 230px;
+        min-width: 210px;
         border-radius: 5px;
         overflow: hidden;
         position: relative;
-
         .restaurant-img {
             width: 200%;
+        }
+    }
+    .restaurant-info {
+        .restaurant-info-name {
+            .name {
+                font-size: 13px;
+            }
+        }
+
+        .restaurant-address {
+            font-size: 12px;
         }
     }
 }
 
 @media only screen and (max-width: 1100px) {
+    .restaurant {
+        min-width: 210px;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        .restaurant-img {
+            width: 200%;
+        }
+    }
     .restaurant-info {
         .restaurant-info-name {
             .name {
@@ -341,18 +399,12 @@ main {
 
 @media only screen and (max-width: 900px) {
     .restaurant {
-        height: 180px;
+        min-width: 210px;
         border-radius: 5px;
         overflow: hidden;
         position: relative;
-
-        .restaurant-info {
-            .restaurant-info-name {
-                .name {
-                    font-size: 13px;
-                    font-weight: 700;
-                }
-            }
+        .restaurant-img {
+            width: 200%;
         }
     }
 }
