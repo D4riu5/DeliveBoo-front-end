@@ -44,8 +44,10 @@ export default {
             } else {
                 // Filter the restaurants by checking if they have at least one type that is included in the selectedTypes array
                 return this.store.restaurants.filter((restaurant) => {
-                    return restaurant.types.some((type) => {
-                        return this.selectedTypes.includes(type.name);
+                    return this.selectedTypes.every((typeName) => {
+                        return restaurant.types.some((type) => {
+                            return type.name === typeName;
+                        });
                     });
                 });
             }
@@ -58,9 +60,7 @@ export default {
     <main>
         <!-- TITLE -->
         <section class="text-center">
-            <h1 class="py-3">
-                Cerca il tuo ristorante
-            </h1>
+            <h1 class="py-3">Cerca il tuo ristorante</h1>
             <!-- <div class="d-flex justify-content-center">
                 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cerca un ristorante...">
             </div> -->
@@ -91,10 +91,22 @@ export default {
                     <div class="my-container restaurants_box">
                         <div class="restaurantsContainer">
                             <div class="restaurantWrapper">
-                                <div class="restaurant wrapperProperties" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
-                                    <router-link :to="{name: 'restaurant-menu', params: {id: restaurant.id}}">
+                                <div
+                                    class="restaurant wrapperProperties"
+                                    v-for="restaurant in filteredRestaurants"
+                                    :key="restaurant.id"
+                                >
+                                    <router-link
+                                        :to="{
+                                            name: 'restaurant-menu',
+                                            params: { id: restaurant.id },
+                                        }"
+                                    >
                                         <div class="restaurant-img">
-                                            <img :src="restaurant.image" :alt="restaurant.name">
+                                            <img
+                                                :src="restaurant.image"
+                                                :alt="restaurant.name"
+                                            />
                                         </div>
 
                                         <div class="restaurant-info">
@@ -105,31 +117,27 @@ export default {
                                             </div>
 
                                             <div class="restaurant-address">
-                                                <i class="fa-solid fa-location-dot"></i>{{ restaurant.address }}
+                                                <i
+                                                    class="fa-solid fa-location-dot"
+                                                ></i
+                                                >{{ restaurant.address }}
                                             </div>
                                         </div>
                                     </router-link>
                                 </div>
+
+                                <!-- SHOW CUSTOM MESSAGE WHEN NO RESTAURANT IS FOUND -->
+                                <div
+                                    v-if="filteredRestaurants.length === 0"
+                                    class="no-results"
+                                >
+                                    <h3 class="p-4">
+                                        Ci dispiace, non abbiamo trovato nessun
+                                        ristorante con le categorie selezionate.
+                                    </h3>
+                                </div>
                             </div>
                         </div>
-                        <!-- <ul>
-                            <li
-                                v-for="restaurant in filteredRestaurants"
-                                :key="restaurant.id"
-                            >
-                                <router-link
-                                    class="text-decoration-none text-danger"
-                                    :to="{
-                                        name: 'restaurant-menu',
-                                        params: {
-                                            id: restaurant.id,
-                                        },
-                                    }"
-                                >
-                                    {{ restaurant.name }}
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </div>
                 </div>
             </div>
@@ -140,7 +148,7 @@ export default {
 <style lang="scss" scoped>
 main {
     h1 {
-        color: #FC456A;
+        color: #fc456a;
     }
 
     .form-control {
@@ -149,37 +157,37 @@ main {
     }
 
     #TypesContainer {
-  width: 200px;
-  max-height: 600px;
-  overflow-y: auto;
-  background-color: #ffffff;
+        width: 200px;
+        max-height: 600px;
+        overflow-y: auto;
+        background-color: #ffffff;
 
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba($color: #FC456A, $alpha: 0.8);
-  }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($color: #fc456a, $alpha: 0.8);
+        }
 
-  .type-span {
-    display: block; /* Change from inline-block to block */
-    width: 100%; /* Set width to 100% */
-    padding: 15px 16px;
-    border: 1px solid #f0f0f0;
-    border-radius: 4px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+        .type-span {
+            display: block; /* Change from inline-block to block */
+            width: 100%; /* Set width to 100% */
+            padding: 15px 16px;
+            border: 1px solid #f0f0f0;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
 
-    &:hover, &.active {
-      background-color: #f0f0f0;
-      color: #FC456A;
+            &:hover,
+            &.active {
+                background-color: #f0f0f0;
+                color: #fc456a;
+            }
+        }
     }
-  }
-
-}
     .active {
         background-color: red;
     }
@@ -199,7 +207,7 @@ main {
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: rgba($color: #FC456A, $alpha: 0.8);
+            background-color: rgba($color: #fc456a, $alpha: 0.8);
         }
 
         .name {
@@ -212,12 +220,12 @@ main {
             display: flex;
             margin: 15px 10px;
             user-select: none;
-            border: 1px solid #FC456A;
+            border: 1px solid #fc456a;
             border-radius: 10px;
-            box-shadow: 0px 5px 5px 0px #FC456A;
+            box-shadow: 0px 5px 5px 0px #fc456a;
 
             &:hover {
-                border-bottom: 5px solid #FC456A;
+                border-bottom: 5px solid #fc456a;
             }
         }
     }
