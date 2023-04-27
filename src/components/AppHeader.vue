@@ -59,8 +59,7 @@ export default {
                 <router-link v-else class="text-decoration-none text-dark" :to="{
                         name: 'home',
                     }">
-                    <img src="" alt="Logo" />
-                    Nome Logo
+                    <img src="../img/7.png" alt="Logo" />
                 </router-link>
             </div>
             <nav class="header-nav">
