@@ -251,11 +251,11 @@ main {
                 color: #fc456a;
             }
         }
-    }
+}
     .active {
         background-color: red;
     }
-}
+
 
 .restaurants_box {
     .restaurantWrapper {
