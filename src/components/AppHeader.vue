@@ -52,8 +52,8 @@ export default {
     <header class="sticky-top p-2">
         <nav class="container d-flex justify-content-between">
             <div class="logo">
-                <a v-if="$route.path === '/'" class="text-decoration-none text-dark" href="#">
-                    <img src="../img/1.png" alt="Logo" />
+                <a v-if="$route.path === '/'" class="" href="#">
+                    <img src="../img/7.png" alt="Logo" />
                 </a>
                 <router-link v-else class="text-decoration-none text-dark" :to="{
                         name: 'home',
@@ -189,7 +189,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -245,8 +245,6 @@ header {
     img {
         width: 100%;
         height: 100%;
-        background-color: white;
-        border-radius: 5px;
     }
 }
 </style>
