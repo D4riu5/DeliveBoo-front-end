@@ -9,6 +9,7 @@ export default {
         return {
             store,
             selectedTypes: [],
+            numVisibleRestaurants: 16,
         };
     },
     methods: {
@@ -32,6 +33,11 @@ export default {
                 this.selectedTypes.push(typeName);
             }
         },
+
+        // Load more restaurants
+        loadMoreRestaurants() {
+            this.numVisibleRestaurants += 16;
+        },
     },
     created() {
         this.getTypes();
@@ -51,6 +57,19 @@ export default {
                     });
                 });
             }
+        },
+
+        // SET NUMBER OF RESTAURANTS VISIBLE ON PAGE
+        visibleRestaurants() {
+            return this.filteredRestaurants.slice(
+                0,
+                this.numVisibleRestaurants
+            );
+        },
+
+        // SHOW BUTTON ONLY WHEN numVisRes < filtRes
+        showLoadMoreButton() {
+            return this.numVisibleRestaurants < this.filteredRestaurants.length;
         },
     },
 };
@@ -89,11 +108,14 @@ export default {
 
                     <!-- RIGHT SIDE -->
                     <div class="my-container restaurants_box">
-                        <div class="restaurantsContainer">
+                        <div
+                            class="restaurantsContainer"
+                            ref="restaurantsContainer"
+                        >
                             <div class="restaurantWrapper">
                                 <div
                                     class="restaurant wrapperProperties"
-                                    v-for="restaurant in filteredRestaurants"
+                                    v-for="restaurant in visibleRestaurants"
                                     :key="restaurant.id"
                                 >
                                     <router-link
@@ -135,6 +157,18 @@ export default {
                                         Ci dispiace, non abbiamo trovato nessun
                                         ristorante con le categorie selezionate.
                                     </h3>
+                                </div>
+
+                                <div
+                                    v-if="showLoadMoreButton"
+                                    class="d-flex justify-content-center w-100 m-3"
+                                >
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="loadMoreRestaurants"
+                                    >
+                                        Carica altri ristoranti
+                                    </button>
                                 </div>
                             </div>
                         </div>
