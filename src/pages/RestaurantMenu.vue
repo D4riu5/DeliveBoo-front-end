@@ -122,7 +122,7 @@ export default {
                             <div class="pay">
                                 <div class="foodPrice" v-if="food">
                                     <span class="Pricebuble">
-                                        {{ food.price }}&euro;</span
+                                        {{ food.price }} &euro;</span
                                     >
                                 </div>
 
@@ -216,7 +216,7 @@ section {
         border-radius: 10px;
         background-color: white;
         color: black;
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
