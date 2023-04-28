@@ -63,6 +63,28 @@ export default {
             });
             return count;
         },
+
+        totalPrice() {
+            return this.store.cart.reduce((total, item) => {
+                return total + item.price * item.quantity;
+            }, 0);
+        },
+
+        restaurantName() {
+            const restaurantId =
+                this.store.cart.length > 0
+                    ? this.store.cart[0].restaurant_id
+                    : null;
+            if (restaurantId) {
+                const restaurant = this.store.restaurants.find(
+                    (r) => r.id === restaurantId
+                );
+                if (restaurant) {
+                    return restaurant.name;
+                }
+            }
+            return "Carrello vuoto";
+        },
     },
     mounted() {
         this.store.cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -163,8 +185,9 @@ export default {
         </nav>
     </header>
 
-    <!-- OFFCANVAS -->
-    <div v-if="$route.path === '/checkout' || $route.path.includes('Attivita')"
+    <!-- SHOPPING CART OFFCANVAS -->
+    <div
+        v-if="$route.path === '/checkout' || $route.path.includes('Attivita')"
         class="offcanvas offcanvas-end"
         data-bs-scroll="true"
         data-bs-backdrop="false"
@@ -174,7 +197,7 @@ export default {
     >
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
-                Carrello
+                <strong>{{ restaurantName }}</strong>
             </h5>
             <button
                 type="button"
@@ -185,8 +208,10 @@ export default {
         </div>
         <div class="offcanvas-body">
             <ul>
-                <div v-if="cartCount == 0">
-                    Carrello Vuoto...
+                <h4 v-if="cartCount == 0">Aggiungi un prodotto al carrello!</h4>
+                <div v-else>
+                    
+                    <strong>Prodotti:</strong>
                 </div>
                 <li
                     v-for="(item, index) in store.cart"
@@ -220,6 +245,10 @@ export default {
             </ul>
         </div>
         <div class="d-flex flex-column">
+            <h3 class="text-center my-2">
+                Prezzo totale:
+                <span class="text-danger">{{ totalPrice }} €</span>
+            </h3>
             <!-- EMPTY CART-->
             <button
                 class="btn btn-danger mx-5"
@@ -237,14 +266,13 @@ export default {
                 :to="{
                     name: 'checkout',
                 }"
-                class="btn btn-primary mx-5 my-3"
+                class="btn btn-primary mx-5 my-2"
             >
                 Checkout
             </router-link>
         </div>
     </div>
     <!-- OFFCANVAS -->
-    
 </template>
 
 <style lang="scss" scoped>
@@ -296,8 +324,8 @@ header {
     li:hover {
         color: #cb3234;
     }
-    ul{
-        padding-left: 0!important;
+    ul {
+        padding-left: 0 !important;
     }
 }
 
