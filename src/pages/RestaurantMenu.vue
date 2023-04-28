@@ -255,6 +255,10 @@ section {
             margin-bottom: 20px;
         }
     }
+
+    .fa-location-dot {
+        margin-right: 10px;
+    }
 }
 
 .food-cart {
@@ -343,18 +347,18 @@ section {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10px 10px 10px;
+            padding: 10px 10px 10px 10px;
 
             .foodPrice {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .addToCart_btn {
                 background-color: #fc456a;
                 border: 2px solid #fc456a;
                 color: #fff;
-                padding: 5px;
-                border-radius: 8px;
+                padding: 2px;
+                border-radius: 5px;
 
                 &:hover {
                     background-color: #fff;
@@ -364,7 +368,7 @@ section {
             }
 
             .fa-cart-shopping {
-                margin-right: 10px;
+                margin-right: 7px;
             }
         }
     }
