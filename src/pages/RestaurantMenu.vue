@@ -203,7 +203,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 .my-container {
@@ -269,7 +269,7 @@ section {
     }
 
     .menu-list {
-        width: 90%;
+        width: 85%;
         margin-right: 1%;
 
         .my-boxes-wrapper {
@@ -343,7 +343,7 @@ section {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 50px 10px 10px 10px;
+            padding: 20px 10px 10px 10px;
 
             .foodPrice {
                 font-size: 15px;
