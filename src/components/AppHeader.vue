@@ -65,9 +65,18 @@ export default {
         },
 
         totalPrice() {
-            return this.store.cart.reduce((total, item) => {
+            const deliveryFee = this.restaurantDeliveryFee;
+            const hasDeliveryFee =
+                deliveryFee !== "" &&
+                deliveryFee !== null &&
+                !isNaN(parseFloat(deliveryFee));
+            const cartTotal = this.store.cart.reduce((total, item) => {
                 return total + item.price * item.quantity;
             }, 0);
+            const total = hasDeliveryFee
+                ? parseFloat(deliveryFee) + cartTotal
+                : cartTotal;
+            return total.toFixed(2);
         },
 
         restaurantName() {
@@ -76,14 +85,26 @@ export default {
                     ? this.store.cart[0].restaurant_id
                     : null;
             if (restaurantId) {
-                const restaurant = this.store.restaurants.find(
-                    (r) => r.id === restaurantId
-                );
-                if (restaurant) {
+                const restaurant = this.store.restaurant;
+                if (restaurant && restaurant.id === restaurantId) {
                     return restaurant.name;
                 }
             }
             return "Carrello vuoto";
+        },
+
+        restaurantDeliveryFee() {
+            const restaurantId =
+                this.store.cart.length > 0
+                    ? this.store.cart[0].restaurant_id
+                    : null;
+            if (restaurantId) {
+                const restaurant = this.store.restaurant;
+                if (restaurant && restaurant.id === restaurantId) {
+                    return restaurant.prezzo_spedizione;
+                }
+            }
+            return "";
         },
     },
     mounted() {
@@ -198,6 +219,10 @@ export default {
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
                 <strong>{{ restaurantName }}</strong>
+                <strong v-if="cartCount > 0" class="text-danger">
+                    <i class="fa-solid fa-truck-fast mx-2"></i
+                    >{{ restaurantDeliveryFee + " €" }}
+                </strong>
             </h5>
             <button
                 type="button"
@@ -210,17 +235,21 @@ export default {
             <ul>
                 <h4 v-if="cartCount == 0">Aggiungi un prodotto al carrello!</h4>
                 <div v-else>
-                    
                     <strong>Prodotti:</strong>
                 </div>
                 <li
                     v-for="(item, index) in store.cart"
                     :key="index"
-                    class="d-flex align-items-center my-1"
+                    class="d-flex align-items-center my-1 bg-dark bg-opacity-10 p-2 rounded"
                 >
                     <div class="w-100">
                         {{ item.name }}
                     </div>
+
+                    <div class="w-25">
+                        {{ item.price + "€" }}
+                    </div>
+
                     <div class="mx-3">x</div>
                     <div>
                         {{ item.quantity }}
