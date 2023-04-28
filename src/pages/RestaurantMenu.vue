@@ -103,7 +103,7 @@ export default {
                         >
                             <div class="info-top">
                                 <div class="my-bigBox-img">
-                                    <img :src="food.image" :alt="food.name" />
+                                    <img :src="food.full_image_food" :alt="food.name" />
                                 </div>
 
                                 <div class="my-bigBox-info-wrapper">
@@ -269,7 +269,7 @@ section {
     }
 
     .menu-list {
-        width: 70%;
+        width: 90%;
         margin-right: 1%;
 
         .my-boxes-wrapper {
@@ -283,7 +283,7 @@ section {
         }
 
         .my-bigBox {
-            width: calc(100% / 3 - 20px);
+            width: calc(100% / 4 - 20px);
             margin: 20px 10px;
             background-color: #fff;
             border: 1px solid rgba($color: #fc456a, $alpha: 0.7);
