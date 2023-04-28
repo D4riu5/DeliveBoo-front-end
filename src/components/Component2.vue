@@ -124,11 +124,27 @@ export default {
                                             params: { id: restaurant.id },
                                         }"
                                     >
-                                        <div class="restaurant-img">
+                                        <div
+                                            class="restaurant-img position-relative"
+                                        >
                                             <img
                                                 :src="restaurant.image"
                                                 :alt="restaurant.name"
                                             />
+                                            <div class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
+                                                <i
+                                                    class="fa-solid fa-truck-fast"
+                                                ></i>
+                                                <strong class="ms-2">
+                                                    {{
+                                                        restaurant.prezzo_spedizione ==
+                                                        0
+                                                            ? "Gratis!"
+                                                            : restaurant.prezzo_spedizione +
+                                                              " €"
+                                                    }}
+                                                </strong>
+                                            </div>
                                         </div>
 
                                         <div class="restaurant-info d-flex">
@@ -296,6 +312,9 @@ main {
     .restaurant-img {
         height: 65%;
         overflow: hidden;
+        .price_badge {
+            font-size: 12px;
+        }
     }
 
     .restaurant-info {
@@ -345,7 +364,7 @@ main {
         overflow: hidden;
         position: relative;
         .restaurant-img {
-            width: 200%;
+            width: 100%;
         }
     }
     .restaurant-info {
@@ -368,7 +387,11 @@ main {
         overflow: hidden;
         position: relative;
         .restaurant-img {
-            width: 200%;
+            width: 100%;
+
+            .price_badge {
+                font-size: 14px;
+            }
         }
     }
     .restaurant-info {
@@ -391,7 +414,10 @@ main {
         overflow: hidden;
         position: relative;
         .restaurant-img {
-            width: 200%;
+            width: 100%;
+            .price_badge {
+                font-size: 16px;
+            }
         }
     }
 }
@@ -403,7 +429,7 @@ main {
         overflow: hidden;
         position: relative;
         .restaurant-img {
-            width: 200%;
+            width: 100%;
         }
     }
 }
@@ -415,7 +441,7 @@ main {
         overflow: hidden;
         position: relative;
         .restaurant-img {
-            width: 200%;
+            width: 100%;
         }
     }
 }

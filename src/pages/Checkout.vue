@@ -32,6 +32,12 @@ export default {
             window.history.back();
         },
 
+        // FOR THE RESTAURANT API IN CASE OF PAGE REFRESH
+        getFirstFoodRestaurantId() {
+            const firstFood = this.store.cart[0];
+            return firstFood ? firstFood.restaurant_id : null;
+        },
+
         // BRAINTREE
         initializeBrainTree() {
             const self = this;
@@ -103,13 +109,15 @@ export default {
         },
     },
     mounted() {
-        // axios
-        //     .get("http://127.0.0.1:8000/api/braintree/token")
-        //     .then((response) => {
-        //         this.clientToken = response.data.clientToken;
-        //         this.initializeBrainTree();
-        //     })
-        //     .catch((error) => console.log(error));
+        const restaurantId = this.getFirstFoodRestaurantId();
+        axios
+            .get(`${store.backEndLink}/api/restaurants/${restaurantId}/foods`)
+            .then((resp) => {
+                if (resp.data.restaurant) {
+                    this.store.restaurant = resp.data.restaurant;
+                    // not doing anything with foods. Im getting this Api cuz i need the store.restaurant to have the current restaurant in case of page refresh that would mess-up the shopping cart
+                }
+            });
     },
     created() {},
     watch: {
@@ -238,10 +246,11 @@ export default {
     </div>
 
     <!-- IF CART IS EMPTY -->
-    <div v-else class="p-5 d-flex flex-column justify-content-center align-items-center">
-        <div class="my-4">
-            Carrello vuoto!
-        </div>
+    <div
+        v-else
+        class="p-5 d-flex flex-column justify-content-center align-items-center"
+    >
+        <div class="my-4">Carrello vuoto!</div>
         <button @click="goBack" class="btn btn-secondary">
             Torna alla pagina precedente
         </button>
