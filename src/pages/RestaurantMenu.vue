@@ -103,7 +103,7 @@ export default {
                         >
                             <div class="info-top">
                                 <div class="my-bigBox-img">
-                                    <img :src="food.image" :alt="food.name" />
+                                    <img :src="food.full_image_food" :alt="food.name" />
                                 </div>
 
                                 <div class="my-bigBox-info-wrapper">
@@ -122,7 +122,7 @@ export default {
                             <div class="pay">
                                 <div class="foodPrice" v-if="food">
                                     <span class="Pricebuble">
-                                        {{ food.price }}&euro;</span
+                                        {{ food.price }} &euro;</span
                                     >
                                 </div>
 
@@ -203,7 +203,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 .my-container {
@@ -216,7 +216,7 @@ section {
         border-radius: 10px;
         background-color: white;
         color: black;
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
@@ -255,6 +255,10 @@ section {
             margin-bottom: 20px;
         }
     }
+
+    .fa-location-dot {
+        margin-right: 10px;
+    }
 }
 
 .food-cart {
@@ -269,7 +273,7 @@ section {
     }
 
     .menu-list {
-        width: 70%;
+        width: 85%;
         margin-right: 1%;
 
         .my-boxes-wrapper {
@@ -283,7 +287,7 @@ section {
         }
 
         .my-bigBox {
-            width: calc(100% / 3 - 20px);
+            width: calc(100% / 4 - 20px);
             margin: 20px 10px;
             background-color: #fff;
             border: 1px solid rgba($color: #fc456a, $alpha: 0.7);
@@ -343,18 +347,18 @@ section {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 50px 10px 10px 10px;
+            padding: 10px 10px 10px 10px;
 
             .foodPrice {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .addToCart_btn {
                 background-color: #fc456a;
                 border: 2px solid #fc456a;
                 color: #fff;
-                padding: 5px;
-                border-radius: 8px;
+                padding: 2px;
+                border-radius: 5px;
 
                 &:hover {
                     background-color: #fff;
@@ -364,7 +368,7 @@ section {
             }
 
             .fa-cart-shopping {
-                margin-right: 10px;
+                margin-right: 7px;
             }
         }
     }
