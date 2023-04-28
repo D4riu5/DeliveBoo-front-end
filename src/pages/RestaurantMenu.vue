@@ -31,10 +31,12 @@ export default {
 
         // SHOPPING CART
         addToCart(item) {
+            // if cart has items from a restaurant, when you try to buy from a different one
             if (
                 this.store.cart.length &&
                 this.store.cart[0].restaurant_id !== item.restaurant_id
             ) {
+                // show modal
                 $("#exampleModal").modal("show");
                 return;
             }
@@ -51,7 +53,6 @@ export default {
                 // If the item doesn't exist in the cart, add it with a quantity of 1
                 this.store.cart.push({ ...item, quantity: 1 });
             }
-
             localStorage.setItem("cart", JSON.stringify(this.store.cart));
         },
         
