@@ -135,10 +135,10 @@ export default {
 
 <template>
     <header class="finisher-header sticky-top p-2">
-        <div class="container d-flex justify-content-between align-items-center">
+        <div class="heigthBox container d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a v-if="$route.path === '/'" class="" href="#">
-                    <div class="imgContainer">
+                    <div class="imgContainer pb-1 px-1">
                         <img src="../img/7.png" alt="Logo" />
 
                     </div>
@@ -254,19 +254,21 @@ export default {
 }
 
 header {
+    height: 100%;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    position: sticky;
-    top: -65 !important;
+    top: -65;
     left: 0;
     z-index: 10;
-    .imgContainer {
-        width: 132px;
-        height: 78px;
+    .heigthBox {
+        height:100px;
+        .imgContainer {
+        width: 119px;
+        height: 67px;
         img {
             width: 100%;
             height: 100%;
         }
+    }
     }
     .header-nav {
         width: 76%;
@@ -321,14 +323,7 @@ header {
 
 .logo {
     width: 12%;
-    height: 74px;
     margin: 0px !important;
-
-    //DETTAGLI LOGO
-    img {
-        width: 100%;
-        height: 100%;
-    }
 }
 
 
