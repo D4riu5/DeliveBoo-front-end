@@ -54,6 +54,46 @@ export default {
             this.store.cart = [];
             localStorage.setItem("cart", JSON.stringify(this.store.cart));
         },
+        initFinisherHeader() {
+            new FinisherHeader({
+                "count": 24,
+                "size": {
+                    "min": 1085,
+                    "max": 1500,
+                    "pulse": 1
+                },
+                "speed": {
+                    "x": {
+                        "min": 0.1,
+                        "max": 0.6
+                    },
+                    "y": {
+                        "min": 0.1,
+                        "max": 0.5
+                    }
+                },
+                "colors": {
+                    "background": "#000000",
+                    "particles": [
+                        "#000000",
+                        "#363636",
+                        "#000000",
+                        "#100f0f",
+                        "#000000"
+                    ]
+                },
+                "blending": "screen",
+                "opacity": {
+                    "center": 0.2,
+                    "edge": 0.2
+                },
+                "skew": 0,
+                "shapes": [
+                    "c",
+                    "s"
+                ]
+            });
+        }
     },
     computed: {
         cartCount() {
@@ -87,30 +127,32 @@ export default {
         },
     },
     mounted() {
+        this.initFinisherHeader();
         this.store.cart = JSON.parse(localStorage.getItem("cart") || "[]");
     },
 };
 </script>
 
 <template>
-    <header class="sticky-top p-2">
-        <nav class="container d-flex justify-content-between">
+    <header class="finisher-header sticky-top p-2">
+        <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a v-if="$route.path === '/'" class="" href="#">
-                    <img src="../img/7.png" alt="Logo" />
+                    <div class="imgContainer">
+                        <img src="../img/7.png" alt="Logo" />
+
+                    </div>
                 </a>
-                <router-link
-                    v-else
-                    class="text-decoration-none text-dark"
-                    :to="{
+                <router-link v-else class="text-decoration-none text-dark" :to="{
                         name: 'home',
-                    }"
-                >
-                    <img src="../img/7.png" alt="Logo" />
+                    }">
+                    <div class="imgContainer">
+                        <img src="../img/7.png" alt="Logo" />
+                    </div>
                 </router-link>
             </div>
             <nav class="header-nav">
-                <ul>
+                <ul class="d-flex justify-content-center">
                     <li><a href="#">Menú</a></li>
                     <li><a href="#">Ristoranti</a></li>
                     <li><a href="#">Cucine</a></li>
@@ -121,60 +163,22 @@ export default {
                     </li>
                 </ul>
             </nav>
+            <div class="AreaPartner">
+                <a class="nav-link" aria-current="page" :href="this.store.backEndLink + '/login'"><i
+                        class="fa-solid fa-user mx-2"> </i> Area
+                    Partner
+                </a>
+            </div>
 
             <div class="d-flex align-items-center">
                 <!-- Button trigger modal -->
-                <button
-                    v-if="
-                        $route.path.includes('/Attivita') ||
-                        $route.path.includes('/checkout')
-                    "
-                    type="button"
-                    class="btn btn-primary mx-2"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasScrolling"
-                    aria-controls="offcanvasScrolling"
-                >
+                <button v-if="$route.path.includes('/Attivita') ||
+                    $route.path.includes('/checkout')
+                    " type="button" class="btn btn-primary mx-2" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="badge bg-secondary ms-2">{{ cartCount }}</span>
                 </button>
-
-                <div class="dropdown-center">
-                    <button
-                        class="btn btn-warning"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item">
-                            <a
-                                class="nav-link"
-                                aria-current="page"
-                                :href="this.store.backEndLink + '/login'"
-                                ><i class="fa-solid fa-user mx-2"> </i> Area
-                                Partner
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <div
-                                v-if="darkTheme == false"
-                                @click="switchTheme()"
-                                id="changeTheme2"
-                            >
-                                <i class="fa-solid fa-sun fs-6 mx-2"></i> Light
-                                Mode
-                            </div>
-                            <div v-else id="changeTheme" @click="switchTheme()">
-                                <i class="fa-solid fa-moon fs-6 mx-2"></i> Dark
-                                Mode
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
                 <!-- Button trigger Offcanvas 
                 <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight">
@@ -182,42 +186,27 @@ export default {
                 </button>
                 -->
             </div>
-        </nav>
+        </div>
     </header>
 
     <!-- SHOPPING CART OFFCANVAS -->
-    <div
-        v-if="$route.path === '/checkout' || $route.path.includes('Attivita')"
-        class="offcanvas offcanvas-end"
-        data-bs-scroll="true"
-        data-bs-backdrop="false"
-        tabindex="-1"
-        id="offcanvasScrolling"
-        aria-labelledby="offcanvasScrollingLabel"
-    >
+    <div v-if="$route.path === '/checkout' || $route.path.includes('Attivita')" class="offcanvas offcanvas-end"
+        data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling"
+        aria-labelledby="offcanvasScrollingLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
                 <strong>{{ restaurantName }}</strong>
             </h5>
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <ul>
                 <h4 v-if="cartCount == 0">Aggiungi un prodotto al carrello!</h4>
                 <div v-else>
-                    
+
                     <strong>Prodotti:</strong>
                 </div>
-                <li
-                    v-for="(item, index) in store.cart"
-                    :key="index"
-                    class="d-flex align-items-center my-1"
-                >
+                <li v-for="(item, index) in store.cart" :key="index" class="d-flex align-items-center my-1">
                     <div class="w-100">
                         {{ item.name }}
                     </div>
@@ -227,17 +216,11 @@ export default {
                     </div>
 
                     <div class="d-flex flex-row mx-2">
-                        <button
-                            class="btn btn-danger me-2"
-                            @click="removeFromCart(index)"
-                        >
+                        <button class="btn btn-danger me-2" @click="removeFromCart(index)">
                             -
                         </button>
 
-                        <button
-                            class="btn btn-success"
-                            @click="addToCart(index)"
-                        >
+                        <button class="btn btn-success" @click="addToCart(index)">
                             +
                         </button>
                     </div>
@@ -250,24 +233,14 @@ export default {
                 <span class="text-danger">{{ totalPrice }} €</span>
             </h3>
             <!-- EMPTY CART-->
-            <button
-                class="btn btn-danger mx-5"
-                @click="emptyCart"
-                v-if="cartCount > 0"
-            >
+            <button class="btn btn-danger mx-5" @click="emptyCart" v-if="cartCount > 0">
                 <i class="fa-solid fa-trash"></i>
             </button>
 
             <!--PAY -> CHECKOUT PAGE -->
-            <router-link
-                v-if="cartCount > 0"
-                @click="redirectToCheckout"
-                data-bs-dismiss="offcanvas"
-                :to="{
+            <router-link v-if="cartCount > 0" @click="redirectToCheckout" data-bs-dismiss="offcanvas" :to="{
                     name: 'checkout',
-                }"
-                class="btn btn-primary mx-5 my-2"
-            >
+                }" class="btn btn-primary mx-5 my-2">
                 Checkout
             </router-link>
         </div>
@@ -281,19 +254,22 @@ export default {
 }
 
 header {
-    background-color: black;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
     position: sticky;
-    top: 0;
+    top: -65 !important;
     left: 0;
-    right: 0;
     z-index: 10;
-
+    .imgContainer {
+        width: 132px;
+        height: 78px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
     .header-nav {
+        width: 76%;
         ul {
             list-style: none;
             margin: 0;
@@ -305,15 +281,27 @@ header {
             }
 
             a {
-                color: #ffa500;
+                color: #fd456b;
                 text-decoration: none;
                 font-weight: bold;
+                font-size: 17px;
             }
 
             a:hover {
-                color: #fd456b;
+                color: white;
             }
         }
+    }
+
+    .AreaPartner {
+        width: 12%;
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    .AreaPartner:hover {
+        color: #fd456b;
     }
 }
 
@@ -321,16 +309,18 @@ header {
     width: 20%;
     z-index: 0;
     padding-top: 125px;
+
     li:hover {
         color: #cb3234;
     }
+
     ul {
         padding-left: 0 !important;
     }
 }
 
 .logo {
-    width: 130px;
+    width: 12%;
     height: 74px;
     margin: 0px !important;
 
@@ -340,4 +330,6 @@ header {
         height: 100%;
     }
 }
+
+
 </style>
