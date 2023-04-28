@@ -20,7 +20,9 @@ export default {
 </script>
 
 <template>
-    <AppHeader />
+    <div class="headerContainer">
+        <AppHeader />
+    </div>
     <div>
         <router-view></router-view>
     </div>
@@ -29,4 +31,7 @@ export default {
 
 <style lang="scss">
 @use "./styles/main";
+.headerContainer {
+    height: 100px;
+}
 </style>

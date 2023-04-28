@@ -79,13 +79,13 @@ export default {
     <main>
         <!-- TITLE -->
         <section class="text-center">
-            <h1 class="py-3">Cerca il tuo ristorante</h1>
+            <h1 class="pt-3">Cerca il tuo ristorante</h1>
             <!-- <div class="d-flex justify-content-center">
                 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cerca un ristorante...">
             </div> -->
         </section>
 
-        <section class="py-4">
+        <section class="py-3">
             <div class="container d-flex flex-column">
                 <div class="d-flex">
                     <!-- LEFT SIDE -->
@@ -205,12 +205,10 @@ main {
         width: 200px;
         max-height: 600px;
         overflow-y: auto;
-        background-color: #ffffff;
+        background-color: white;
         width: 200px;
         max-height: 600px;
         overflow-y: auto;
-        background-color: #ffffff;
-
         &::-webkit-scrollbar {
             width: 8px;
         }
