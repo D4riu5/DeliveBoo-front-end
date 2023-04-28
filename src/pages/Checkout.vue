@@ -136,7 +136,7 @@ export default {
 </script>
 
 <template>
-    <div v-if="store.cart > 0">
+    <div v-if="store.cart.length > 0">
         <!-- LOADING -->
         <div v-if="showLoading" class="text-center my-5 py-3">
             <h1>LOADING...</h1>

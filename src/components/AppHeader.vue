@@ -162,6 +162,7 @@ export default {
             </div>
         </nav>
     </header>
+
     <!-- OFFCANVAS -->
     <div v-if="$route.path === '/checkout' || $route.path.includes('Attivita')"
         class="offcanvas offcanvas-end"
@@ -243,6 +244,7 @@ export default {
         </div>
     </div>
     <!-- OFFCANVAS -->
+    
 </template>
 
 <style lang="scss" scoped>
