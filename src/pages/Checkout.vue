@@ -17,9 +17,10 @@ export default {
                 total_price: store.cart.reduce((total, item) => {
                     return total + item.price * item.quantity;
                 }, 0),
-                status: "In Preparazione",
+                status: "Consegnato",
                 costumer_name: "",
                 delivery_address: "",
+                email_address: "",
                 delivery_contact: "",
                 food: store.cart,
             },
@@ -187,6 +188,21 @@ export default {
                         name="delivery_address"
                         placeholder="Inserisci l'indirizzo di consegna.."
                         v-model="order.delivery_address"
+                    />
+                </div>
+
+                <!-- EMAIL ADDRESS -->
+                <div class="mb-3">
+                    <label for="email_address" class="form-label">
+                        Indirizzo email<span class="text-danger"> *</span>
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="email_address"
+                        name="email_address"
+                        placeholder="Inserisci l'indirizzo email.."
+                        v-model="order.email_address"
                     />
                 </div>
 
