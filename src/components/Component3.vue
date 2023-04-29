@@ -33,9 +33,11 @@ export default {
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title text-center">You choose</h5>
-                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Quae labore voluptas dolorum ipsa sunt explicabo?</p>
+                                <h5 class="card-title text-center"><strong>You choose</strong></h5>
+                                <p class="card-text text-center">Scopri la vasta scelta di piatti del nostro ristorante. 
+                                    Scegli tra le nostre delizie italiane, hamburger succulenti, cucina giapponese e molto altro ancora.
+                                    Personalizza il tuo ordine in base alle tue preferenze e gusti.
+                                    Dai un'occhiata al nostro menu e scegli il tuo piatto preferito oggi stesso!</p>
                             </div>
                         </div>
                     </div>
@@ -47,9 +49,11 @@ export default {
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title text-center">We deliver</h5>
-                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Ipsa deserunt repellendus sapiente aperiam excepturi optio!</p>
+                                <h5 class="card-title text-center"><strong>We deliver</strong></h5>
+                                <p class="card-text text-center">Ordinare il cibo dal nostro ristorante non è mai stato così facile.
+                                    Basta pochi click per ordinare dal nostro sito web e ricevere il tuo cibo direttamente a casa tua.
+                                    La nostra consegna è affidabile e puntuale, garantendo che il tuo cibo arrivi caldo e pronto da gustare.
+                                    Consegna rapida e affidabile - questo è il nostro impegno per te</p>
                             </div>
                         </div>
                     </div>
@@ -61,9 +65,11 @@ export default {
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title text-center">Eat, Enjoy & Repeat</h5>
-                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Quia possimus ipsa praesentium dicta architecto pariatur.</p>
+                                <h5 class="card-title text-center"><strong>Eat, Enjoy & Repeat</strong></h5>
+                                <p class="card-text text-center">Il nostro cibo è un'esperienza per il tuo palato.
+                                    Ogni piatto è preparato con ingredienti freschi e di alta qualità, per garantirti il massimo gusto e sapore.
+                                    Assapora i sapori unici delle nostre ricette.
+                                    Ordina dal nostro sito di delivery e gustati ogni boccone - ti garantiamo che tornerai a ordinare da noi ancora e ancora.</p>
                             </div>
                         </div>
                     </div>
@@ -77,13 +83,25 @@ export default {
 main {
 
     img {
-        width: 50%;
-        height: 50%;
+        width: 200px;
+        height: 200px;
     }
 
-    .card:hover {
-        transform: scale(1.1);
-        transition: 0.3s ease;
+    .card {
+        height: 445px;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: 0.3s ease;
+        }
+    }
+
+    h5 {
+        color: rgba($color: #fc456a, $alpha: 0.8);
+    }
+
+    p {
+        color: #676868;
     }
 }
 

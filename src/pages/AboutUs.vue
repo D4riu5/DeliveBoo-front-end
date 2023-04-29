@@ -73,7 +73,7 @@ export default {
         p {
             font-size: 18px;
             line-height: 1.5;
-            color: $secondary-color;
+            color: $background-color;
             text-align: center;
             margin-bottom: 40px;
         }
