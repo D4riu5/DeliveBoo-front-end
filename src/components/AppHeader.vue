@@ -145,8 +145,8 @@ export default {
 </script>
 
 <template>
-    <header class="finisher-header sticky-top p-2">
-        <div class="heigthBox container d-flex justify-content-between align-items-center">
+    <header class="container-fluid finisher-header p-2">
+        <div class="heigthBox d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a v-if="$route.path === '/'" class="" href="#">
                     <div class="imgContainer pb-1 px-1">
@@ -273,15 +273,15 @@ export default {
 }
 
 header {
-    height: 100%;
+    height: 100px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    top: -65;
+    top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 1030;
+    position: fixed;
 
     .heigthBox {
         height: 100px;
-
         .imgContainer {
             width: 119px;
             height: 67px;

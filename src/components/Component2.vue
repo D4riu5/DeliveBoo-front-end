@@ -33,7 +33,6 @@ export default {
                 this.selectedTypes.push(typeName);
             }
         },
-
         // Load more restaurants
         loadMoreRestaurants() {
             this.numVisibleRestaurants += 16;
@@ -78,70 +77,44 @@ export default {
 <template>
     <main>
         <!-- TITLE -->
-        <section class="text-center">
-            <h1 class="pt-3">Cerca il tuo ristorante</h1>
-            <!-- <div class="d-flex justify-content-center">
-                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cerca un ristorante...">
-            </div> -->
-        </section>
+        <div class="restaurantBar text-center container-fluid">
+            <p class="">Cerca il tuo ristorante</p>
+        </div>
 
         <section class="py-3">
-            <div class="container d-flex flex-column">
+            <div class="container-xxl d-flex flex-column">
                 <div class="d-flex">
                     <!-- LEFT SIDE -->
-                    <div
-                        id="TypesContainer"
-                        class="d-flex flex-wrap rounded p-3"
-                    >
-                        <span
-                            v-for="type in store.types"
-                            :class="{
+                    <div id="TypesContainer" class="d-flex flex-wrap rounded p-3">
+                        <span v-for="type in store.types" :class="{
                                 active: selectedTypes.includes(type.name),
-                            }"
-                            class="type-span"
-                            @click="toggleTypeSelection(type.name)"
-                            :key="type.id"
-                        >
+                            }" class="type-span" @click="toggleTypeSelection(type.name)" :key="type.id">
                             {{ type.name }}
                         </span>
                     </div>
 
                     <!-- RIGHT SIDE -->
                     <div class="my-container restaurants_box">
-                        <div
-                            class="restaurantsContainer"
-                            ref="restaurantsContainer"
-                        >
+                        <div class="restaurantsContainer" ref="restaurantsContainer">
                             <div class="restaurantWrapper">
-                                <div
-                                    class="restaurant wrapperProperties"
-                                    v-for="restaurant in visibleRestaurants"
-                                    :key="restaurant.id"
-                                >
-                                    <router-link
-                                        :to="{
+                                <div class="restaurant wrapperProperties" v-for="restaurant in visibleRestaurants"
+                                    :key="restaurant.id">
+                                    <router-link :to="{
                                             name: 'restaurant-menu',
                                             params: { id: restaurant.id },
-                                        }"
-                                    >
-                                        <div
-                                            class="restaurant-img position-relative"
-                                        >
-                                            <img
-                                                :src="restaurant.image"
-                                                :alt="restaurant.name"
-                                            />
-                                            <div class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
-                                                <i
-                                                    class="fa-solid fa-truck-fast"
-                                                ></i>
+                                        }">
+                                        <div class="restaurant-img position-relative">
+                                            <img :src="restaurant.image" :alt="restaurant.name" />
+                                            <div
+                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
+                                                <i class="fa-solid fa-truck-fast"></i>
                                                 <strong class="ms-2">
                                                     {{
                                                         restaurant.prezzo_spedizione ==
                                                         0
-                                                            ? "Gratis!"
-                                                            : restaurant.prezzo_spedizione +
-                                                              " €"
+                                                        ? "Gratis!"
+                                                        : restaurant.prezzo_spedizione +
+                                                        " €"
                                                     }}
                                                 </strong>
                                             </div>
@@ -155,19 +128,11 @@ export default {
                                             </div>
 
                                             <div class="restaurant-address">
-                                                <i
-                                                    class="fa-solid fa-location-dot"
-                                                ></i
-                                                >{{ restaurant.address }}
+                                                <i class="fa-solid fa-location-dot"></i>{{ restaurant.address }}
                                             </div>
 
-                                            <div
-                                                class="category-badge d-flex flex-row flex-wrap"
-                                            >
-                                                <div
-                                                    class="me-2"
-                                                    v-for="type in restaurant.types"
-                                                >
+                                            <div class="category-badge d-flex flex-row flex-wrap">
+                                                <div class="me-2" v-for="type in restaurant.types">
                                                     {{ type.name }}
                                                 </div>
                                             </div>
@@ -176,24 +141,15 @@ export default {
                                 </div>
 
                                 <!-- SHOW CUSTOM MESSAGE WHEN NO RESTAURANT IS FOUND -->
-                                <div
-                                    v-if="filteredRestaurants.length === 0"
-                                    class="no-results"
-                                >
+                                <div v-if="filteredRestaurants.length === 0" class="no-results">
                                     <h3 class="p-4">
                                         Ci dispiace, non abbiamo trovato nessun
                                         ristorante con le categorie selezionate.
                                     </h3>
                                 </div>
 
-                                <div
-                                    v-if="showLoadMoreButton"
-                                    class="d-flex justify-content-center w-100 m-3"
-                                >
-                                    <button
-                                        class="btn btn-danger"
-                                        @click="loadMoreRestaurants"
-                                    >
+                                <div v-if="showLoadMoreButton" class="d-flex justify-content-center w-100 m-3">
+                                    <button class="btn btn-danger" @click="loadMoreRestaurants">
                                         Carica altri ristoranti
                                     </button>
                                 </div>
@@ -208,8 +164,21 @@ export default {
 
 <style lang="scss" scoped>
 main {
-    h1 {
-        color: #fc456a;
+    margin-top: -15px;
+
+    .restaurantBar {
+        height: 65px;
+        background: rgb(41, 41, 41);
+        background: linear-gradient(0deg, rgba(41, 41, 41, 1) 0%, rgba(0, 0, 0, 0.5971638655462185) 15%, rgba(0, 0, 0, 0.5999649859943977) 85%, rgba(41, 41, 41, 1) 100%);
+
+        p {
+            margin-top: 8px;
+            padding-top: 8px;
+            font-size: 35px;
+            color: #ff3f5c;
+            font-family: 'Kalam', cursive;
+            vertical-align: middle;
+        }
     }
 
     .form-control {
@@ -225,9 +194,11 @@ main {
         width: 200px;
         max-height: 600px;
         overflow-y: auto;
+
         &::-webkit-scrollbar {
             width: 8px;
         }
+
         &::-webkit-scrollbar {
             width: 8px;
         }
@@ -235,13 +206,16 @@ main {
         &::-webkit-scrollbar-thumb {
             background-color: rgba($color: #fc456a, $alpha: 0.8);
         }
+
         &::-webkit-scrollbar-thumb {
             background-color: rgba($color: #fc456a, $alpha: 0.8);
         }
 
         .type-span {
-            display: block; /* Change from inline-block to block */
-            width: 100%; /* Set width to 100% */
+            display: block;
+            /* Change from inline-block to block */
+            width: 100%;
+            /* Set width to 100% */
             padding: 15px 16px;
             border: 1px solid #f0f0f0;
             border-radius: 4px;
@@ -249,6 +223,7 @@ main {
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s ease-in-out;
+
             &:hover,
             &.active {
                 background-color: #f0f0f0;
@@ -256,10 +231,12 @@ main {
             }
         }
     }
+
     .active {
         background-color: red;
     }
 }
+
 .restaurants_box {
     .restaurantWrapper {
         display: flex;
@@ -312,6 +289,7 @@ main {
     .restaurant-img {
         height: 65%;
         overflow: hidden;
+
         .price_badge {
             font-size: 12px;
         }
@@ -335,6 +313,7 @@ main {
             align-items: center;
             color: #898a8a;
             font-size: 12px;
+
             .fa-location-dot {
                 margin-right: 5px;
             }
@@ -363,10 +342,12 @@ main {
         border-radius: 5px;
         overflow: hidden;
         position: relative;
+
         .restaurant-img {
             width: 100%;
         }
     }
+
     .restaurant-info {
         .restaurant-info-name {
             .name {
@@ -386,6 +367,7 @@ main {
         border-radius: 5px;
         overflow: hidden;
         position: relative;
+
         .restaurant-img {
             width: 100%;
 
@@ -394,6 +376,7 @@ main {
             }
         }
     }
+
     .restaurant-info {
         .restaurant-info-name {
             .name {
@@ -413,8 +396,10 @@ main {
         border-radius: 5px;
         overflow: hidden;
         position: relative;
+
         .restaurant-img {
             width: 100%;
+
             .price_badge {
                 font-size: 16px;
             }
@@ -428,6 +413,7 @@ main {
         border-radius: 5px;
         overflow: hidden;
         position: relative;
+
         .restaurant-img {
             width: 100%;
         }
@@ -440,6 +426,7 @@ main {
         border-radius: 5px;
         overflow: hidden;
         position: relative;
+
         .restaurant-img {
             width: 100%;
         }
@@ -452,6 +439,7 @@ main {
         border-radius: 5px;
         overflow: hidden;
         position: relative;
+
         .restaurant-img {
             width: 100%;
         }
@@ -467,6 +455,7 @@ main {
         margin-inline: 0;
         width: 100%;
     }
+
     .restaurants_box {
         .restaurantWrapper {
             display: flex;

@@ -28,7 +28,7 @@ export default {
 <style lang="scss" scoped>
     video {
         width: 100%;
-        height: 550px;
+        height: 500px;
         object-fit: cover;
     }
 </style>
