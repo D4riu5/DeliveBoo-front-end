@@ -102,19 +102,12 @@ export default {
                                     <router-link :to="{
                                             name: 'restaurant-menu',
                                             params: { id: restaurant.id },
-                                        }"
-                                    >
-                                        <div
-                                            class="restaurant-img position-relative"
-                                        >
-                                            <img
-                                                :src="restaurant.full_image_restaurant"
-                                                :alt="restaurant.name"
-                                            />
-                                            <div class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
-                                                <i
-                                                    class="fa-solid fa-truck-fast"
-                                                ></i>
+                                        }">
+                                        <div class="restaurant-img position-relative">
+                                            <img :src="restaurant.full_image_restaurant" :alt="restaurant.name" />
+                                            <div
+                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
+                                                <i class="fa-solid fa-truck-fast"></i>
                                                 <strong class="ms-2">
                                                     {{
                                                         restaurant.prezzo_spedizione ==
@@ -174,16 +167,16 @@ main {
     margin-top: -15px;
 
     .restaurantBar {
-        height: 65px;
+        height: 80px;
         background: rgb(41, 41, 41);
         background: linear-gradient(0deg, rgba(41, 41, 41, 1) 0%, rgba(0, 0, 0, 0.5971638655462185) 15%, rgba(0, 0, 0, 0.5999649859943977) 85%, rgba(41, 41, 41, 1) 100%);
 
         p {
             margin-top: 8px;
-            padding-top: 8px;
+            padding-top: 12px;
             font-size: 35px;
             color: #ff3f5c;
-            font-family: 'Kalam', cursive;
+            font-family: 'Arvo', serif;
             vertical-align: middle;
         }
     }
