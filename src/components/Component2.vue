@@ -102,12 +102,19 @@ export default {
                                     <router-link :to="{
                                             name: 'restaurant-menu',
                                             params: { id: restaurant.id },
-                                        }">
-                                        <div class="restaurant-img position-relative">
-                                            <img :src="restaurant.image" :alt="restaurant.name" />
-                                            <div
-                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
-                                                <i class="fa-solid fa-truck-fast"></i>
+                                        }"
+                                    >
+                                        <div
+                                            class="restaurant-img position-relative"
+                                        >
+                                            <img
+                                                :src="restaurant.full_image_restaurant"
+                                                :alt="restaurant.name"
+                                            />
+                                            <div class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
+                                                <i
+                                                    class="fa-solid fa-truck-fast"
+                                                ></i>
                                                 <strong class="ms-2">
                                                     {{
                                                         restaurant.prezzo_spedizione ==
@@ -261,6 +268,7 @@ main {
 
         .wrapperProperties {
             width: calc(100% / 4 - 20px);
+            background-color: white;
             display: flex;
             margin: 15px 10px;
             user-select: none;
