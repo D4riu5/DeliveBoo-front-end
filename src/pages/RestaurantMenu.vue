@@ -76,7 +76,7 @@ export default {
             <div class="flex-info-res my-container">
                 <div class="restaurant-image">
                     <img
-                        :src="store.restaurant.image"
+                        :src="store.restaurant.full_image_restaurant"
                         :alt="store.restaurant.name"
                     />
                 </div>
@@ -87,6 +87,10 @@ export default {
                     <li class="info-restaurant">
                         <i class="fa-solid fa-location-dot"></i
                         >{{ store.restaurant.address }}
+                    </li>
+
+                    <li class="delivery-restaurant">
+                        <i class="fa-solid fa-truck-fast"></i>Costo spedizione:{{ store.restaurant.prezzo_spedizione }} &euro;
                     </li>
                 </ul>
             </div>
@@ -257,6 +261,10 @@ section {
     }
 
     .fa-location-dot {
+        margin-right: 10px;
+    }
+
+    .fa-truck-fast {
         margin-right: 10px;
     }
 }

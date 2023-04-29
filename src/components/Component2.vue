@@ -128,7 +128,7 @@ export default {
                                             class="restaurant-img position-relative"
                                         >
                                             <img
-                                                :src="restaurant.image"
+                                                :src="restaurant.full_image_restaurant"
                                                 :alt="restaurant.name"
                                             />
                                             <div class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
@@ -284,6 +284,7 @@ main {
 
         .wrapperProperties {
             width: calc(100% / 4 - 20px);
+            background-color: white;
             display: flex;
             margin: 15px 10px;
             user-select: none;
