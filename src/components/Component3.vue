@@ -11,17 +11,17 @@ export default {
             store
         }
     },
-    methods:{
-        
+    methods: {
+
     },
 }
 </script>
 
 <template>
     <main>
-        <section id="header" class="py-3 text-center">
-            <h1>Come Comida GO lavora</h1>
-        </section>
+        <div class="restaurantBar text-center container-fluid">
+            <p class="">Scopri di più</p>
+        </div>
 
         <section class="gallery py-4">
             <div class="container">
@@ -34,7 +34,8 @@ export default {
 
                             <div class="card-body">
                                 <h5 class="card-title text-center">You choose</h5>
-                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae labore voluptas dolorum ipsa sunt explicabo?</p>
+                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Quae labore voluptas dolorum ipsa sunt explicabo?</p>
                             </div>
                         </div>
                     </div>
@@ -47,7 +48,8 @@ export default {
 
                             <div class="card-body">
                                 <h5 class="card-title text-center">We deliver</h5>
-                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa deserunt repellendus sapiente aperiam excepturi optio!</p>
+                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ipsa deserunt repellendus sapiente aperiam excepturi optio!</p>
                             </div>
                         </div>
                     </div>
@@ -60,7 +62,8 @@ export default {
 
                             <div class="card-body">
                                 <h5 class="card-title text-center">Eat, Enjoy & Repeat</h5>
-                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia possimus ipsa praesentium dicta architecto pariatur.</p>
+                                <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Quia possimus ipsa praesentium dicta architecto pariatur.</p>
                             </div>
                         </div>
                     </div>
@@ -71,21 +74,30 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    main {
-        background-color: #eee;
+main {
 
-        h1 {
-            color: rgb(252, 69, 106);
-        }
-
-        img {
-            width: 50%;
-            height: 50%;  
-        }
-
-        .card:hover {
-            transform: scale(1.1);
-            transition: 0.3s ease;
-        }
+    img {
+        width: 50%;
+        height: 50%;
     }
-</style>
+
+    .card:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease;
+    }
+}
+
+.restaurantBar {
+    height: 80px;
+    background: rgb(41, 41, 41);
+    background: linear-gradient(0deg, rgba(41, 41, 41, 1) 0%, rgba(0, 0, 0, 0.5971638655462185) 15%, rgba(0, 0, 0, 0.5999649859943977) 85%, rgba(41, 41, 41, 1) 100%);
+
+    p {
+        margin-top: 8px;
+        padding-top: 12px;
+        font-size: 35px;
+        color: #ff3f5c;
+        font-family: 'Arvo', serif;
+        vertical-align: middle;
+    }
+}</style>

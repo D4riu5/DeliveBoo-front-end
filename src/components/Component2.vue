@@ -10,9 +10,14 @@ export default {
             store,
             selectedTypes: [],
             numVisibleRestaurants: 16,
+            shippingCost: false,
         };
     },
     methods: {
+        freeDelivery() {
+            this.shippingCost = !this.shippingCost;
+            console.log(this.shippingCost, 'shipping value')
+        },
         getTypes() {
             axios.get(this.store.backEndLink + "/api/types").then((resp) => {
                 // console.log(resp.data.types);
@@ -32,6 +37,10 @@ export default {
                 // add type to selection
                 this.selectedTypes.push(typeName);
             }
+        },
+        // Load more restaurants
+        loadMoreRestaurants() {
+            this.numVisibleRestaurants += 16;
         },
         // Load more restaurants
         loadMoreRestaurants() {
@@ -84,13 +93,15 @@ export default {
         <section class="py-3">
             <div class="container-xxl d-flex flex-column">
                 <div class="d-flex">
-                    <!-- LEFT SIDE -->
                     <div id="TypesContainer" class="d-flex flex-wrap rounded p-3">
-                        <span v-for="type in store.types" :class="{
+                        <div v-for="type in store.types" :class="{
                                 active: selectedTypes.includes(type.name),
                             }" class="type-span" @click="toggleTypeSelection(type.name)" :key="type.id">
                             {{ type.name }}
-                        </span>
+                        </div>
+                        <div class="type-span" @click="freeDelivery()">
+                            Spedizione Gratuita
+                        </div>
                     </div>
 
                     <!-- RIGHT SIDE -->
@@ -190,10 +201,8 @@ main {
         width: 200px;
         max-height: 600px;
         overflow-y: auto;
-        background-color: white;
         width: 200px;
         max-height: 600px;
-        overflow-y: auto;
 
         &::-webkit-scrollbar {
             width: 8px;
@@ -213,16 +222,20 @@ main {
 
         .type-span {
             display: block;
-            /* Change from inline-block to block */
             width: 100%;
-            /* Set width to 100% */
-            padding: 15px 16px;
-            border: 1px solid #f0f0f0;
+            border: 1.5px solid #fc456a;
             border-radius: 4px;
             font-size: 15px;
-            font-weight: 600;
+            /* font-weight: 200; */
             cursor: pointer;
             transition: background-color 0.2s ease-in-out;
+            background: rgb(16, 4, 7);
+            background: linear-gradient(0deg, rgb(16, 4, 7) 0%, rgb(26, 14, 17) 94%, rgb(255, 255, 255) 100%);
+            color: white;
+            text-align: center;
+            margin: -15px 2px;
+            padding: 12px 20px;
+            border-radius: 52%;
 
             &:hover,
             &.active {
