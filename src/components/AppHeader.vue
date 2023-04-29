@@ -146,7 +146,7 @@ export default {
 
 <template>
     <header class="container-fluid finisher-header p-2">
-        <div class="heigthBox d-flex justify-content-between align-items-center">
+        <div class="container-xxl heigthBox d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a v-if="$route.path === '/'" class="" href="#">
                     <div class="imgContainer pb-1 px-1">
