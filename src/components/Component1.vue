@@ -37,31 +37,38 @@ export default {
         <!-- LAYOVER SUL VIDEO -->
         <div class="layover"></div>
         <!-- Contenitore SCRITTA PRINCIAPLE -> MILANO  -->
-        <div class="titleContainer">
-            <h1 class="text-center text-light fw-bold">
-                Assapora il meglio della cucina internazionale a Milano!
-            </h1>
-        </div>
-        <!-- Contenitore SCRITTA SECONDARIA -->
-        <div class="subtitleContainer">
-            <h5 class="text-center subtitleText">
-                Il nostro servizio di delivery food porta in tavola i
-                piatti più prelibati
-                delle cucine internazionali,
-                direttamente a casa tua.
-            </h5>
-        </div>
-        <!-- Contenitore "COMINCIA LA RICERCA!" -->
-        <div class="disclaimerContainer">
-            <h2 class="text-white disclaimerText " @click="scrollToComponent2()">
-                Comincia la ricerca!
-            </h2>
+        <div class="absoluteContainer container-fluid">
+            <div class="d-flex flex-column align-content-center">
+                <div class="titleContainer">
+                    <h1 class="text-center text-light fw-bold">
+                        Assapora il meglio della cucina internazionale a Milano!
+                    </h1>
+                </div>
+                <!-- Contenitore SCRITTA SECONDARIA -->
+                <div class="subtitleContainer">
+                    <h5 class="text-center subtitleText">
+                        Il nostro servizio di delivery food porta in tavola i
+                        piatti più prelibati
+                        delle cucine internazionali,
+                        direttamente a casa tua.
+                    </h5>
+                </div>
+                <div class="disclaimerContainer d-flex justify-content-center mt-3">
+                    <div class="text-white">
+                        <h2 class="text-center disclaimerText" @click="scrollToComponent2()">
+                            Comincia la ricerca!
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Contenitore "COMINCIA LA RICERCA!" -->
+
         </div>
 
         <!-- Contenitore Immagine Pizza standing  -->
-        <div class="logoBox">
+        <!-- <div class="logoBox">
             <img src="../img/standing.png" alt="">
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -94,15 +101,7 @@ export default {
     }
 
     .titleContainer {
-        top: 37%;
-        left: 50%;
-        position: absolute;
-        padding: 18px 100px 15px 100px;
-        border-radius: 35px;
         z-index: 3;
-        transform: translate(-50%, -50%);
-
-
 
         h2 {
             font-size: 30px;
@@ -110,15 +109,7 @@ export default {
     }
 
     .subtitleContainer {
-        top: 40%;
-        left: 50%;
-        position: absolute;
-        padding: 18px 100px 15px 100px;
-        border-radius: 35px;
         z-index: 3;
-        transform: translate(-50%, -50%);
-
-
 
         .subtitleText {
             color: white;
@@ -126,18 +117,15 @@ export default {
     }
 
     .disclaimerContainer {
-        top: 48%;
-        left: 50%;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.889);
-        padding: 18px 100px 15px 100px;
-        border-radius: 35px;
-        transform: translate(-50%, -50%);
         z-index: 3;
 
-
-
         .disclaimerText {
+            display: block;
+            background-color: black;
+            width: 100%;
+            padding: 19px 70px;
+            border-radius: 36px;
+
             .disclaimerText:hover {
                 color: red;
             }
@@ -173,20 +161,28 @@ export default {
 
     // }
 
-    .logoBox {
-        top: 42.9%;
-        left: 55.9%;
-        position: absolute;
-        width: 96px;
-        height: 116px;
-        z-index: 3;
+    // .logoBox {
+    //     top: 58.5%;
+    //     left: 56.5%;
+    //     position: absolute;
+    //     width: 76px;
+    //     height: 96px;
+    //     z-index: 5;
+    // }
 
-    }
+
+    // img {
+    //     width: 100%;
+    //     height: 100%;
+    // }
 
 
-    img {
-        width: 100%;
-        height: 100%;
-    }
+}
+
+.absoluteContainer {
+    position: absolute;
+    top: 38%;
+    left: 0%;
+    z-index: 4;
 }
 </style>
