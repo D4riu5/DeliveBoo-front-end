@@ -49,15 +49,15 @@ export default {
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/6.png" />
+                <img src="./../img/SPONSORS/5.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/7.png" />
+                <img src="./../img/SPONSORS/6.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- Neymar -->
-                <img src="./../img/SPONSORS/5.png" />
+                <img src="./../img/SPONSORS/7.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
