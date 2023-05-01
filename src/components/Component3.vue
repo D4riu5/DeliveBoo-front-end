@@ -139,7 +139,7 @@ main {
         padding-top: 12px;
         font-size: 35px;
         color: #ff3f5c;
-        font-family: "Arvo", serif;
+        font-family: 'Comfortaa', cursive;
         vertical-align: middle;
     }
 }
