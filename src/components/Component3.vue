@@ -2,28 +2,47 @@
 import { store } from "../store.js";
 
 export default {
-    name: 'Component3',
-    components: {
-
-    },
+    name: "Component3",
+    components: {},
     data() {
         return {
-            store
-        }
+            store,
+        };
     },
-    methods: {
-
-    },
-}
+    methods: {},
+};
 </script>
 
 <template>
     <main>
         <div class="restaurantBar text-center container-fluid">
-            <p class="">Scopri di più</p>
+            <p class="">Come funziona</p>
         </div>
 
-        <section class="gallery py-4">
+        <div class="carousel-container mt-5">
+            <swiper-container
+                class="mySwiper swiper-container"
+                pagination="true"
+                effect="cube"
+                grab-cursor="true"
+                cube-effect-shadow="true"
+                cube-effect-slide-shadows="true"
+                cube-effect-shadow-offset="20"
+                cube-effect-shadow-scale="0.94"
+            >
+                <swiper-slide>
+                    <img src="./../img/step_1b.jpg" />
+                </swiper-slide>
+                <swiper-slide>
+                    <img src="./../img/step_2b.jpg" />
+                </swiper-slide>
+                <swiper-slide>
+                    <img src="./../img/step_3b.jpg" />
+                </swiper-slide>
+            </swiper-container>
+        </div>
+
+        <!-- <section class="gallery py-4">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-3">
@@ -75,17 +94,16 @@ export default {
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
 </template>
 
 <style lang="scss" scoped>
 main {
-
-    img {
-        width: 200px;
-        height: 200px;
-    }
+    // img {
+    //     width: 200px;
+    //     height: 200px;
+    // }
 
     .card {
         height: 445px;
@@ -108,14 +126,51 @@ main {
 .restaurantBar {
     height: 80px;
     background: rgb(41, 41, 41);
-    background: linear-gradient(0deg, rgba(41, 41, 41, 1) 0%, rgba(0, 0, 0, 0.5971638655462185) 15%, rgba(0, 0, 0, 0.5999649859943977) 85%, rgba(41, 41, 41, 1) 100%);
+    background: linear-gradient(
+        0deg,
+        rgba(41, 41, 41, 1) 0%,
+        rgba(0, 0, 0, 0.5971638655462185) 15%,
+        rgba(0, 0, 0, 0.5999649859943977) 85%,
+        rgba(41, 41, 41, 1) 100%
+    );
 
     p {
         margin-top: 8px;
         padding-top: 12px;
         font-size: 35px;
         color: #ff3f5c;
-        font-family: 'Arvo', serif;
+        font-family: "Arvo", serif;
         vertical-align: middle;
     }
-}</style>
+}
+
+.carousel-container {
+    position: relative;
+    height: 500px;
+    background: #35363a;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+
+    swiper-container {
+        width: 450px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -215px;
+        margin-top: -250px;
+    }
+
+    swiper-slide {
+        background-position: center;
+        background-size: cover;
+    }
+
+    swiper-slide img {
+        display: block;
+        width: 100% !important;
+    }
+}
+</style>
