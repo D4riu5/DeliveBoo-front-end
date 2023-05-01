@@ -120,7 +120,7 @@ export default {
                 }
             });
     },
-    created() {},
+    created() { },
     watch: {
         showDropin: function (newValue, oldValue) {
             if (newValue) {
@@ -148,97 +148,73 @@ export default {
     <div v-if="store.cart.length > 0">
         <!-- LOADING -->
         <div v-if="showLoading" class="text-center my-5 py-3">
-            <h1>LOADING...</h1>
+            <h1>CARICAMENTO...</h1>
         </div>
 
-        <div v-if="errors.length" class="alert alert-danger">
-            <h3>Errore form, torna indietro!</h3>
+        <div v-if="errors.length" class="alert alert-danger text-center text-dark">
+            <h3>Ooops! Non abbiamo potuto verificare i tuoi dati a causa di un errore</h3>
+            <h2>Controlla i tuoi dati e ripova</h2>
             <ul>
-                <li v-for="error in errors" :key="error">{{ error }}</li>
+                <li style="color:red" class="text-center"
+                v-for="error in errors" :key="error">{{ error }}
+                </li>
             </ul>
         </div>
 
-        <form class="my-container p-5">
+        <form class="container-xxl my-container p-3">
             <div class="form-cart clickedBtnPay">
                 <!-- CUSTOMER DETAILS -->
                 <div v-if="!showDropin">
-                    <h3>Dettagli cliente</h3>
+                    <h3 class="fontColor">Dettagli cliente</h3>
                     <!-- NAME-->
                     <div class="flex-form">
-                        <div class="items d-flex flex-column align-items-center">
-                            <div class="items d-flex justify-content-between align-items-center">
+                        <div class="items">
+                            <div class="items">
                                 <label for="costumer_name" class="form-label">
                                     Nome e Cognome<span class="text-danger"> *</span>
                                 </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="costumer_name"
-                                    name="costumer_name"
-                                    placeholder="Jon Doe"
-                                    v-model="order.costumer_name"
-                                />
+                                <input type="text" class="form-control" id="costumer_name" name="costumer_name"
+                                    placeholder="Jon Doe" v-model="order.costumer_name" />
                             </div>
                         </div>
                     </div>
 
                     <!-- DELIVERY ADDRESS -->
                     <div class="flex-form">
-                        <div class="items d-flex flex-column align-items-center">
-                            <div class="items d-flex justify-content-between align-items-center">
+                        <div class="items">
+                            <div class="items">
                                 <label for="delivery_address" class="form-label">
                                     Indirizzo di consegna<span class="text-danger"> *</span>
                                 </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="delivery_address"
-                                    name="delivery_address"
-                                    placeholder="Via Roma, 10"
-                                    v-model="order.delivery_address"
-                                />
+                                <input type="text" class="form-control" id="delivery_address" name="delivery_address"
+                                    placeholder="Via Roma, 10" v-model="order.delivery_address" />
                             </div>
                         </div>
                     </div>
 
                     <!-- EMAIL ADDRESS -->
                     <div class="flex-form">
-                        <div class="items d-flex flex-column align-items-center">
-                            <div class="items d-flex justify-content-between align-items-center">
-                                <label for="email_address" class="form-label">
-                                    Indirizzo email<span class="text-danger"> *</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="email_address"
-                                    name="email_address"
-                                    placeholder="email@example.it"
-                                    v-model="order.email_address"
-                                />
-                            </div>
+                        <div class="items">
+                            <label for="email_address" class="form-label">
+                                Indirizzo email<span class="text-danger"> *</span>
+                            </label>
+                            <input type="text" class="form-control" id="email_address" name="email_address"
+                                placeholder="email@example.it" v-model="order.email_address" />
                         </div>
                     </div>
+
 
                     <!-- DELIVERY CONTACT -->
                     <div class="flex-form">
-                        <div class="items d-flex flex-column align-items-center">
-                            <div class="items d-flex justify-content-between align-items-center">
-                                <label for="delivery_contact" class="form-label">
-                                    Recapito telefonico<span class="text-danger"> *</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="delivery_contact"
-                                    name="delivery_contact"
-                                    placeholder="Inserisci il numero di telefono per la consegna.."
-                                    v-model="order.delivery_contact"
-                                />
-                            </div>
+                        <div class="items">
+                            <label for="delivery_contact" class="form-label">
+                                Recapito telefonico<span class="text-danger"> *</span>
+                            </label>
+                            <input type="text" class="form-control" id="delivery_contact" name="delivery_contact"
+                                placeholder="Inserisci il numero di telefono per la consegna.."
+                                v-model="order.delivery_contact" />
                         </div>
                     </div>
-
                     <!-- DISPLAY BRAINTREE BUTTON -->
                     <!-- <button
                         class="buttonPay"
@@ -273,15 +249,11 @@ export default {
                     <div class="d-flex flex-column align-items-center cervelloAlbero">
                         <div id="dropin-container" class="width-braintree"></div>
                         <div v-if="dropInLoaded" class="text-center my-3">
-                            <button
-                                class="buttonBack"
-                                @click.prevent="
-                                    (showDropin = false), (dropInLoaded = false)
-                                "
-                            >
+                            <button class="buttonBack ms-2" @click.prevent="(showDropin = false), (dropInLoaded = false)
+                                ">
                                 Torna indietro
                             </button>
-                            <button id="submit-button" class="buttonPay">Conferma pagamento</button>
+                            <button id="submit-button" class="buttonPay mx-2">Conferma pagamento</button>
                         </div>
                     </div>
                 </div>
@@ -291,10 +263,7 @@ export default {
     </div>
 
     <!-- IF CART IS EMPTY -->
-    <div
-        v-else
-        class="p-5 d-flex flex-column justify-content-center align-items-center"
-    >
+    <div v-else class="p-5 d-flex flex-column justify-content-center align-items-center">
         <div class="scrittaVuoto">Carrello vuoto!</div>
         <button @click="goBack" class="buttonIndietro">
             Torna alla pagina precedente
@@ -309,8 +278,6 @@ export default {
     .form-cart {
         width: 75%;
         background-color: white;
-        border: 1px solid rgba($color: #fc456a, $alpha: 0.8);
-        box-shadow: 0px 5px 5px 0px rgba($color: #fc456a, $alpha: 0.8);
         min-height: 400px;
         border-radius: 10px;
         padding: 20px 15px;
@@ -323,9 +290,8 @@ export default {
 
             input {
                 padding: 6px;
-                width: 55%;
+                width: 170%;
                 border-radius: 5px;
-                border: 1px solid #ccc;
                 outline: none;
             }
         }
@@ -334,12 +300,12 @@ export default {
             border: 3px solid rgba($color: #fc456a, $alpha: 0.8);
             background-color: #F9FAFA;
             border-radius: 10px;
-            color: rgba($color: #fc456a, $alpha: 0.8);
+            color: rgba($color: #000000, $alpha: 0.8);
             padding: 3px 10px;
 
             &:hover {
                 background-color: rgba($color: #fc456a, $alpha: 0.8);
-                color: white;
+                color: rgb(0, 0, 0);
             }
         }
     }
@@ -353,13 +319,12 @@ export default {
         border: 3px solid rgba($color: #fc456a, $alpha: 0.8);
         background-color: #F9FAFA;
         border-radius: 10px;
-        color: rgba($color: #fc456a, $alpha: 0.8);
+        color: rgba($color: #000000, $alpha: 0.8);
         padding: 3px 10px;
-        margin: 10px;
 
         &:hover {
             background-color: rgba($color: #fc456a, $alpha: 0.8);
-            color: white;
+            color: rgb(0, 0, 0);
         }
     }
 }
@@ -373,13 +338,17 @@ export default {
     border: 3px solid rgba($color: #fc456a, $alpha: 0.8);
     background-color: #F9FAFA;
     border-radius: 10px;
-    color: rgba($color: #fc456a, $alpha: 0.8);
+    color: rgba($color: #000000, $alpha: 0.8);
     padding: 3px 10px;
-    margin: 10px;
 
     &:hover {
         background-color: rgba($color: #fc456a, $alpha: 0.8);
-        color: white;
+        color: rgb(0, 0, 0);
     }
+}
+
+.fontColor {
+    color: #fc456a;
+    font-family: 'Comfortaa', cursive;
 }
 </style>
