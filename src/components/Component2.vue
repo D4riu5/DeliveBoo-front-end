@@ -16,7 +16,7 @@ export default {
     methods: {
         freeDelivery() {
             this.shippingCost = !this.shippingCost;
-            console.log(this.shippingCost, 'shipping value')
+            console.log(this.shippingCost, "shipping value");
         },
         getTypes() {
             axios.get(this.store.backEndLink + "/api/types").then((resp) => {
@@ -84,7 +84,7 @@ export default {
 </script>
 
 <template>
-    <main>
+    <main class="py-3">
         <!-- TITLE -->
         <div id="look4Resta" class="restaurantBar text-center container-fluid">
             <p class="">Cerca il tuo ristorante</p>
@@ -93,10 +93,19 @@ export default {
         <section class="py-5">
             <div class="container-xxl d-flex flex-column">
                 <div class="d-flex">
-                    <div id="TypesContainer" class="d-flex flex-wrap rounded p-3">
-                        <div v-for="type in store.types" :class="{
+                    <div
+                        id="TypesContainer"
+                        class="d-flex flex-wrap rounded p-3"
+                    >
+                        <div
+                            v-for="type in store.types"
+                            :class="{
                                 active: selectedTypes.includes(type.name),
-                            }" class="type-span" @click="toggleTypeSelection(type.name)" :key="type.id">
+                            }"
+                            class="type-span"
+                            @click="toggleTypeSelection(type.name)"
+                            :key="type.id"
+                        >
                             {{ type.name }}
                         </div>
                         <div class="type-span" @click="freeDelivery()">
@@ -106,26 +115,44 @@ export default {
 
                     <!-- RIGHT SIDE -->
                     <div class="my-container restaurants_box">
-                        <div class="restaurantsContainer" ref="restaurantsContainer">
+                        <div
+                            class="restaurantsContainer"
+                            ref="restaurantsContainer"
+                        >
                             <div class="restaurantWrapper">
-                                <div class="restaurant wrapperProperties" v-for="restaurant in visibleRestaurants"
-                                    :key="restaurant.id">
-                                    <router-link :to="{
+                                <div
+                                    class="restaurant wrapperProperties"
+                                    v-for="restaurant in visibleRestaurants"
+                                    :key="restaurant.id"
+                                >
+                                    <router-link
+                                        :to="{
                                             name: 'restaurant-menu',
                                             params: { id: restaurant.id },
-                                        }">
-                                        <div class="restaurant-img position-relative">
-                                            <img :src="restaurant.full_image_restaurant" :alt="restaurant.name" />
+                                        }"
+                                    >
+                                        <div
+                                            class="restaurant-img position-relative"
+                                        >
+                                            <img
+                                                :src="
+                                                    restaurant.full_image_restaurant
+                                                "
+                                                :alt="restaurant.name"
+                                            />
                                             <div
-                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
-                                                <i class="fa-solid fa-truck-fast"></i>
+                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-truck-fast"
+                                                ></i>
                                                 <strong class="ms-2">
                                                     {{
                                                         restaurant.prezzo_spedizione ==
                                                         0
-                                                        ? "Gratis!"
-                                                        : restaurant.prezzo_spedizione +
-                                                        " €"
+                                                            ? "Gratis!"
+                                                            : restaurant.prezzo_spedizione +
+                                                              " €"
                                                     }}
                                                 </strong>
                                             </div>
@@ -139,11 +166,19 @@ export default {
                                             </div>
 
                                             <div class="restaurant-address">
-                                                <i class="fa-solid fa-location-dot"></i>{{ restaurant.address }}
+                                                <i
+                                                    class="fa-solid fa-location-dot"
+                                                ></i
+                                                >{{ restaurant.address }}
                                             </div>
 
-                                            <div class="category-badge d-flex flex-row flex-wrap">
-                                                <div class="me-2" v-for="type in restaurant.types">
+                                            <div
+                                                class="category-badge d-flex flex-row flex-wrap"
+                                            >
+                                                <div
+                                                    class="me-2"
+                                                    v-for="type in restaurant.types"
+                                                >
                                                     {{ type.name }}
                                                 </div>
                                             </div>
@@ -152,15 +187,24 @@ export default {
                                 </div>
 
                                 <!-- SHOW CUSTOM MESSAGE WHEN NO RESTAURANT IS FOUND -->
-                                <div v-if="filteredRestaurants.length === 0" class="no-results">
+                                <div
+                                    v-if="filteredRestaurants.length === 0"
+                                    class="no-results"
+                                >
                                     <h3 class="p-4">
                                         Ci dispiace, non abbiamo trovato nessun
                                         ristorante con le categorie selezionate.
                                     </h3>
                                 </div>
 
-                                <div v-if="showLoadMoreButton" class="d-flex justify-content-center w-100 m-3">
-                                    <button class="btn btn-danger" @click="loadMoreRestaurants">
+                                <div
+                                    v-if="showLoadMoreButton"
+                                    class="d-flex justify-content-center w-100 m-3"
+                                >
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="loadMoreRestaurants"
+                                    >
                                         Carica altri ristoranti
                                     </button>
                                 </div>
@@ -178,16 +222,14 @@ main {
     margin-top: -15px;
 
     .restaurantBar {
-        height: 80px;
-        background: rgb(255, 255, 255);
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.35075280112044815) 0%, rgba(0, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 95%);
+        border-top: 1px solid lightgray;
 
         p {
-            margin-top: 10px;
-            padding-top: 19px;
-            font-size: 35px;
-            color: #fc456b;
-            font-family: 'Comfortaa', cursive;
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 45px;
+            color: black;
+            font-family: "Comfortaa", cursive;
             vertical-align: middle;
         }
     }
