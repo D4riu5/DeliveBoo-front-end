@@ -31,14 +31,11 @@ export default {
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 50px;
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #fc456a;
 
     .my-green{
         color: limegreen;

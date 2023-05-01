@@ -37,26 +37,16 @@ export default {
 </script>
 
 <template>
-    <div v-if="store.types.length > 0" class="">
-        <swiper-container
-            style="
+    <div v-if="store.types.length > 0" class="container-xxl pb-5">
+        <swiper-container style="
                 --swiper-navigation-color: red;
                 --swiper-pagination-color: red;
-            "
-            noSwipingClass="swiper-slide"
-            thumbs-swiper=".mySwiper2"
-            loop="true"
-            space-between="10"
-            navigation="true"
-        >
-            <swiper-slide
-                v-for="(type, index) in store.types"
-                :key="type.id"
-                class="type_slide_big pt-2 px-5 py-xl-5"
-            >
+            " noSwipingClass="swiper-slide" thumbs-swiper=".mySwiper2" loop="true" space-between="10"
+            navigation="true">
+            <swiper-slide v-for="(type, index) in store.types" :key="type.id" class="type_slide_big pt-2 px-5 py-xl-5">
                 <div class="d-flex flex-row justify-content-center">
                     <div class="ps-5 w-50">
-                        <h1>Cucina {{ type.name }}</h1>
+                        <h1 class="fontStyle">Cucina {{ type.name }}</h1>
                         <h5>{{ type.description }}</h5>
                     </div>
                     <div class="w-50">
@@ -66,19 +56,22 @@ export default {
                         <div class="d-flex justify-content-center flex-column align-items-center">
                             <div class="">
                                 <swiper-container :effect="'cards'" :grabCursor="true" nested="true" class="card-container">
-                                     <swiper-slide v-for="restaurant in getFilteredRestaurants(type)" class="slide-mini rounded">
+                                    <swiper-slide v-for="restaurant in getFilteredRestaurants(type)"
+                                        class="slide-mini rounded">
 
                                         <div class="restaurant wrapperProperties">
                                             <div class="restaurant-img position-relative">
-                                                <img :src="restaurant.full_image_restaurant" :alt="restaurant.name"/>
-                                                <div class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
+                                                <img :src="restaurant.full_image_restaurant" :alt="restaurant.name" />
+                                                <div
+                                                    class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
                                                     <i class="fa-solid fa-truck-fast"></i>
                                                     <strong class="ms-2">
-                                                        {{ restaurant.prezzo_spedizione ==0? "Gratis!" : restaurant.prezzo_spedizione +" €" }}
+                                                        {{ restaurant.prezzo_spedizione == 0 ? "Gratis!" :
+                                                            restaurant.prezzo_spedizione + " €" }}
                                                     </strong>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="restaurant-info d-flex pb-4">
                                                 <div class="restaurant-info-name">
                                                     <div class="name text-dark">
@@ -98,14 +91,15 @@ export default {
                                                 </div>
 
                                                 <div>
-                                                    <router-link class="" :to="{name: 'restaurant-menu', params: { id: restaurant.id }, }">
+                                                    <router-link class=""
+                                                        :to="{ name: 'restaurant-menu', params: { id: restaurant.id }, }">
                                                         Ordina ora!
                                                     </router-link>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        
+
                                     </swiper-slide>
                                 </swiper-container>
                             </div>
@@ -115,19 +109,9 @@ export default {
             </swiper-slide>
         </swiper-container>
 
-        <swiper-container
-            class="mySwiper2"
-            loop="true"
-            space-between="10"
-            slides-per-view="4"
-            watch-slides-progress="true"
-        >
-            <swiper-slide
-                v-for="(type, index) in store.types"
-                :key="type.id"
-                :style="{ 'background-image': `url(${type.full_image_path})` }"
-                class="type_slide_small"
-            >
+        <swiper-container class="mySwiper2" loop="true" space-between="10" slides-per-view="5" watch-slides-progress="true">
+            <swiper-slide v-for="(type, index) in store.types" :key="type.id"
+                :style="{ 'background-image': `url(${type.full_image_path})` }" class="type_slide_small rounded">
                 <h4 class="p-2 rounded">
                     {{ type.name }}
                 </h4>
@@ -151,9 +135,10 @@ export default {
     opacity: 1 !important;
     filter: contrast(110%);
 }
+
 .mySwiper2 .swiper-slide {
     width: 100%;
-    height: 150px;
+    height: 125px;
     opacity: 0.5;
     cursor: pointer;
 }
@@ -165,6 +150,7 @@ export default {
     align-items: center;
     background-size: cover;
     padding-top: 22px;
+
     h4 {
         color: rgb(255, 255, 255);
         background-color: rgba(0, 0, 0, 0.736);
@@ -267,9 +253,9 @@ export default {
 }
 
 .card-container {
-      width: 260px;
-      height: auto;
-    }
+    width: 260px;
+    height: auto;
+}
 
 // @media only screen and (max-width: 1270px) {
 //     .my-container {
@@ -413,4 +399,10 @@ export default {
 //         padding-top: 30px;
 //     }
 // }
+
+.fontStyle {
+    color: #fc456a;
+    font-family: "Comfortaa", cursive;
+
+}
 </style>
