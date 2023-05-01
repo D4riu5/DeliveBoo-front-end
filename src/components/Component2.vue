@@ -23,6 +23,12 @@ export default {
                 // console.log(resp.data.types);
                 this.store.types = resp.data.types;
                 this.store.restaurants = resp.data.restaurants;
+
+                // Save restaurants data to local storage
+                localStorage.setItem(
+                    "restaurants",
+                    JSON.stringify(resp.data.restaurants)
+                );
             });
         },
 
