@@ -103,8 +103,10 @@ export default {
     .titleContainer {
         z-index: 3;
 
-        h2 {
+        h1 {
             font-size: 30px;
+            font-family: 'Comfortaa', cursive;
+            
         }
     }
 
@@ -113,6 +115,7 @@ export default {
 
         .subtitleText {
             color: white;
+            
         }
     }
 
