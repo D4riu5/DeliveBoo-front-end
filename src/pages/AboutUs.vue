@@ -19,7 +19,7 @@ export default {
         </div>
         <div class="row">
             <div class="col">
-                <p class="description">
+                <p class="description text-dark">
                     Benvenuti in Comida Go, il vostro sito di consegna preferito per cibo e bevande! Siamo appassionati di
                     consegnare pasti e bevande deliziose direttamente alla vostra porta, in modo rapido e affidabile. Che
                     siate alla ricerca di un pranzo soddisfacente, di una cena romantica per due, o di una bevanda
@@ -34,7 +34,7 @@ export default {
                 <h2 class="title">
                     La nostra storia
                 </h2>
-                <p class="description">
+                <p class="description text-dark">
                     Comida Go è stata fondata con una visione: quella di creare un servizio di consegna che fosse veloce,
                     affidabile e di alta qualità. Partiti con una piccola squadra di appassionati di cibo e bevande, abbiamo
                     lavorato sodo per costruire una rete di ristoranti e bar di qualità che possiamo offrire ai nostri
@@ -50,7 +50,7 @@ export default {
                 <h2 class="title">
                     La nostra missione
                 </h2>
-                <p class="description">
+                <p class="description text-dark">
                     In Comida Go, la nostra missione è offrire ai nostri clienti un'esperienza di consegna di cibo e bevande
                     eccezionale. Ci impegniamo a fornire un servizio veloce e affidabile, insieme a cibo e bevande di alta
                     qualità, che possano soddisfare i vostri desideri e le vostre esigenze. Siamo orgogliosi di servire la
