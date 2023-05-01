@@ -16,7 +16,7 @@ export default {
 <template>
 
     <h1 class="m-5"> CIAO FROM SUCCESS</h1>
-
+    
 
 </template>
 
