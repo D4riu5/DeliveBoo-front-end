@@ -121,7 +121,7 @@ export default {
 
         .disclaimerText {
             display: block;
-            background-color: black;
+            background: rgb(0, 0, 0);
             width: 100%;
             padding: 19px 70px;
             border-radius: 36px;
