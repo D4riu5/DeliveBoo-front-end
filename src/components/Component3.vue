@@ -20,7 +20,7 @@ export default {
         </div>
 
 
-        <div class="d-flex flex-row justify-content-center my-5">
+        <div class="d-flex flex-row justify-content-center pb-5">
             <div class="carousel-container my-2">
                 <swiper-container
                     class="mySwiper swiper-container"
@@ -141,6 +141,7 @@ main {
     //     width: 200px;
     //     height: 200px;
     // }
+    background: #eee;
 
     .card {
         height: 445px;
@@ -166,8 +167,8 @@ main {
     p {
         margin-top: 8px;
         padding-top: 12px;
-        font-size: 35px;
-        color: #ff3f5c;
+        font-size: 45px;
+        color: black;
         font-family: "Comfortaa", cursive;
         vertical-align: middle;
     }
