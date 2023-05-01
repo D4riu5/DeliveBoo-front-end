@@ -33,18 +33,6 @@ export default {
     created() {
         this.getTypes();
     },
-    // computed: {
-    //     filteredRestaurants(type) {
-    //         return this.store.restaurants.filter((restaurant) => {
-    //             for (let i = 0; i < restaurant.types.length; i++) {
-    //                 if (restaurant.types[i].id === type.id) {
-    //                     return true;
-    //                 }
-    //             }
-    //             return false;
-    //         });
-    //     },
-    // },
 };
 </script>
 
