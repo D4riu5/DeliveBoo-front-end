@@ -15,10 +15,10 @@ export default {
         scrollToComponent2() {
             const component2Div = document.querySelector('#look4Resta');
             const headerHeight = 90;
-        window.scrollTo({
-            top: component2Div.offsetTop - headerHeight,
-            behavior: 'smooth'
-         });
+            window.scrollTo({
+                top: component2Div.offsetTop - headerHeight,
+                behavior: 'smooth'
+            });
         }
 
     }
@@ -27,43 +27,40 @@ export default {
 
 
 <template>
-    <div class="VideoContainer">
-        <video autoplay muted loop>
-            <source src="../video/jumbotron_compresso.mp4" type="video/mp4" />
-        </video>
-    </div>
-    <div class="jumboTagContainer jumbotron-fluid">
-        <div class="container tagStyle">
-            <h2 class="text-center text-light fw-bold">
+    <!-- Contenitore principale relative -->
+    <div class="JumbotronContainer">
+        <div class="VideoContainer">
+            <video autoplay muted loop>
+                <source src="../video/jumbotron2.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <!-- LAYOVER SUL VIDEO -->
+        <div class="layover"></div>
+        <!-- Contenitore SCRITTA PRINCIAPLE -> MILANO  -->
+        <div class="titleContainer">
+            <h1 class="text-center text-light fw-bold">
                 Assapora il meglio della cucina internazionale a Milano!
-            </h2>
-            <h5 style="color:red;" class="text-center">
-                Il nostro servizio di delivery food ti porta in tavola i
-                piatti più prelibati delle cucine internazionali, <br>
-                consegnati direttamente a casa tua.
+            </h1>
+        </div>
+        <!-- Contenitore SCRITTA SECONDARIA -->
+        <div class="subtitleContainer">
+            <h5 class="text-center subtitleText">
+                Il nostro servizio di delivery food porta in tavola i
+                piatti più prelibati
+                delle cucine internazionali,
+                direttamente a casa tua.
             </h5>
-            <div class="d-flex justify-content-center flex-column align-items-center">
-                <h4 class="text-white">
-                    Comincia la ricerca!
-                </h4>
-                <div class="btnContainer">
-                    <div class="pt-3">
+        </div>
+        <!-- Contenitore "COMINCIA LA RICERCA!" -->
+        <div class="disclaimerContainer">
+            <h2 class="text-white disclaimerText " @click="scrollToComponent2()">
+                Comincia la ricerca!
+            </h2>
+        </div>
 
-                        <!-- <router-link :to="{
-                                name: 'cerca-ristorante',
-                            }" class="text-decoration-none textStyle">
-                            VAI
-                        </router-link> -->
-                        <div type="button" class="text-decoration-none textStyle" @click="scrollToComponent2()">
-                            Vai
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="logoBox">
-                <img src="../img/standing.png" alt="">
-            </div>
+        <!-- Contenitore Immagine Pizza standing  -->
+        <div class="logoBox">
+            <img src="../img/standing.png" alt="">
         </div>
     </div>
 </template>
@@ -83,45 +80,113 @@ export default {
     }
 }
 
-.jumboTagContainer {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.JumbotronContainer {
+    position: relative;
 
-    .tagStyle {
-        background: rgba(0, 0, 0, 0.7294117647);
-        border-radius: 445px;
-        padding: 55px 46px 20px 50px;
-
+    .layover {
+        position: absolute;
+        background: rgb(0 0 0 / 45%);
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        top: 0%;
+        left: 0%;
     }
 
-    .logoBox {
-        width: 59px;
-        height: 72px;
+    .titleContainer {
+        top: 37%;
+        left: 50%;
         position: absolute;
-        top: 69%;
-        left: 53%;
+        padding: 18px 100px 15px 100px;
+        border-radius: 35px;
+        z-index: 3;
+        transform: translate(-50%, -50%);
 
-        img {
-            width: 100%;
-            height: 100%;
+
+
+        h2 {
+            font-size: 30px;
         }
     }
-}
 
-.btnContainer {
-    background-color: red;
-    border-radius: 45px;
-    padding: 0px 13px 20px 13px;
+    .subtitleContainer {
+        top: 40%;
+        left: 50%;
+        position: absolute;
+        padding: 18px 100px 15px 100px;
+        border-radius: 35px;
+        z-index: 3;
+        transform: translate(-50%, -50%);
 
-    .textStyle {
-        font-family: 'Darumadrop One', cursive !important;
-        font-size: 26px;
-        background: red($color: #000000);
-        line-height: 20px;
-        vertical-align: middle;
-        color: white
+
+
+        .subtitleText {
+            color: white;
+        }
+    }
+
+    .disclaimerContainer {
+        top: 48%;
+        left: 50%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.889);
+        padding: 18px 100px 15px 100px;
+        border-radius: 35px;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+
+
+
+        .disclaimerText {
+            .disclaimerText:hover {
+                color: red;
+            }
+        }
+
+    }
+
+    // .btnContainer {
+    //     top: 46.7%;
+    //     left: 12.7%;
+    //     position: absolute;
+    //     z-index: 3;
+    //     transform: translate(-50%, -50%);
+
+
+
+    //     .bottone {
+    //         width: 9px;
+    //         height: 10px;
+    //         color: white;
+    //         background-color: red;
+    //         border-radius: 50px;
+    //         padding: 28px;
+
+    //         .buttonText {
+    //             position: absolute;
+    //             top: 38%;
+    //             bottom: 50%;
+    //             transform: translate(-50%, -50%);
+    //             font-weight: bold;
+    //         }
+    //     }
+
+    // }
+
+    .logoBox {
+        top: 42.9%;
+        left: 55.9%;
+        position: absolute;
+        width: 96px;
+        height: 116px;
+        z-index: 3;
+
+    }
+
+
+    img {
+        width: 100%;
+        height: 100%;
     }
 }
 </style>
