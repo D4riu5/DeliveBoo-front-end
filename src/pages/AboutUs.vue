@@ -135,4 +135,5 @@ $background-color: #fff;
             text-align: center;
         }
     }
-}</style>
+}
+</style>

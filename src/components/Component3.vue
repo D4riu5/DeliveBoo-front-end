@@ -20,16 +20,9 @@ export default {
         </div>
 
         <div class="carousel-container mt-5">
-            <swiper-container
-                class="mySwiper swiper-container"
-                pagination="true"
-                effect="cube"
-                grab-cursor="true"
-                cube-effect-shadow="true"
-                cube-effect-slide-shadows="true"
-                cube-effect-shadow-offset="20"
-                cube-effect-shadow-scale="0.94"
-            >
+            <swiper-container class="mySwiper swiper-container" pagination="true" effect="cube" grab-cursor="true"
+                cube-effect-shadow="true" cube-effect-slide-shadows="true" cube-effect-shadow-offset="20"
+                cube-effect-shadow-scale="0.94">
                 <swiper-slide>
                     <img src="./../img/step_1b.jpg" />
                 </swiper-slide>
@@ -125,14 +118,9 @@ main {
 
 .restaurantBar {
     height: 80px;
-    background: rgb(41, 41, 41);
-    background: linear-gradient(
-        0deg,
-        rgba(41, 41, 41, 1) 0%,
-        rgba(0, 0, 0, 0.5971638655462185) 15%,
-        rgba(0, 0, 0, 0.5999649859943977) 85%,
-        rgba(41, 41, 41, 1) 100%
-    );
+    height: 80px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.35075280112044815) 0%, rgba(0, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 95%);
 
     p {
         margin-top: 8px;
@@ -147,7 +135,6 @@ main {
 .carousel-container {
     position: relative;
     height: 500px;
-    background: #35363a;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #000;
