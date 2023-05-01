@@ -7,6 +7,7 @@ import RestaurantMenu from './pages/RestaurantMenu.vue';
 import Checkout from './pages/Checkout.vue';
 import NotFound from './pages/NotFound.vue';
 import success from './pages/Success.vue';
+import Cucine from './pages/Cucine.vue';
 import AboutUs from './pages/AboutUs.vue';
 import Component2 from './components/Component2.vue';
 
@@ -19,9 +20,9 @@ const router = createRouter({
             component: AppHomepage
         },
         {
-            path: '/cerca-ristorante',
-            name: 'cerca-ristorante',
-            component: Component2
+            path: '/Cucine',
+            name: 'Cucine',
+            component: Cucine
         },
         {
             path: '/categoria/:name',
