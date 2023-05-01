@@ -158,106 +158,135 @@ export default {
             </ul>
         </div>
 
-        <form class="container my-5">
-            <!-- CUSTOMER DETAILS -->
-            <div v-if="!showDropin">
-                <!-- NAME-->
-                <div class="mb-3">
-                    <label for="costumer_name" class="form-label">
-                        Nome e Cognome utente<span class="text-danger"> *</span>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="costumer_name"
-                        name="costumer_name"
-                        placeholder="Inserisci nome e cognome presente sul citofono dell'indirizzo di consegna.."
-                        v-model="order.costumer_name"
-                    />
+        <form class="my-container p-5">
+            <div class="form-cart clickedBtnPay">
+                <!-- CUSTOMER DETAILS -->
+                <div v-if="!showDropin">
+                    <h3>Dettagli cliente</h3>
+                    <!-- NAME-->
+                    <div class="flex-form">
+                        <div class="items d-flex flex-column align-items-center">
+                            <div class="items d-flex justify-content-between align-items-center">
+                                <label for="costumer_name" class="form-label">
+                                    Nome e Cognome<span class="text-danger"> *</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="costumer_name"
+                                    name="costumer_name"
+                                    placeholder="Jon Doe"
+                                    v-model="order.costumer_name"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DELIVERY ADDRESS -->
+                    <div class="flex-form">
+                        <div class="items d-flex flex-column align-items-center">
+                            <div class="items d-flex justify-content-between align-items-center">
+                                <label for="delivery_address" class="form-label">
+                                    Indirizzo di consegna<span class="text-danger"> *</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="delivery_address"
+                                    name="delivery_address"
+                                    placeholder="Via Roma, 10"
+                                    v-model="order.delivery_address"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EMAIL ADDRESS -->
+                    <div class="flex-form">
+                        <div class="items d-flex flex-column align-items-center">
+                            <div class="items d-flex justify-content-between align-items-center">
+                                <label for="email_address" class="form-label">
+                                    Indirizzo email<span class="text-danger"> *</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="email_address"
+                                    name="email_address"
+                                    placeholder="email@example.it"
+                                    v-model="order.email_address"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DELIVERY CONTACT -->
+                    <div class="flex-form">
+                        <div class="items d-flex flex-column align-items-center">
+                            <div class="items d-flex justify-content-between align-items-center">
+                                <label for="delivery_contact" class="form-label">
+                                    Recapito telefonico<span class="text-danger"> *</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="delivery_contact"
+                                    name="delivery_contact"
+                                    placeholder="Inserisci il numero di telefono per la consegna.."
+                                    v-model="order.delivery_contact"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DISPLAY BRAINTREE BUTTON -->
+                    <!-- <button
+                        class="buttonPay"
+                        @click.prevent="showDropin = true"
+                        v-if="!showDropin"
+                    >
+                        Procedi al pagamento
+                    </button> -->
+                    <input @click.prevent="showDropin = true" type="submit" value="Procedi al pagamento" v-if="!showDropin">
+                    <!-- DISPLAY BRAINTREE BUTTON -->
                 </div>
 
-                <!-- DELIVERY ADDRESS -->
-                <div class="mb-3">
-                    <label for="delivery_address" class="form-label">
-                        Indirizzo di consegna<span class="text-danger"> *</span>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="delivery_address"
-                        name="delivery_address"
-                        placeholder="Inserisci l'indirizzo di consegna.."
-                        v-model="order.delivery_address"
-                    />
-                </div>
-
-                <!-- EMAIL ADDRESS -->
-                <div class="mb-3">
-                    <label for="email_address" class="form-label">
-                        Indirizzo email<span class="text-danger"> *</span>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="email_address"
-                        name="email_address"
-                        placeholder="Inserisci l'indirizzo email.."
-                        v-model="order.email_address"
-                    />
-                </div>
-
-                <!-- DELIVERY CONTACT -->
-                <div class="mb-3">
-                    <label for="delivery_contact" class="form-label">
-                        Numero di telefono per la consegna<span
-                            class="text-danger"
-                        >
-                            *</span
-                        >
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="delivery_contact"
-                        name="delivery_contact"
-                        placeholder="Inserisci il numero di telefono per la consegna.."
-                        v-model="order.delivery_contact"
-                    />
-                </div>
-            </div>
-
-            <!-- DISPLAY BRAINTREE BUTTON -->
-            <button
-                class="btn btn-primary"
-                @click.prevent="showDropin = true"
-                v-if="!showDropin"
-            >
-                Procedi al pagamento
-            </button>
-            <!-- DISPLAY BRAINTREE BUTTON -->
-
-            <!-- braintree  START-->
-            <div v-if="showDropin">
-                <div id="dropin-wrapper">
-                    <div id="checkout-message"></div>
-                    <div id="dropin-container"></div>
-                    <div v-if="dropInLoaded" class="text-center my-3">
-                        <button
-                            class="btn btn-secondary me-2"
-                            @click.prevent="
-                                (showDropin = false), (dropInLoaded = false)
-                            "
-                        >
-                            Torna indietro
-                        </button>
-                        <button id="submit-button" class="btn btn-success">
-                            Paga
-                        </button>
+                <!-- braintree  START-->
+                <div v-if="showDropin">
+                    <!-- <div id="dropin-wrapper">
+                        <div id="checkout-message"></div>
+                        <div id="dropin-container"></div>
+                        <div v-if="dropInLoaded" class="text-center my-3">
+                            <button
+                                class="btn btn-secondary me-2"
+                                @click.prevent="
+                                    (showDropin = false), (dropInLoaded = false)
+                                "
+                            >
+                                Torna indietro
+                            </button>
+                            <button id="submit-button" class="btn btn-success">
+                                Paga
+                            </button>
+                        </div>
+                    </div> -->
+                    <div class="d-flex flex-column align-items-center cervelloAlbero">
+                        <div id="dropin-container" class="width-braintree"></div>
+                        <div v-if="dropInLoaded" class="text-center my-3">
+                            <button
+                                class="buttonBack"
+                                @click.prevent="
+                                    (showDropin = false), (dropInLoaded = false)
+                                "
+                            >
+                                Torna indietro
+                            </button>
+                            <button id="submit-button" class="buttonPay">Conferma pagamento</button>
+                        </div>
                     </div>
                 </div>
+                <!-- braintree  END-->
             </div>
-
-            <!-- braintree  END-->
         </form>
     </div>
 
@@ -266,11 +295,91 @@ export default {
         v-else
         class="p-5 d-flex flex-column justify-content-center align-items-center"
     >
-        <div class="my-4">Carrello vuoto!</div>
-        <button @click="goBack" class="btn btn-secondary">
+        <div class="scrittaVuoto">Carrello vuoto!</div>
+        <button @click="goBack" class="buttonIndietro">
             Torna alla pagina precedente
         </button>
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.my-container {
+    gap: 25px;
+
+    .form-cart {
+        width: 75%;
+        background-color: white;
+        border: 1px solid rgba($color: #fc456a, $alpha: 0.8);
+        box-shadow: 0px 5px 5px 0px rgba($color: #fc456a, $alpha: 0.8);
+        min-height: 400px;
+        border-radius: 10px;
+        padding: 20px 15px;
+        margin: 0 auto;
+
+        .flex-form {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+
+            input {
+                padding: 6px;
+                width: 55%;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                outline: none;
+            }
+        }
+
+        input[type="submit"] {
+            border: 3px solid rgba($color: #fc456a, $alpha: 0.8);
+            background-color: #F9FAFA;
+            border-radius: 10px;
+            color: rgba($color: #fc456a, $alpha: 0.8);
+            padding: 3px 10px;
+
+            &:hover {
+                background-color: rgba($color: #fc456a, $alpha: 0.8);
+                color: white;
+            }
+        }
+    }
+
+    .width-braintree {
+        width: 650px;
+    }
+
+    .buttonBack,
+    .buttonPay {
+        border: 3px solid rgba($color: #fc456a, $alpha: 0.8);
+        background-color: #F9FAFA;
+        border-radius: 10px;
+        color: rgba($color: #fc456a, $alpha: 0.8);
+        padding: 3px 10px;
+        margin: 10px;
+
+        &:hover {
+            background-color: rgba($color: #fc456a, $alpha: 0.8);
+            color: white;
+        }
+    }
+}
+
+.scrittaVuoto {
+    font-size: 50px;
+    color: #ffa500;
+}
+
+.buttonIndietro {
+    border: 3px solid rgba($color: #fc456a, $alpha: 0.8);
+    background-color: #F9FAFA;
+    border-radius: 10px;
+    color: rgba($color: #fc456a, $alpha: 0.8);
+    padding: 3px 10px;
+    margin: 10px;
+
+    &:hover {
+        background-color: rgba($color: #fc456a, $alpha: 0.8);
+        color: white;
+    }
+}
+</style>

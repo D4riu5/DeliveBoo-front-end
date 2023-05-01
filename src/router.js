@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound.vue';
 import success from './pages/Success.vue';
 import Cucine from './pages/Cucine.vue';
 import AboutUs from './pages/AboutUs.vue';
-
+import Component2 from './components/Component2.vue';
 
 const router = createRouter({
     history: createWebHistory(),
