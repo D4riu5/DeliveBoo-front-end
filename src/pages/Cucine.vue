@@ -128,9 +128,9 @@ export default {
                 :style="{ 'background-image': `url(${type.full_image_path})` }"
                 class="type_slide_small"
             >
-                <h3 class="p-2 rounded">
+                <h4 class="p-2 rounded">
                     {{ type.name }}
-                </h3>
+                </h4>
             </swiper-slide>
         </swiper-container>
     </div>
@@ -138,12 +138,13 @@ export default {
 
 <style lang="scss">
 .slide-mini {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
 }
 
 .type_slide_big {
-    background-color: #35363a;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
 }
 
 .swiper-slide-thumb-active {
@@ -162,8 +163,9 @@ export default {
     justify-content: center;
     align-items: center;
     background-size: cover;
-    h3 {
-        color: red;
+    padding-top: 22px;
+    h4 {
+        color: rgb(255, 255, 255);
         background-color: rgba(0, 0, 0, 0.736);
     }
 }
