@@ -18,28 +18,63 @@ export default {
         <div class="restaurantBar text-center container-fluid">
             <p class="">Come funziona</p>
         </div>
+        <div class="d-flex flex-row justify-content-center my-5">
+            <div class="carousel-container my-2">
+                <swiper-container
+                    class="mySwiper swiper-container"
+                    pagination="true"
+                    effect="cube"
+                    grab-cursor="true"
+                    cube-effect-shadow="true"
+                    cube-effect-slide-shadows="true"
+                    cube-effect-shadow-offset="20"
+                    cube-effect-shadow-scale="1.34"
+                    navigation="true"
+                    style="
+                        --swiper-navigation-color: red;
+                        --swiper-pagination-color: red;
+                    "
+                >
+                    <swiper-slide>
+                        <img src="./../img/step_1b.jpg" />
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="./../img/step_2b.jpg" />
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="./../img/step_3b.jpg" />
+                    </swiper-slide>
+                </swiper-container>
+            </div>
 
-        <div class="carousel-container mt-5">
-            <swiper-container
-                class="mySwiper swiper-container"
-                pagination="true"
-                effect="cube"
-                grab-cursor="true"
-                cube-effect-shadow="true"
-                cube-effect-slide-shadows="true"
-                cube-effect-shadow-offset="20"
-                cube-effect-shadow-scale="0.94"
-            >
-                <swiper-slide>
-                    <img src="./../img/step_1b.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                    <img src="./../img/step_2b.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                    <img src="./../img/step_3b.jpg" />
-                </swiper-slide>
-            </swiper-container>
+            <div class="carousel-container2 my-2">
+                <swiper-container
+                    class="mySwiper swiper-container"
+                    pagination="true"
+                    effect="cube"
+                    grab-cursor="true"
+                    cube-effect-shadow="true"
+                    cube-effect-slide-shadows="true"
+                    cube-effect-shadow-offset="20"
+                    cube-effect-shadow-scale="1.34"
+                    
+                    navigation="true"
+                    style="
+                        --swiper-navigation-color: red;
+                        --swiper-pagination-color: red;
+                    "
+                >
+                    <swiper-slide>
+                        <img src="./../img/step_4b.jpg" />
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="./../img/step_5b.jpg" />
+                    </swiper-slide>
+                    <swiper-slide>
+                        <img src="./../img/step_6b.jpg" />
+                    </swiper-slide>
+                </swiper-container>
+            </div>
         </div>
 
         <!-- <section class="gallery py-4">
@@ -139,38 +174,26 @@ main {
         padding-top: 12px;
         font-size: 35px;
         color: #ff3f5c;
-        font-family: 'Comfortaa', cursive;
+        font-family: "Comfortaa", cursive;
         vertical-align: middle;
     }
 }
 
-.carousel-container {
-    position: relative;
-    height: 500px;
-    background: #35363a;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-
-    swiper-container {
-        width: 450px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -215px;
-        margin-top: -250px;
-    }
-
-    swiper-slide {
-        background-position: center;
-        background-size: cover;
-    }
-
-    swiper-slide img {
-        display: block;
-        width: 100% !important;
-    }
+.carousel-container,
+.carousel-container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+
+.swiper-container {
+    width: 450px;
+    margin: 0 80px; /* add some margin between the two containers */
+}
+
+.swiper-slide img {
+    max-width: 100%;
+}
+
 </style>
