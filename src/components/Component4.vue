@@ -26,7 +26,7 @@ export default {
             :autoplay="{
                 delay: 1500,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: false,
+                pauseOnMouseEnter: true,
             }"
             speed="5000"
             loop="true"
