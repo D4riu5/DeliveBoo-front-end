@@ -86,11 +86,11 @@ export default {
 <template>
     <main>
         <!-- TITLE -->
-        <div class="restaurantBar text-center container-fluid">
+        <div id="look4Resta" class="restaurantBar text-center container-fluid">
             <p class="">Cerca il tuo ristorante</p>
         </div>
 
-        <section class="py-3">
+        <section class="py-5">
             <div class="container-xxl d-flex flex-column">
                 <div class="d-flex">
                     <div id="TypesContainer" class="d-flex flex-wrap rounded p-3">
