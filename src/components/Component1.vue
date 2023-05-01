@@ -128,6 +128,7 @@ export default {
             width: 100%;
             padding: 19px 70px;
             border-radius: 36px;
+            cursor: pointer;
 
             .disclaimerText:hover {
                 color: red;

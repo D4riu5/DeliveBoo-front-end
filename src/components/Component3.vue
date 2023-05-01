@@ -28,7 +28,7 @@ export default {
                     cube-effect-shadow="true"
                     cube-effect-slide-shadows="true"
                     cube-effect-shadow-offset="20"
-                    cube-effect-shadow-scale="1.34"
+                    cube-effect-shadow-scale="1.04"
                     navigation="true"
                     style="
                         --swiper-navigation-color: red;
@@ -56,7 +56,7 @@ export default {
                     cube-effect-shadow="true"
                     cube-effect-slide-shadows="true"
                     cube-effect-shadow-offset="20"
-                    cube-effect-shadow-scale="1.34"
+                    cube-effect-shadow-scale="1.04"
                     
                     navigation="true"
                     style="
@@ -160,14 +160,9 @@ main {
 
 .restaurantBar {
     height: 80px;
-    background: rgb(41, 41, 41);
-    background: linear-gradient(
-        0deg,
-        rgba(41, 41, 41, 1) 0%,
-        rgba(0, 0, 0, 0.5971638655462185) 15%,
-        rgba(0, 0, 0, 0.5999649859943977) 85%,
-        rgba(41, 41, 41, 1) 100%
-    );
+    height: 80px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.35075280112044815) 0%, rgba(0, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 95%);
 
     p {
         margin-top: 8px;

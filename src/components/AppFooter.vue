@@ -99,7 +99,7 @@ export default {
             </div>
         </div>
         
-        <div class="footer-bottom text-center">
+        <div class="footer-bottom text-center pt-5">
             <p>&copy; 2023 DeliveBoo - Tutti i diritti riservati.</p>
         </div>
     </footer>

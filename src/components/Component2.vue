@@ -179,14 +179,14 @@ main {
 
     .restaurantBar {
         height: 80px;
-        background: rgb(41, 41, 41);
-        background: linear-gradient(0deg, rgba(41, 41, 41, 1) 0%, rgba(0, 0, 0, 0.5971638655462185) 15%, rgba(0, 0, 0, 0.5999649859943977) 85%, rgba(41, 41, 41, 1) 100%);
+        background: rgb(255, 255, 255);
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.35075280112044815) 0%, rgba(0, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 95%);
 
         p {
-            margin-top: 8px;
-            padding-top: 12px;
+            margin-top: 10px;
+            padding-top: 19px;
             font-size: 35px;
-            color: #ff3f5c;
+            color: #fc456b;
             font-family: 'Comfortaa', cursive;
             vertical-align: middle;
         }
@@ -213,11 +213,11 @@ main {
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: rgba($color: #fc456a, $alpha: 0.8);
+            background-color: rgba($color: #000000, $alpha: 0.8);
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: rgba($color: #fc456a, $alpha: 0.8);
+            background-color: rgba($color: #000000, $alpha: 0.8);
         }
 
         .type-span {
@@ -226,21 +226,18 @@ main {
             border: 1.5px solid #fc456a;
             border-radius: 4px;
             font-size: 15px;
-            /* font-weight: 200; */
             cursor: pointer;
             transition: background-color 0.2s ease-in-out;
-            background: rgb(16, 4, 7);
-            background: linear-gradient(0deg, rgb(16, 4, 7) 0%, rgb(26, 14, 17) 94%, rgb(255, 255, 255) 100%);
-            color: white;
-            text-align: center;
+            background: rgb(255 255 255);
             margin: -15px 2px;
-            padding: 12px 20px;
-            border-radius: 52%;
+            line-height: 40px;
+            padding-left: 8px;
+            font-weight: bold;
 
             &:hover,
             &.active {
-                background-color: #f0f0f0;
-                color: #fc456a;
+                background-color: #fc456a;
+                color: #000000;
             }
         }
     }
@@ -264,7 +261,7 @@ main {
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: rgba($color: #fc456a, $alpha: 0.8);
+            background-color: rgba($color: #000000, $alpha: 0.8);
         }
 
         .name {
@@ -278,12 +275,12 @@ main {
             display: flex;
             margin: 15px 10px;
             user-select: none;
-            border: 1px solid #fc456a;
+            border: 1px solid #000000;
             border-radius: 10px;
-            box-shadow: 0px 5px 5px 0px #fc456a;
+            box-shadow: 0px 5px 5px 0px #000000;
 
             &:hover {
-                border-bottom: 5px solid #fc456a;
+                border-bottom: 5px solid #000000;
             }
         }
     }
