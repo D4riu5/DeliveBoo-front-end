@@ -149,11 +149,12 @@ export default {
 
 .swiper-slide-thumb-active {
     opacity: 1 !important;
+    filter: contrast(110%);
 }
 .mySwiper2 .swiper-slide {
     width: 100%;
     height: 150px;
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: pointer;
 }
 

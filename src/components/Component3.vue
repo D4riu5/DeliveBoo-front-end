@@ -18,6 +18,8 @@ export default {
         <div class="restaurantBar text-center container-fluid">
             <p class="">Come funziona</p>
         </div>
+
+
         <div class="d-flex flex-row justify-content-center my-5">
             <div class="carousel-container my-2">
                 <swiper-container
@@ -159,10 +161,7 @@ main {
 }
 
 .restaurantBar {
-    height: 80px;
-    height: 80px;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.35075280112044815) 0%, rgba(0, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 95%);
+    border-top: 1px solid lightgray;
 
     p {
         margin-top: 8px;
@@ -183,7 +182,7 @@ main {
 }
 
 .swiper-container {
-    width: 450px;
+    width: 350px;
     margin: 0 80px; /* add some margin between the two containers */
 }
 
