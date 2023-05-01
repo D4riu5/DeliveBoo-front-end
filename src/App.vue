@@ -34,4 +34,5 @@ export default {
 .headerContainer {
     height: 100px;
 }
+
 </style>
