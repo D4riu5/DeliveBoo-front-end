@@ -27,6 +27,7 @@ export default {
                     cube-effect-shadow-scale="1.04" navigation="true" style="
                         --swiper-navigation-color: red;
                         --swiper-pagination-color: red;
+                        --swiper-navigation-sides-offset: -45px;
                     ">
                     <swiper-slide>
                         <img src="./../img/step_1b.jpg" />
@@ -46,6 +47,7 @@ export default {
                     cube-effect-shadow-scale="1.04" navigation="true" style="
                         --swiper-navigation-color: red;
                         --swiper-pagination-color: red;
+                        --swiper-navigation-sides-offset: -45px;
                     ">
                     <swiper-slide>
                         <img src="./../img/step_4b.jpg" />

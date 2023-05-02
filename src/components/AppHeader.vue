@@ -359,7 +359,7 @@ header {
 
 .offcanvas {
     width: 20%;
-    z-index: 0;
+    z-index: 1;
     padding-top: 125px;
 
     li:hover {
@@ -475,7 +475,7 @@ header {
 
     .offcanvas {
         width: 20%;
-        z-index: 0;
+        z-index: 1;
         padding-top: 125px;
 
         li:hover {
@@ -591,7 +591,7 @@ header {
 
     .offcanvas {
         width: 20%;
-        z-index: 0;
+        z-index: 1;
         padding-top: 125px;
 
         li:hover {
@@ -709,7 +709,7 @@ header {
 
     .offcanvas {
         width: 20%;
-        z-index: 0;
+        z-index: 1;
         padding-top: 125px;
 
         li:hover {
@@ -829,7 +829,7 @@ header {
 
     .offcanvas {
         width: 20%;
-        z-index: 0;
+        z-index: 1;
         padding-top: 125px;
 
         li:hover {
@@ -947,7 +947,7 @@ header {
 
     .offcanvas {
         width: 20%;
-        z-index: 0;
+        z-index: 1;
         padding-top: 125px;
 
         li:hover {
@@ -1048,7 +1048,7 @@ header {
 
     .offcanvas {
         width: 20%;
-        z-index: 0;
+        z-index: 1;
         padding-top: 125px;
 
         li:hover {

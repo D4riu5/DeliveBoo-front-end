@@ -2,7 +2,6 @@
 // Helpers
 import { store } from "./../store";
 import axios from "axios";
-
 export default {
     name: "success",
     data() {
@@ -18,7 +17,6 @@ export default {
                 this.store.restaurants = resp.data.restaurants;
             });
         },
-
         getFilteredRestaurants(type) {
             return this.store.restaurants.filter((restaurant) => {
                 for (let i = 0; i < restaurant.types.length; i++) {
@@ -120,29 +118,25 @@ export default {
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .slide-mini {
     background-color: rgb(255, 255, 255);
     border: 1px solid black;
 }
-
 .type_slide_big {
     background-color: #ffffff;
     color: rgb(0, 0, 0);
 }
-
 .swiper-slide-thumb-active {
     opacity: 1 !important;
     filter: contrast(110%);
 }
-
 .mySwiper2 .swiper-slide {
     width: 100%;
     height: 125px;
     opacity: 0.5;
     cursor: pointer;
 }
-
 .type_slide_small {
     width: 100%;
     display: flex;
@@ -150,14 +144,11 @@ export default {
     align-items: center;
     background-size: cover;
     padding-top: 22px;
-
     h4 {
         color: rgb(255, 255, 255);
         background-color: rgba(0, 0, 0, 0.736);
     }
 }
-
-
 // RESTAURANT
 .restaurantWrapper {
     display: flex;
@@ -166,20 +157,16 @@ export default {
     padding-right: 15px;
     height: 600px;
     overflow-y: auto;
-
     &::-webkit-scrollbar {
         width: 8px;
     }
-
     &::-webkit-scrollbar-thumb {
         background-color: rgba($color: #fc456a, $alpha: 0.8);
     }
-
     .name {
         color: black;
         font-size: 18px;
     }
-
     .wrapperProperties {
         width: calc(100% / 4 - 20px);
         background-color: white;
@@ -189,57 +176,50 @@ export default {
         border: 1px solid #fc456a;
         border-radius: 10px;
         box-shadow: 0px 5px 5px 0px #fc456a;
-
         &:hover {
             border-bottom: 5px solid #fc456a;
         }
     }
 }
-
 .restaurantsContainer {
     flex-direction: row;
 }
-
 .restaurant {
     max-width: 270px;
     height: 260px;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
-
     .restaurant-img {
-        height: 65%;
+        height: 60%;
         overflow: hidden;
-
         .price_badge {
             font-size: 12px;
         }
+        img{
+            width: 100%;
+        }
     }
-
     .restaurant-info {
         width: 100%;
         height: 35%;
-        padding: 10px;
+        padding: 40px 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-
         .restaurant-info-name {
             font-size: 14px;
             font-weight: 600;
         }
-
         .restaurant-address {
             display: flex;
             align-items: center;
             color: #898a8a;
             font-size: 12px;
-
             .fa-location-dot {
                 margin-right: 5px;
             }
         }
-
         .category-badge {
             // background-color: #f0f0f0;
             color: #fc456a;
@@ -251,137 +231,114 @@ export default {
         }
     }
 }
-
 .card-container {
     width: 260px;
     height: auto;
 }
-
 // @media only screen and (max-width: 1270px) {
 //     .my-container {
 //         width: 95%;
 //         margin: 0 auto;
 //     }
-
 //     .restaurant {
 //         min-width: 210px;
 //         border-radius: 5px;
 //         overflow: hidden;
 //         position: relative;
-
 //         .restaurant-img {
 //             width: 100%;
 //         }
 //     }
-
 //     .restaurant-info {
 //         .restaurant-info-name {
 //             .name {
 //                 font-size: 13px;
 //             }
 //         }
-
 //         .restaurant-address {
 //             font-size: 12px;
 //         }
 //     }
 // }
-
 // @media only screen and (max-width: 1100px) {
 //     .restaurant {
 //         min-width: 210px;
 //         border-radius: 5px;
 //         overflow: hidden;
 //         position: relative;
-
 //         .restaurant-img {
 //             width: 100%;
-
 //             .price_badge {
 //                 font-size: 14px;
 //             }
 //         }
 //     }
-
 //     .restaurant-info {
 //         .restaurant-info-name {
 //             .name {
 //                 font-size: 13px;
 //             }
 //         }
-
 //         .restaurant-address {
 //             font-size: 12px;
 //         }
 //     }
 // }
-
 // @media only screen and (max-width: 900px) {
 //     .restaurant {
 //         min-width: 210px;
 //         border-radius: 5px;
 //         overflow: hidden;
 //         position: relative;
-
 //         .restaurant-img {
 //             width: 100%;
-
 //             .price_badge {
 //                 font-size: 16px;
 //             }
 //         }
 //     }
 // }
-
 // @media only screen and (max-width: 812px) {
 //     .restaurant {
 //         min-width: 210px;
 //         border-radius: 5px;
 //         overflow: hidden;
 //         position: relative;
-
 //         .restaurant-img {
 //             width: 100%;
 //         }
 //     }
 // }
-
 // @media only screen and (max-width: 750px) {
 //     .restaurant {
 //         min-width: 45%;
 //         border-radius: 5px;
 //         overflow: hidden;
 //         position: relative;
-
 //         .restaurant-img {
 //             width: 100%;
 //         }
 //     }
 // }
-
 // @media only screen and (max-width: 770px) {
 //     .restaurant {
 //         min-width: 90%;
 //         border-radius: 5px;
 //         overflow: hidden;
 //         position: relative;
-
 //         .restaurant-img {
 //             width: 100%;
 //         }
 //     }
 // }
-
 // @media only screen and (max-width: 470px) {
 //     .restaurantWrapper {
 //         height: 625px;
 //     }
-
 //     .my-container {
 //         margin-inline: 0;
 //         width: 100%;
 //     }
-
 //     .restaurants_box {
 //         .restaurantWrapper {
 //             display: flex;
@@ -393,16 +350,13 @@ export default {
 //         }
 //     }
 // }
-
 // @media only screen and (max-width: 469px) {
 //     .restaurantsContainer {
 //         padding-top: 30px;
 //     }
 // }
-
 .fontStyle {
     color: #fc456a;
     font-family: "Comfortaa", cursive;
-
 }
 </style>
