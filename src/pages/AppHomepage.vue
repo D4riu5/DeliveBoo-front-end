@@ -12,7 +12,7 @@ export default {
         Component1,
         Component2,
         Component3,
-        Component4
+        Component4,
     },
     data() {
         return {
@@ -20,6 +20,15 @@ export default {
         };
     },
     methods: {},
+    mounted() {
+        this.$nextTick(() => {
+            // scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+    },
 };
 </script>
 
@@ -28,9 +37,6 @@ export default {
     <Component2 />
     <Component3 />
     <Component4 />
-
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
