@@ -14,6 +14,13 @@ export default {
 </script>
 
 <template>
+    <!-- checkout progress -->
+    <div class="my-img-container">
+        <div>
+            <img src="./../img/checkout/Ordine  Completato.png" alt="">
+        </div>
+    </div>
+    <!-- /checkout progress -->
 
     <!-- <div class="container">
         <i class="fa-regular fa-circle-check d-flex align-items-center"></i>
@@ -45,10 +52,19 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my-img-container{
+    width: 100%;
+    height: auto;
+    
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
 .my_container {
     text-align: center;
     font-size: 20px;
-    padding: 128px 0;
+    padding: 78px 0;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -58,7 +74,7 @@ export default {
         color: #03c03c;
         font-size: 150px;
         object-fit: contain;
-        padding: 5px;
+        padding: 15px;
     }
 
     p {
