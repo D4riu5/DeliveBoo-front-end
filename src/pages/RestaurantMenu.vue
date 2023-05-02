@@ -459,8 +459,8 @@ export default {
 
 <style lang="scss" scoped>
 div[id] {
-    padding-top: 250px;
-    margin-top: -250px;
+    padding-top: 100px;
+    margin-top: -100px;
 }
 
 .restaurant-header {
