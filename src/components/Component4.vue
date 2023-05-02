@@ -18,26 +18,18 @@ export default {
         <div class="restaurantBar text-center container-fluid">
             <p class="">I nostri sponsor</p>
         </div>
-        <swiper-container
-            class="mySwiper"
-            slides-per-view="5"
-            space-between="30"
-            free-mode="true"
-            :autoplay="{
-                delay: 1500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            }"
-            speed="5000"
-            loop="true"
-        >
+        <swiper-container class="mySwiper" slides-per-view="5" space-between="30" free-mode="true" :autoplay="{
+            delay: 1500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        }" speed="5000" loop="true">
             <swiper-slide class="swiper-slide">
                 <!-- burger king -->
-                <img src="./../img/SPONSORS/4.png" /> 
+                <img src="./../img/SPONSORS/4.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- mac -->
-                <img src="./../img/SPONSORS/2.png"/>
+                <img src="./../img/SPONSORS/2.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
@@ -117,6 +109,44 @@ main {
 
 img {
     width: 60%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+
+    .swiper-container {
+        width: 300px;
+        margin: 0 80px;
+        /* add some margin between the two containers */
+    }
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 30px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+img {
+    width: 100%;
     aspect-ratio: 1/1;
     object-fit: contain;
 }
