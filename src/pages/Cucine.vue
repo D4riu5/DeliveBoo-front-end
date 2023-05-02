@@ -31,17 +31,46 @@ export default {
     created() {
         this.getTypes();
     },
+    computed: {
+        ratingToStars() {
+            return (rating) => {
+                const roundedRating = Math.ceil(rating / 2); // divide by 2 and round up
+                const fullStars = "★".repeat(roundedRating); // repeat the star symbol
+                const emptyStars = "☆".repeat(5 - roundedRating); // repeat the empty star symbol
+                return fullStars + emptyStars; // concatenate the full and empty stars
+            };
+        },
+    },
+    mounted() {
+        this.$nextTick(() => {
+            // scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+    },
 };
 </script>
 
 <template>
     <div v-if="store.types.length > 0" class="container-xxl pb-5">
-        <swiper-container style="
+        <swiper-container
+            style="
                 --swiper-navigation-color: red;
                 --swiper-pagination-color: red;
-            " noSwipingClass="swiper-slide" thumbs-swiper=".mySwiper2" loop="true" space-between="10"
-            navigation="true">
-            <swiper-slide v-for="(type, index) in store.types" :key="type.id" class="type_slide_big pt-2 px-5 py-xl-5">
+            "
+            noSwipingClass="swiper-slide"
+            thumbs-swiper=".mySwiper2"
+            loop="true"
+            space-between="10"
+            navigation="true"
+        >
+            <swiper-slide
+                v-for="(type, index) in store.types"
+                :key="type.id"
+                class="type_slide_big pt-2 px-5 py-xl-5"
+            >
                 <div class="d-flex flex-row justify-content-center">
                     <div class="ps-5 w-50">
                         <h1 class="fontStyle">Cucina {{ type.name }}</h1>
@@ -51,53 +80,121 @@ export default {
                         <h3 class="text-center mb-3">
                             Sfoglia i nostri ristoranti:
                         </h3>
-                        <div class="d-flex justify-content-center flex-column align-items-center">
+                        <div
+                            class="d-flex justify-content-center flex-column align-items-center"
+                        >
                             <div class="">
-                                <swiper-container :effect="'cards'" :grabCursor="true" nested="true" class="card-container">
-                                    <swiper-slide v-for="restaurant in getFilteredRestaurants(type)"
-                                        class="slide-mini rounded">
-
-                                        <div class="restaurant wrapperProperties">
-                                            <div class="restaurant-img position-relative">
-                                                <img :src="restaurant.full_image_restaurant" :alt="restaurant.name" />
+                                <swiper-container
+                                    :effect="'cards'"
+                                    :grabCursor="true"
+                                    nested="true"
+                                    class="card-container"
+                                >
+                                    <swiper-slide
+                                        v-for="restaurant in getFilteredRestaurants(
+                                            type
+                                        )"
+                                        class="slide-mini rounded"
+                                    >
+                                        <div
+                                            class="restaurant wrapperProperties"
+                                        >
+                                            <div
+                                                class="restaurant-img position-relative"
+                                            >
+                                                <img
+                                                    v-if="
+                                                        restaurant.full_image_restaurant
+                                                    "
+                                                    :src="
+                                                        restaurant.full_image_restaurant
+                                                    "
+                                                    :alt="restaurant.name"
+                                                />
+                                                <img
+                                                    v-else
+                                                    src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
+                                                    :alt="restaurant.name"
+                                                />
                                                 <div
-                                                    class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
-                                                    <i class="fa-solid fa-truck-fast"></i>
+                                                    class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom"
+                                                >
+                                                    <i
+                                                        class="fa-solid fa-truck-fast"
+                                                    ></i>
                                                     <strong class="ms-2">
-                                                        {{ restaurant.prezzo_spedizione == 0 ? "Gratis!" :
-                                                            restaurant.prezzo_spedizione + " €" }}
+                                                        {{
+                                                            restaurant.prezzo_spedizione ==
+                                                            0
+                                                                ? "Gratis!"
+                                                                : restaurant.prezzo_spedizione +
+                                                                  " €"
+                                                        }}
                                                     </strong>
                                                 </div>
                                             </div>
 
-                                            <div class="restaurant-info d-flex pb-4">
-                                                <div class="restaurant-info-name">
+                                            <div
+                                                class="restaurant-info d-flex pb-4"
+                                            >
+                                                <div class="">
+                                                    <div
+                                                        class="name"
+                                                        style="
+                                                            color: orange;
+                                                            margin-top: -15px;
+                                                        "
+                                                    >
+                                                        {{
+                                                            ratingToStars(
+                                                                restaurant.avg_rating
+                                                            )
+                                                        }}
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="restaurant-info-name"
+                                                >
                                                     <div class="name text-dark">
                                                         {{ restaurant.name }}
                                                     </div>
                                                 </div>
 
                                                 <div class="restaurant-address">
-                                                    <i class="fa-solid fa-location-dot"></i>
+                                                    <i
+                                                        class="fa-solid fa-location-dot"
+                                                    ></i>
                                                     {{ restaurant.address }}
                                                 </div>
 
-                                                <div class="category-badge d-flex flex-row flex-wrap">
-                                                    <div class="me-2" v-for="(type, index) in restaurant.types">
+                                                <div
+                                                    class="category-badge d-flex flex-row flex-wrap"
+                                                >
+                                                    <div
+                                                        class="me-2"
+                                                        v-for="(
+                                                            type, index
+                                                        ) in restaurant.types"
+                                                    >
                                                         {{ type.name }}
                                                     </div>
                                                 </div>
 
                                                 <div>
-                                                    <router-link class=""
-                                                        :to="{ name: 'restaurant-menu', params: { id: restaurant.id }, }">
+                                                    <router-link
+                                                        class=""
+                                                        :to="{
+                                                            name: 'restaurant-menu',
+                                                            params: {
+                                                                id: restaurant.id,
+                                                            },
+                                                        }"
+                                                    >
                                                         Ordina ora!
                                                     </router-link>
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </swiper-slide>
                                 </swiper-container>
                             </div>
@@ -107,9 +204,19 @@ export default {
             </swiper-slide>
         </swiper-container>
 
-        <swiper-container class="mySwiper2" loop="true" space-between="10" slides-per-view="5" watch-slides-progress="true">
-            <swiper-slide v-for="(type, index) in store.types" :key="type.id"
-                :style="{ 'background-image': `url(${type.full_image_path})` }" class="type_slide_small rounded">
+        <swiper-container
+            class="mySwiper2"
+            loop="true"
+            space-between="10"
+            slides-per-view="5"
+            watch-slides-progress="true"
+        >
+            <swiper-slide
+                v-for="(type, index) in store.types"
+                :key="type.id"
+                :style="{ 'background-image': `url(${type.full_image_path})` }"
+                class="type_slide_small rounded"
+            >
                 <h4 class="p-2 rounded">
                     {{ type.name }}
                 </h4>
@@ -186,7 +293,7 @@ export default {
 }
 .restaurant {
     max-width: 270px;
-    height: 260px;
+    height: 280px;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
@@ -196,8 +303,9 @@ export default {
         .price_badge {
             font-size: 12px;
         }
-        img{
+        img {
             width: 100%;
+            height: 90%;
         }
     }
     .restaurant-info {
@@ -235,126 +343,7 @@ export default {
     width: 260px;
     height: auto;
 }
-// @media only screen and (max-width: 1270px) {
-//     .my-container {
-//         width: 95%;
-//         margin: 0 auto;
-//     }
-//     .restaurant {
-//         min-width: 210px;
-//         border-radius: 5px;
-//         overflow: hidden;
-//         position: relative;
-//         .restaurant-img {
-//             width: 100%;
-//         }
-//     }
-//     .restaurant-info {
-//         .restaurant-info-name {
-//             .name {
-//                 font-size: 13px;
-//             }
-//         }
-//         .restaurant-address {
-//             font-size: 12px;
-//         }
-//     }
-// }
-// @media only screen and (max-width: 1100px) {
-//     .restaurant {
-//         min-width: 210px;
-//         border-radius: 5px;
-//         overflow: hidden;
-//         position: relative;
-//         .restaurant-img {
-//             width: 100%;
-//             .price_badge {
-//                 font-size: 14px;
-//             }
-//         }
-//     }
-//     .restaurant-info {
-//         .restaurant-info-name {
-//             .name {
-//                 font-size: 13px;
-//             }
-//         }
-//         .restaurant-address {
-//             font-size: 12px;
-//         }
-//     }
-// }
-// @media only screen and (max-width: 900px) {
-//     .restaurant {
-//         min-width: 210px;
-//         border-radius: 5px;
-//         overflow: hidden;
-//         position: relative;
-//         .restaurant-img {
-//             width: 100%;
-//             .price_badge {
-//                 font-size: 16px;
-//             }
-//         }
-//     }
-// }
-// @media only screen and (max-width: 812px) {
-//     .restaurant {
-//         min-width: 210px;
-//         border-radius: 5px;
-//         overflow: hidden;
-//         position: relative;
-//         .restaurant-img {
-//             width: 100%;
-//         }
-//     }
-// }
-// @media only screen and (max-width: 750px) {
-//     .restaurant {
-//         min-width: 45%;
-//         border-radius: 5px;
-//         overflow: hidden;
-//         position: relative;
-//         .restaurant-img {
-//             width: 100%;
-//         }
-//     }
-// }
-// @media only screen and (max-width: 770px) {
-//     .restaurant {
-//         min-width: 90%;
-//         border-radius: 5px;
-//         overflow: hidden;
-//         position: relative;
-//         .restaurant-img {
-//             width: 100%;
-//         }
-//     }
-// }
-// @media only screen and (max-width: 470px) {
-//     .restaurantWrapper {
-//         height: 625px;
-//     }
-//     .my-container {
-//         margin-inline: 0;
-//         width: 100%;
-//     }
-//     .restaurants_box {
-//         .restaurantWrapper {
-//             display: flex;
-//             flex-wrap: wrap;
-//             margin-left: 0px;
-//             height: 600px;
-//             overflow-y: auto;
-//             justify-content: center;
-//         }
-//     }
-// }
-// @media only screen and (max-width: 469px) {
-//     .restaurantsContainer {
-//         padding-top: 30px;
-//     }
-// }
+
 .fontStyle {
     color: #fc456a;
     font-family: "Comfortaa", cursive;
