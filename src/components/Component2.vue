@@ -95,7 +95,7 @@ export default {
         <div id="look4Resta" class="restaurantBar text-center container-fluid">
             <p class="">Cerca il tuo ristorante</p>
         </div>
-
+        <!-- Left side -->
         <section class="py-5">
             <div class="container-xxl d-flex flex-column">
                 <div class="d-flex">
@@ -103,7 +103,10 @@ export default {
                         id="TypesContainer"
                         class="d-flex flex-wrap rounded p-3"
                     >
-                        <div
+                        <div class="type-span" @click="freeDelivery()">
+                            Sped. Gratuita
+                        </div>
+                        <div v-bind:class="my-button"
                             v-for="type in store.types"
                             :class="{
                                 active: selectedTypes.includes(type.name),
@@ -114,10 +117,10 @@ export default {
                         >
                             {{ type.name }}
                         </div>
-                        <div class="type-span" @click="freeDelivery()">
-                            Spedizione Gratuita
-                        </div>
+                        
                     </div>
+        <!-- / Left side -->
+
 
                     <!-- RIGHT SIDE -->
                     <div class="my-container restaurants_box">
@@ -268,30 +271,59 @@ main {
             background-color: rgba($color: #000000, $alpha: 0.8);
         }
 
+
         .type-span {
+            --color: #e43659;
             display: block;
-            width: 100%;
-            border: 1.5px solid #fc456a;
-            border-radius: 4px;
-            font-size: 15px;
+            width: 8em;
+            height: 2.6em;
+            border: 2px solid black;
+            border-radius: 6px;
+            font-size: 17px;
             cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-            background: rgb(255 255 255);
-            margin: -15px 2px;
-            line-height: 40px;
+            transition: color .5s;
+            margin: 5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            line-height: 2.5em;
             padding-left: 8px;
             font-weight: bold;
+            color: var(--color);
 
-            &:hover,
-            &.active {
-                background-color: #fc456a;
-                color: #000000;
+            &:before{
+                content: "";
+                position: absolute;
+                z-index: -1;
+                background: var(--color);
+                height: 150px;
+                width: 200px;
+                border-radius: 50%; 
+                color: white;
+
+            }
+            &:hover{
+                color: #fff;
+            }
+            &:before{
+                top: 100%;
+                left: 100%;
+                transition: all .7s;
+            }
+            &:hover:before{
+                top: -30px;
+                left: -30px;
+            }
+            &:active:before{
+                background: var(--color);
+                transition: background 0s;
             }
         }
     }
 
     .active {
-        background-color: red;
+        background-color: var(--color);
+        color: white;
     }
 }
 
