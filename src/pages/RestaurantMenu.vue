@@ -55,7 +55,7 @@ export default {
             }
             localStorage.setItem("cart", JSON.stringify(this.store.cart));
         },
-        
+
         emptyCart() {
             this.store.cart = [];
             localStorage.setItem("cart", JSON.stringify(this.store.cart));
@@ -63,6 +63,13 @@ export default {
     },
     created() {
         this.getFoods();
+    },
+    watch: {
+        "$route.params.id": function (newId, oldId) {
+            if (newId && newId !== oldId && /^[1-9]\d*$/.test(newId)) {
+                this.getFoods();
+            }
+        },
     },
     // mounted() {
     //     this.store.cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -90,7 +97,9 @@ export default {
                     </li>
 
                     <li class="delivery-restaurant">
-                        <i class="fa-solid fa-truck-fast"></i>Costo spedizione:{{ store.restaurant.prezzo_spedizione }} &euro;
+                        <i class="fa-solid fa-truck-fast"></i>Costo
+                        spedizione:{{ store.restaurant.prezzo_spedizione }}
+                        &euro;
                     </li>
                 </ul>
             </div>
@@ -107,7 +116,10 @@ export default {
                         >
                             <div class="info-top">
                                 <div class="my-bigBox-img">
-                                    <img :src="food.full_image_food" :alt="food.name" />
+                                    <img
+                                        :src="food.full_image_food"
+                                        :alt="food.name"
+                                    />
                                 </div>
 
                                 <div class="my-bigBox-info-wrapper">
@@ -177,7 +189,8 @@ export default {
                     </div>
                     <div class="modal-body">
                         <p>
-                            Puoi ordinare da un solo ristorante alla volta! <br>
+                            Puoi ordinare da un solo ristorante alla volta!
+                            <br />
                             Svuota il carrello per ordinare da un altro
                             ristorante!
                         </p>

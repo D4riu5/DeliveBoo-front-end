@@ -149,180 +149,134 @@ export default {
 </script>
 
 <template>
-    <header class="container-fluid finisher-header p-2">
-        <div
-            class="container-xxl heigthBox d-flex justify-content-between align-items-center"
-        >
-            <div class="logo">
-                <a v-if="$route.path === '/'" class="" href="#">
-                    <div class="imgContainer pb-1 px-1">
-                        <img src="../img/7.png" alt="Logo" />
-                    </div>
-                </a>
-                <router-link
-                    v-else
-                    class="text-decoration-none text-dark"
-                    :to="{
-                        name: 'home',
-                    }"
-                >
-                    <div class="imgContainer">
-                        <img src="../img/7.png" alt="Logo" />
-                    </div>
-                </router-link>
-            </div>
-            <nav class="header-nav">
-                <ul class="d-flex justify-content-center">
-                    <li v-if="!$route.path.includes('/Attivit')">
-                        <router-link :to="'Attivita' + selectRandomRestaurant()"
-                            >Scegli per me</router-link
-                        >
-                    </li>
+    <div>
+        
+    </div>
+        <header class="container-fluid finisher-header p-2">
+            <div class="container-xxl heigthBox d-flex justify-content-between align-items-center">
+                <div class="logo">
+                    <a v-if="$route.path === '/'" class="" href="#">
+                        <div class="imgContainer pb-1 px-1">
+                            <img src="../img/7.png" alt="Logo" />
+                        </div>
+                    </a>
+                    <router-link v-else class="text-decoration-none text-dark" :to="{
+                            name: 'home',
+                        }">
+                        <div class="imgContainer">
+                            <img src="../img/7.png" alt="Logo" />
+                        </div>
+                    </router-link>
+                </div>
+                <nav class="header-nav">
+                    <ul class="d-flex justify-content-center">
+                        <li>
+                            <a :class="$route.path === '/' ? 'selected' : ''" href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <router-link :class="$route.path.includes('/Attivita') ? 'selected' : ''"
+                                :to="'Attivita' + selectRandomRestaurant()">Scegli per me</router-link>
+                        </li>
 
-                    <li>
-                        <router-link :to="{ name: 'Cucine' }">
-                            Cucine
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{ name: 'about-us' }">
-                            Chi siamo
-                        </router-link>
+                        <li>
+                            <router-link :class="$route.path.includes('/Cucine') ? 'selected' : ''"
+                                :to="{ name: 'Cucine' }">
+                                Cucine
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :class="$route.path.includes('/about-us') ? 'selected' : ''"
+                                :to="{ name: 'about-us' }">
+                                Chi siamo
+                            </router-link>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="AreaPartner">
+                    <a class="nav-link" aria-current="page" :href="this.store.backEndLink + '/login'">
+                        <i class="fa-solid fa-user"> </i> Area Partner
+                    </a>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <!-- Button trigger modal -->
+                    <button v-if="$route.path.includes('/Attivita') ||
+                        $route.path.includes('/checkout')
+                        " type="button" class="responsiveButton btn btn-light d-flex py-2" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                        <i class="fa-solid fa-cart-shopping me-1 pt-1"></i>
+                        <span class="badge bg-secondary ms-2 pt-2">{{ cartCount }}</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- SHOPPING CART OFFCANVAS -->
+        <div v-if="$route.path === '/checkout' || $route.path.includes('Attivita')" class="offcanvas offcanvas-end"
+            data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling"
+            aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+                    <strong>{{ restaurantName }}</strong>
+                    <strong v-if="cartCount > 0" class="text-danger">
+                        <i class="fa-solid fa-truck-fast mx-2"></i>{{ restaurantDeliveryFee + " €" }}
+                    </strong>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul>
+                    <h4 v-if="cartCount == 0">Aggiungi un prodotto al carrello!</h4>
+                    <div v-else>
+                        <strong>Prodotti:</strong>
+                    </div>
+                    <li v-for="(item, index) in store.cart" :key="index"
+                        class="d-flex align-items-center my-1 bg-dark bg-opacity-10 p-2 rounded">
+                        <div class="w-100">
+                            {{ item.name }}
+                        </div>
+
+                        <div class="w-25">
+                            {{ item.price + "€" }}
+                        </div>
+
+                        <div class="mx-3">x</div>
+                        <div>
+                            {{ item.quantity }}
+                        </div>
+
+                        <div class="d-flex flex-row mx-2">
+                            <button class="btn btn-danger me-2" @click="removeFromCart(index)">
+                                -
+                            </button>
+
+                            <button class="btn btn-success" @click="addToCart(index)">
+                                +
+                            </button>
+                        </div>
                     </li>
                 </ul>
-            </nav>
-            <div class="AreaPartner">
-                <a
-                    class="nav-link"
-                    aria-current="page"
-                    :href="this.store.backEndLink + '/login'"
-                >
-                    <i class="fa-solid fa-user mx-2"> </i> Area Partner
-                </a>
             </div>
+            <div class="d-flex flex-column">
+                <h3 class="text-center my-2">
+                    Prezzo totale:
+                    <span class="text-danger">{{ totalPrice }} €</span>
+                </h3>
+                <!-- EMPTY CART-->
+                <button class="btn btn-danger mx-5" @click="emptyCart" v-if="cartCount > 0">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
 
-            <div class="d-flex align-items-center">
-                <!-- Button trigger modal -->
-                <button
-                    v-if="
-                        $route.path.includes('/Attivita') ||
-                        $route.path.includes('/checkout')
-                    "
-                    type="button"
-                    class="btn btn-primary mx-2"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasScrolling"
-                    aria-controls="offcanvasScrolling"
-                >
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="badge bg-secondary ms-2">{{ cartCount }}</span>
-                </button>
-                <!-- Button trigger Offcanvas 
-                <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                -->
+                <!--PAY -> CHECKOUT PAGE -->
+                <router-link v-if="cartCount > 0" @click="redirectToCheckout" data-bs-dismiss="offcanvas" :to="{
+                        name: 'checkout',
+                    }" class="btn btn-primary mx-5 my-2">
+                    Checkout
+                </router-link>
             </div>
         </div>
-    </header>
-
-    <!-- SHOPPING CART OFFCANVAS -->
-    <div
-        v-if="$route.path === '/checkout' || $route.path.includes('Attivita')"
-        class="offcanvas offcanvas-end"
-        data-bs-scroll="true"
-        data-bs-backdrop="false"
-        tabindex="-1"
-        id="offcanvasScrolling"
-        aria-labelledby="offcanvasScrollingLabel"
-    >
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
-                <strong>{{ restaurantName }}</strong>
-                <strong v-if="cartCount > 0" class="text-danger">
-                    <i class="fa-solid fa-truck-fast mx-2"></i
-                    >{{ restaurantDeliveryFee + " €" }}
-                </strong>
-            </h5>
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-            ></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul>
-                <h4 v-if="cartCount == 0">Aggiungi un prodotto al carrello!</h4>
-                <div v-else>
-                    <strong>Prodotti:</strong>
-                </div>
-                <li
-                    v-for="(item, index) in store.cart"
-                    :key="index"
-                    class="d-flex align-items-center my-1 bg-dark bg-opacity-10 p-2 rounded"
-                >
-                    <div class="w-100">
-                        {{ item.name }}
-                    </div>
-
-                    <div class="w-25">
-                        {{ item.price + "€" }}
-                    </div>
-
-                    <div class="mx-3">x</div>
-                    <div>
-                        {{ item.quantity }}
-                    </div>
-
-                    <div class="d-flex flex-row mx-2">
-                        <button
-                            class="btn btn-danger me-2"
-                            @click="removeFromCart(index)"
-                        >
-                            -
-                        </button>
-
-                        <button
-                            class="btn btn-success"
-                            @click="addToCart(index)"
-                        >
-                            +
-                        </button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="d-flex flex-column">
-            <h3 class="text-center my-2">
-                Prezzo totale:
-                <span class="text-danger">{{ totalPrice }} €</span>
-            </h3>
-            <!-- EMPTY CART-->
-            <button
-                class="btn btn-danger mx-5"
-                @click="emptyCart"
-                v-if="cartCount > 0"
-            >
-                <i class="fa-solid fa-trash"></i>
-            </button>
-
-            <!--PAY -> CHECKOUT PAGE -->
-            <router-link
-                v-if="cartCount > 0"
-                @click="redirectToCheckout"
-                data-bs-dismiss="offcanvas"
-                :to="{
-                    name: 'checkout',
-                }"
-                class="btn btn-primary mx-5 my-2"
-            >
-                Checkout
-            </router-link>
-        </div>
-    </div>
-    <!-- OFFCANVAS -->
 </template>
 
 <style lang="scss" scoped>
@@ -365,8 +319,16 @@ header {
                 margin: 30px 40px;
             }
 
-            a {
+            .selected {
                 color: #fd456b;
+
+                &:hover{
+                    color: #ffa500;
+                }
+            }
+
+            a {
+                color: white;
                 text-decoration: none;
                 font-weight: bold;
                 font-size: 17px;
@@ -374,7 +336,7 @@ header {
             }
 
             a:hover {
-                color: white;
+                color: #fd456b;
             }
         }
     }
@@ -385,6 +347,7 @@ header {
         font-weight: bold;
         font-size: 17px;
         font-family: "Comfortaa", cursive;
+
         .nav-link {
             font-family: "Comfortaa", cursive;
         }
@@ -413,4 +376,109 @@ header {
     width: 12%;
     margin: 0px !important;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .header-nav {
+        width: 76%;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+
+            li {
+                margin: 30px 40px;
+            }
+
+            .selected {
+                color: #fd456b;
+
+                &:hover {
+                    color: white;
+                }
+            }
+
+            a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 14px !important;
+                font-family: "Comfortaa", cursive;
+            }
+
+            a:hover {
+                color: #fd456b;
+            }
+        }
+    }
+
+    .AreaPartner {
+        width: 12%;
+        color: white;
+        font-weight: bold;
+        font-size: 13px !important;
+        font-family: "Comfortaa", cursive;
+
+        .nav-link {
+            font-family: "Comfortaa", cursive;
+        }
+    }
+
+    .responsiveButton {
+        padding: 4px !important;
+    }
+}
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .header-nav {
+            width: 76%;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+
+                li {
+                    margin: 30px 40px;
+                }
+
+                .selected {
+                    color: #fd456b;
+
+                    &:hover {
+                        color: white;
+                    }
+                }
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    font-size: 14px !important;
+                    font-family: "Comfortaa", cursive;
+                }
+
+                a:hover {
+                    color: #fd456b;
+                }
+            }
+        }
+
+        .AreaPartner {
+            width: 12%;
+            color: white;
+            font-weight: bold;
+            font-size: 13px !important;
+            font-family: "Comfortaa", cursive;
+
+            .nav-link {
+                font-family: "Comfortaa", cursive;
+            }
+        }
+
+        .responsiveButton {
+            padding: 4px !important;
+        }
+    }
 </style>
