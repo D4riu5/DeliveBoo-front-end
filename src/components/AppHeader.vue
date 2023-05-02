@@ -173,7 +173,7 @@ export default {
             </div>
             <nav class="header-nav">
                 <ul class="d-flex justify-content-center">
-                    <li v-if="!$route.path.includes('/Attivit')">
+                    <li>
                         <router-link :to="'Attivita' + selectRandomRestaurant()"
                             >Scegli per me</router-link
                         >
