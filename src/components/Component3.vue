@@ -35,6 +35,7 @@ export default {
                     style="
                         --swiper-navigation-color: red;
                         --swiper-pagination-color: red;
+                        --swiper-navigation-sides-offset: -45px;
                     "
                 >
                     <swiper-slide>
@@ -64,6 +65,7 @@ export default {
                     style="
                         --swiper-navigation-color: red;
                         --swiper-pagination-color: red;
+                        --swiper-navigation-sides-offset: -45px;
                     "
                 >
                     <swiper-slide>

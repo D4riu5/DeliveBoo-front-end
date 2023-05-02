@@ -374,7 +374,7 @@ header {
                 color: #fd456b;
 
                 &:hover{
-                    color: white;
+                    color: #ffa500;
                 }
             }
 
