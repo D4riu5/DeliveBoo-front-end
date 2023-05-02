@@ -25,43 +25,43 @@ export default {
         }" speed="5000" loop="true">
             <swiper-slide class="swiper-slide">
                 <!-- burger king -->
-                <img src="./../img/SPONSORS/4.png" />
+                <img class="icon" src="./../img/SPONSORS/4.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- mac -->
-                <img src="./../img/SPONSORS/2.png" />
+                <img class="icon" src="./../img/SPONSORS/2.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/3.png" />
+                <img class="icon" src="./../img/SPONSORS/3.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- ac Milan -->
-                <img src="./../img/SPONSORS/1.png" />
+                <img class="icon" src="./../img/SPONSORS/1.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/5.png" />
+                <img class="icon" src="./../img/SPONSORS/5.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/6.png" />
+                <img class="icon" src="./../img/SPONSORS/6.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- Neymar -->
-                <img src="./../img/SPONSORS/7.png" />
+                <img class="icon" src="./../img/SPONSORS/7.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/8.png" />
+                <img class="icon" src="./../img/SPONSORS/8.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/9.png" />
+                <img class="icon" src="./../img/SPONSORS/9.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/10.png" />
+                <img class="icon" src="./../img/SPONSORS/10.png" />
             </swiper-slide>
         </swiper-container>
     </main>
@@ -105,21 +105,15 @@ main {
     justify-content: center;
     align-items: center;
     height: auto;
-}
 
-img {
-    width: 60%;
-    aspect-ratio: 1/1;
-    object-fit: contain;
-}
-
-@media screen and (min-width: 320px) and (max-width: 425px) {
-
-    .swiper-container {
-        width: 300px;
-        margin: 0 80px;
-        /* add some margin between the two containers */
+    .icon {
+        width: 60%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
     }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
 
     .restaurantBar {
         border-top: 1px solid lightgray;
@@ -133,21 +127,21 @@ img {
             vertical-align: middle;
         }
     }
-}
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-}
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
 
-img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: contain;
+        .icon {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+        }
+    }
 }
 </style>

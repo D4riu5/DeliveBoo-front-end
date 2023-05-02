@@ -21,26 +21,26 @@ export default {
     <footer>
         <div class="footer-container container-xxl">
             <div class="footer-section">
-                <h5>
+                <div>
                     <strong>
                         Servizio Clienti
                     </strong>
-                </h5>
+                </div>
                 <ul class="d-flex flex-column">
                     <li><a class="linkColor" href="#">Accedi</a></li>
                     <li><a class="linkColor" href="#">Domande frequenti</a></li>
-                    <li><a class="linkColor" href="#">Registrati su Comida Go</a></li>
-                    <li><a class="linkColor" href="#">Miglior Prezzo Garantito</a></li>
-                    <li><a class="linkColor" href="#">Scarica l'app di Comida Go</a></li>
+                    <li><a class="linkColor" href="#">Registrati</a></li>
+                    <li><a class="linkColor" href="#">Miglior prezzo</a></li>
+                    <li><a class="linkColor" href="#">Scarica l'app</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h5>
+                <div>
                     <strong>
                         Cucine
                     </strong>
-                </h5>
+                </div>
                 <ul>
                     <li><a class="linkColor" href="#">Italiana</a></li>
                     <li><a class="linkColor" href="#">Messicana</a></li>
@@ -60,11 +60,11 @@ export default {
             </div>
 
             <div class="footer-section">
-                <h5>
+                <div>
                     <strong>
                         Catene
                     </strong>
-                </h5>
+                </div>
                 <ul class="d-flex flex-column">
                     <li><a class="linkColor" href="http://localhost:5174/Attivita1">El Baffo Criminal</a></li>
                     <li><a class="linkColor" href="http://localhost:5174/Attivita5">Chupitòn</a></li>
@@ -83,17 +83,17 @@ export default {
                 </ul>
             </div>
 
-            <div class="footer-section">
-                <h5>
+            <div class="footer-section chiSiamo">
+                <div>
                     <strong>
                         Chi siamo
                     </strong>
-                </h5>
+                </div>
                 <ul>
-                    <li><a class="linkColor" href="#">Informazioni su Comida Go</a></li>
-                    <li><a class="linkColor" href="#">Diventa partner di Comida Go</a></li>
+                    <li><a class="linkColor" href="#">Modello Business</a></li>
+                    <li><a class="linkColor" href="#">Diventa partner</a></li>
                     <li><a class="linkColor" href="#">Lavora con noi</a></li>
-                    <li><a class="linkColor" href="#">Informativa sulla privacy</a></li>
+                    <li><a class="linkColor" href="#">Norme privacy</a></li>
                     <li><a class="linkColor" href="#">Termini e condizioni</a></li>
                 </ul>
             </div>
@@ -113,6 +113,7 @@ footer {
 }
 
 .footer-container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -121,8 +122,10 @@ footer {
 }
 
 .footer-section {
-    h5 {
+    div {
+        font-size: 18px;
         color: #ffa500;
+
     }
 
     ul {
@@ -141,11 +144,388 @@ footer {
     }
 }
 
+
+
 .linkColor {
     color: white;
 }
 
 .linkColor:hover {
     color: #fc456a;
+}
+
+@media screen and (min-width: 706px) and (max-width: 768px) {
+    .linkColor {
+        color: white;
+        font-size: 20px;
+    }
+
+    .linkColor:hover {
+        color: #fc456a;
+    }
+
+
+    .footer-section {
+        div {
+            font-size: 21px;
+            color: #ffa500;
+            padding-bottom: 5px;
+
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.chiSiamo {
+    position: absolute !important;
+    top: 46%;
+
+    div {
+        font-size: 19px;
+        color: #ffa500;
+        padding-bottom: 5px;
+    }
+
+    ul {
+        text-align: start;
+        padding-left: 0.2rem;
+
+        li {
+            list-style: none;
+            padding-bottom: 8px;
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 570px) and (max-width: 706px) {
+    .linkColor {
+        color: white;
+        font-size: 20px;
+    }
+
+    .linkColor:hover {
+        color: #fc456a;
+    }
+
+
+    .footer-section {
+        div {
+            font-size: 21px;
+            color: #ffa500;
+            padding-bottom: 5px;
+
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .chiSiamo {
+        position: absolute !important;
+        top: 41%;
+
+        div {
+            font-size: 21px;
+            color: #ffa500;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+}
+
+
+@media screen and (min-width: 510px) and (max-width: 570px) {
+    .linkColor {
+        color: white;
+        font-size: 16px;
+    }
+
+    .linkColor:hover {
+        color: #fc456a;
+    }
+
+
+    .footer-section {
+        div {
+            font-size: 17px;
+            color: #ffa500;
+            padding-bottom: 5px;
+
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .chiSiamo {
+        position: absolute !important;
+        top: 41%;
+
+        div {
+            font-size: 17px;
+            color: #ffa500;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 420px) and (max-width: 510px) {
+    .linkColor {
+        color: white;
+        font-size: 11px;
+    }
+
+    .linkColor:hover {
+        color: #fc456a;
+    }
+
+
+    .footer-section {
+        div {
+            font-size: 13px;
+            color: #ffa500;
+            padding-bottom: 5px;
+
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .chiSiamo {
+        position: absolute !important;
+        top: 41%;
+
+        div {
+            font-size: 14px;
+            color: #ffa500;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 420px) {
+    .linkColor {
+        color: white;
+        font-size: 10px;
+    }
+
+    .linkColor:hover {
+        color: #fc456a;
+    }
+
+
+    .footer-section {
+        div {
+            font-size: 14px;
+            color: #ffa500;
+            padding-bottom: 5px;
+
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .chiSiamo {
+        position: absolute !important;
+        top: 41%;
+
+        div {
+            font-size: 13px;
+            color: #ffa500;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .linkColor {
+        color: white;
+        font-size: 10px;
+    }
+
+    .linkColor:hover {
+        color: #fc456a;
+    }
+
+
+    .footer-section {
+        div {
+            font-size: 11px;
+            color: #ffa500;
+            padding-bottom: 5px;
+
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .chiSiamo {
+        position: absolute !important;
+        top: 41%;
+
+        div {
+            font-size: 11px;
+            color: #ffa500;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            text-align: start;
+            padding-left: 0.2rem;
+
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+    }
 }
 </style>
