@@ -174,18 +174,23 @@ export default {
             <nav class="header-nav">
                 <ul class="d-flex justify-content-center">
                     <li>
-                        <router-link :to="'Attivita' + selectRandomRestaurant()"
+                        <a :class="$route.path === '/' ? 'selected':'' "  href="/">
+                            Home</a
+                        >
+                    </li>
+                    <li>
+                        <router-link :class="$route.path.includes('/Attivita') ? 'selected':'' " :to="'Attivita' + selectRandomRestaurant()"
                             >Scegli per me</router-link
                         >
                     </li>
 
                     <li>
-                        <router-link :to="{ name: 'Cucine' }">
+                        <router-link :class="$route.path.includes('/Cucine') ? 'selected':'' " :to="{ name: 'Cucine' }">
                             Cucine
                         </router-link>
                     </li>
                     <li>
-                        <router-link :to="{ name: 'about-us' }">
+                        <router-link :class="$route.path.includes('/about-us') ? 'selected':'' " :to="{ name: 'about-us' }">
                             Chi siamo
                         </router-link>
                     </li>
@@ -365,8 +370,16 @@ header {
                 margin: 30px 40px;
             }
 
-            a {
+            .selected{
                 color: #fd456b;
+
+                &:hover{
+                    color: white;
+                }
+            }
+
+            a {
+                color: white;
                 text-decoration: none;
                 font-weight: bold;
                 font-size: 17px;
@@ -374,7 +387,7 @@ header {
             }
 
             a:hover {
-                color: white;
+                color: #fd456b;
             }
         }
     }
