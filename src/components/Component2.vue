@@ -319,9 +319,9 @@ main {
             box-shadow: 0px 5px 5px 0px #000000;
 
             img {
-                object-fit: scale-down;
+                object-fit: cover;
                 width: 140%;
-                height: 113%;
+                height: 126%;
             }
 
             &:hover {
