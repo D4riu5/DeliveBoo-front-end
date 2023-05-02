@@ -122,7 +122,7 @@ main {
         p {
             margin-top: 8px;
             padding-top: 12px;
-            font-size: 30px;
+            font-size: 25px;
             color: black;
             font-family: "Comfortaa", cursive;
             vertical-align: middle;
@@ -143,6 +143,37 @@ main {
             height: 100%;
             aspect-ratio: 1/2;
             object-fit: contain;
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 45px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 45px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
         }
     }
 }

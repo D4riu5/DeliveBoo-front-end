@@ -194,4 +194,124 @@ main {
         }
     }
 }
+
+@media screen and (max-width: 320px) {
+
+
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 25px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 376px) {
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 25px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+
+}
+
+@media screen and (min-width: 376px) and (max-width: 425px) {
+
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 25px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 600px) {
+
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 25px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 25px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 45px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 45px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
 </style>
