@@ -145,6 +145,7 @@ export default {
 </script>
 
 <template>
+    
     <div v-if="store.cart.length > 0">
         <!-- checkout progress -->
         <div class="my-img-container">
@@ -154,7 +155,7 @@ export default {
             </div>
         </div>
         <!-- /checkout progress -->
-        
+
         <!-- LOADING -->
         <div v-if="showLoading" class="text-center my-5 py-3">
             <h1>CARICAMENTO...</h1>
