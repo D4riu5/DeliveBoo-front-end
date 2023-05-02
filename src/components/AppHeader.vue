@@ -322,8 +322,8 @@ header {
             .selected {
                 color: #fd456b;
 
-                &:hover {
-                    color: white;
+                &:hover{
+                    color: #ffa500;
                 }
             }
 
