@@ -146,6 +146,15 @@ export default {
 
 <template>
     <div v-if="store.cart.length > 0">
+        <!-- checkout progress -->
+        <div class="my-img-container">
+            <div>
+                <img v-if="!showDropin" src="./../img/checkout/checkout dettagli.png" alt="">
+                <img v-else src="./../img/checkout/checkout completato.png" alt="">
+            </div>
+        </div>
+        <!-- /checkout progress -->
+        
         <!-- LOADING -->
         <div v-if="showLoading" class="text-center my-5 py-3">
             <h1>CARICAMENTO...</h1>
@@ -160,6 +169,8 @@ export default {
                 </li>
             </ul>
         </div>
+        
+
 
         <form class="container-xxl my-container p-3">
             <div class="form-cart clickedBtnPay">
@@ -272,6 +283,15 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my-img-container{
+    width: 100%;
+    height: auto;
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+
 .my-container {
     gap: 25px;
 
@@ -282,7 +302,12 @@ export default {
         border-radius: 10px;
         padding: 20px 15px;
         margin: 0 auto;
+        display: flex;
+        justify-content: center;
 
+        .my-text-center{
+            text-align: center;
+        }
         .flex-form {
             display: flex;
             justify-content: space-between;
