@@ -1179,7 +1179,7 @@ main {
     }
 
     .restaurantsContainer {
-        width: 102%;
+        width: 99%;
         margin-left: 5px;
     }
 
