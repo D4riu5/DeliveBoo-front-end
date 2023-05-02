@@ -19,7 +19,7 @@ export default {
 
 <template>
     <footer>
-        <div class="footer-container">
+        <div class="footer-container container-xxl">
             <div class="footer-section">
                 <h5>
                     <strong>

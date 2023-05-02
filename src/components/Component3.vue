@@ -20,23 +20,14 @@ export default {
         </div>
 
 
-        <div class="d-flex flex-row justify-content-center pb-5">
+        <div class="d-flex justify-content-center pb-5 flex-column flex-lg-row flex-xl-row flex-xxl-row">
             <div class="carousel-container my-2">
-                <swiper-container
-                    class="mySwiper swiper-container"
-                    pagination="true"
-                    effect="cube"
-                    grab-cursor="true"
-                    cube-effect-shadow="true"
-                    cube-effect-slide-shadows="true"
-                    cube-effect-shadow-offset="20"
-                    cube-effect-shadow-scale="1.04"
-                    navigation="true"
-                    style="
+                <swiper-container class="mySwiper swiper-container" pagination="true" effect="cube" grab-cursor="true"
+                    cube-effect-shadow="true" cube-effect-slide-shadows="true" cube-effect-shadow-offset="20"
+                    cube-effect-shadow-scale="1.04" navigation="true" style="
                         --swiper-navigation-color: red;
                         --swiper-pagination-color: red;
-                    "
-                >
+                    ">
                     <swiper-slide>
                         <img src="./../img/step_1b.jpg" />
                     </swiper-slide>
@@ -50,22 +41,12 @@ export default {
             </div>
 
             <div class="carousel-container2 my-2">
-                <swiper-container
-                    class="mySwiper swiper-container"
-                    pagination="true"
-                    effect="cube"
-                    grab-cursor="true"
-                    cube-effect-shadow="true"
-                    cube-effect-slide-shadows="true"
-                    cube-effect-shadow-offset="20"
-                    cube-effect-shadow-scale="1.04"
-                    
-                    navigation="true"
-                    style="
+                <swiper-container class="mySwiper swiper-container" pagination="true" effect="cube" grab-cursor="true"
+                    cube-effect-shadow="true" cube-effect-slide-shadows="true" cube-effect-shadow-offset="20"
+                    cube-effect-shadow-scale="1.04" navigation="true" style="
                         --swiper-navigation-color: red;
                         --swiper-pagination-color: red;
-                    "
-                >
+                    ">
                     <swiper-slide>
                         <img src="./../img/step_4b.jpg" />
                     </swiper-slide>
@@ -184,11 +165,33 @@ main {
 
 .swiper-container {
     width: 350px;
-    margin: 0 80px; /* add some margin between the two containers */
+    margin: 0 80px;
+    /* add some margin between the two containers */
 }
 
 .swiper-slide img {
     max-width: 100%;
 }
 
+@media screen and (min-width: 320px) and (max-width: 425px) {
+
+    .swiper-container {
+        width: 300px;
+        margin: 0 80px;
+        /* add some margin between the two containers */
+    }
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 30px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
 </style>
