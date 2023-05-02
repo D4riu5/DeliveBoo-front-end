@@ -61,14 +61,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <!-- Contenitore "COMINCIA LA RICERCA!" -->
-
         </div>
-
-        <!-- Contenitore Immagine Pizza standing  -->
-        <!-- <div class="logoBox">
-            <img src="../img/standing.png" alt="">
-        </div> -->
     </div>
 </template>
 
@@ -106,7 +99,7 @@ export default {
         h1 {
             font-size: 30px;
             font-family: 'Comfortaa', cursive;
-            
+
         }
     }
 
@@ -115,7 +108,7 @@ export default {
 
         .subtitleText {
             color: white;
-            
+
         }
     }
 
@@ -136,51 +129,6 @@ export default {
         }
 
     }
-
-    // .btnContainer {
-    //     top: 46.7%;
-    //     left: 12.7%;
-    //     position: absolute;
-    //     z-index: 3;
-    //     transform: translate(-50%, -50%);
-
-
-
-    //     .bottone {
-    //         width: 9px;
-    //         height: 10px;
-    //         color: white;
-    //         background-color: red;
-    //         border-radius: 50px;
-    //         padding: 28px;
-
-    //         .buttonText {
-    //             position: absolute;
-    //             top: 38%;
-    //             bottom: 50%;
-    //             transform: translate(-50%, -50%);
-    //             font-weight: bold;
-    //         }
-    //     }
-
-    // }
-
-    // .logoBox {
-    //     top: 58.5%;
-    //     left: 56.5%;
-    //     position: absolute;
-    //     width: 76px;
-    //     height: 96px;
-    //     z-index: 5;
-    // }
-
-
-    // img {
-    //     width: 100%;
-    //     height: 100%;
-    // }
-
-
 }
 
 .absoluteContainer {
@@ -189,4 +137,245 @@ export default {
     left: 0%;
     z-index: 4;
 }
+
+@media screen and (max-width: 320px) {
+
+    .VideoContainer {
+        position: relative;
+        width: 100%;
+        height: calc(120vh - 100px);
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+    }
+
+    .JumbotronContainer {
+        position: relative;
+
+        .layover {
+            position: absolute;
+            background: rgb(0 0 0 / 45%);
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            top: 0%;
+            left: 0%;
+        }
+
+        .titleContainer {
+            z-index: 3;
+
+            h1 {
+                font-size: 30px;
+                font-family: 'Comfortaa', cursive;
+
+            }
+        }
+
+        .subtitleContainer {
+            z-index: 3;
+
+            .subtitleText {
+                color: white;
+
+            }
+        }
+
+        .disclaimerContainer {
+            z-index: 3;
+
+            .disclaimerText {
+                display: block;
+                background: rgb(0, 0, 0);
+                width: 100%;
+                padding: 18px 40px;
+                border-radius: 36px;
+                cursor: pointer;
+
+                X .disclaimerText:hover {
+                    color: red;
+                }
+            }
+
+        }
+
+
+
+    }
+
+    .absoluteContainer {
+        position: absolute;
+        top: 28%;
+        left: 0%;
+        z-index: 4;
+    }
+
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px) {
+
+.VideoContainer {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 100px);
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+}
+
+.JumbotronContainer {
+    position: relative;
+
+    .layover {
+        position: absolute;
+        background: rgb(0 0 0 / 45%);
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        top: 0%;
+        left: 0%;
+    }
+
+    .titleContainer {
+        z-index: 3;
+
+        h1 {
+            font-size: 30px;
+            font-family: 'Comfortaa', cursive;
+
+        }
+    }
+
+    .subtitleContainer {
+        z-index: 3;
+
+        .subtitleText {
+            color: white;
+
+        }
+    }
+
+    .disclaimerContainer {
+        z-index: 3;
+
+        .disclaimerText {
+            display: block;
+            background: rgb(0, 0, 0);
+            width: 100%;
+            padding: 19px 62px;
+            border-radius: 36px;
+            cursor: pointer;
+
+            X .disclaimerText:hover {
+                color: red;
+            }
+        }
+
+    }
+
+
+
+}
+
+.absoluteContainer {
+    position: absolute;
+    top: 28%;
+    left: 0%;
+    z-index: 4;
+}
+
+
+}
+
+
+@media screen and (min-width: 375px) and (max-width: 425px) {
+
+.VideoContainer {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 100px);
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+}
+
+.JumbotronContainer {
+    position: relative;
+
+    .layover {
+        position: absolute;
+        background: rgb(0 0 0 / 45%);
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        top: 0%;
+        left: 0%;
+    }
+
+    .titleContainer {
+        z-index: 3;
+
+        h1 {
+            font-size: 35px;
+            font-family: 'Comfortaa', cursive;
+
+        }
+    }
+
+    .subtitleContainer {
+        z-index: 3;
+
+        .subtitleText {
+            color: white;
+
+        }
+    }
+
+    .disclaimerContainer {
+        z-index: 3;
+
+        .disclaimerText {
+            display: block;
+            background: rgb(0, 0, 0);
+            width: 100%;
+            padding: 19px 62px;
+            border-radius: 36px;
+            cursor: pointer;
+
+            .disclaimerText:hover {
+                color: red;
+            }
+        }
+
+    }
+
+
+
+}
+
+.absoluteContainer {
+    position: absolute;
+    top: 28%;
+    left: 0%;
+    z-index: 4;
+}
+
+
+}
+
+
+
 </style>

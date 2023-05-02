@@ -107,7 +107,8 @@ main {
     height: auto;
 
     .icon {
-        width: 60%;
+        width: 80%;
+        height: 80%;
         aspect-ratio: 1/1;
         object-fit: contain;
     }
@@ -139,7 +140,8 @@ main {
 
         .icon {
             width: 100%;
-            aspect-ratio: 1/1;
+            height: 100%;
+            aspect-ratio: 1/2;
             object-fit: contain;
         }
     }
