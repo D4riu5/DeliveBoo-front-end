@@ -73,6 +73,13 @@ export default {
             };
             return courseMap[course] || course;
         },
+
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        },
     },
     created() {
         this.getFoods();
@@ -129,55 +136,61 @@ export default {
                 <h1 class="fw-bold" style="font-size: 60px">
                     {{ store.restaurant.name }}
                 </h1>
+                <div class="d-flex flex-row justify-content-between">
+                    <ul class="d-flex flex-row list-group">
+                        <li>
+                            <i class="fa-solid fa-location-dot mx-1"></i
+                            >{{ store.restaurant.address }}
+                        </li>
+                        <li class="mx-3">
+                            <i class="fa-solid fa-clock mx-1"></i> 20-30'
+                        </li>
+                        <li
+                            style="padding: 1px; margin-top: -1px"
+                            :class="
+                                store.restaurant.prezzo_spedizione == 0
+                                    ? 'bg-warning rounded'
+                                    : ''
+                            "
+                        >
+                            <i class="fa-solid fa-truck-fast mx-1"></i>
+                            Spedizione:
+                            {{
+                                store.restaurant.prezzo_spedizione == 0
+                                    ? "Gratuita!"
+                                    : store.restaurant.prezzo_spedizione + " €"
+                            }}
+                        </li>
+                    </ul>
 
-                <ul class="d-flex flex-row list-group">
-                    <li>
-                        <i class="fa-solid fa-location-dot mx-1"></i
-                        >{{ store.restaurant.address }}
-                    </li>
-                    <li class="mx-3">
-                        <i class="fa-solid fa-clock mx-1"></i> 20-30'
-                    </li>
-                    <li
-                        style="padding: 1px; margin-top: -1px"
-                        :class="
-                            store.restaurant.prezzo_spedizione == 0
-                                ? 'bg-warning rounded'
-                                : ''
-                        "
-                    >
-                        <i class="fa-solid fa-truck-fast mx-1"></i>
-                        Spedizione:
-                        {{
-                            store.restaurant.prezzo_spedizione == 0
-                                ? "Gratuita!"
-                                : store.restaurant.prezzo_spedizione + " €"
-                        }}
-                    </li>
-                </ul>
+                    <ul class="d-flex flex-row list-group">
+                        <li
+                            v-for="course in courses"
+                            :key="course"
+                            class="mx-3"
+                        >
+                            <a :href="'#' + course" class="text-danger">{{
+                                displayCourseName(course)
+                            }}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!--/ RESTAURANT HEADER -->
 
         <!-- RESTAURANT MENU -->
         <div class="restaurant-menu d-flex flex-column">
-            <div class="menu-container ps-2 mb-5 d-flex">
-                <!-- left side -->
-                <div class="sticky-wrapper">
-                    <div class="mx-3">
-                        <ul>
-                            <li v-for="course in courses" :key="course">
-                                {{ displayCourseName(course) }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!--/ left side -->
-
-                <!-- right side -->
-                <div class="mx-3 food-container ps-4">
+            <div class="menu-container ps-2 mb-5 d-flex" style="height: 70vh">
+                <!-- lower side -->
+                <div class="mx-3 food-container ps-5" ref="container">
                     <!-- FOOD -->
-                    <div v-for="course in courses" :key="course" class="mb-5">
+                    <div
+                        v-for="course in courses"
+                        :key="course"
+                        class="mb-3"
+                        :id="course"
+                    >
                         <h3 class="fw-bold">{{ displayCourseName(course) }}</h3>
                         <div
                             class="d-flex flex-row flex-wrap"
@@ -215,10 +228,10 @@ export default {
                                                 />
                                             </div>
                                             <div class="d-flex flex-column">
-                                                <p class="f_title fs-3">
+                                                <p class="f_title fw-bold fs-5">
                                                     {{ food.name }}
                                                 </p>
-                                                <p class="f_subline w-75 fs-6">
+                                                <p class="f_subline w-75">
                                                     {{ food.description }}
                                                 </p>
                                             </div>
@@ -340,7 +353,12 @@ export default {
 
                     <!-- / FOOD -->
                 </div>
-                <!--/ right side -->
+                <!--/ lower side -->
+            </div>
+            <div class="d-flex justify-content-start mx-5 my-3 px-5">
+                <button id="special_button" class="btn btn-danger" @click="scrollToTop">
+                    <a href="#nogo"><i class="fa-solid fa-arrow-up"></i></a>
+                </button>
             </div>
         </div>
 
@@ -400,19 +418,25 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+div[id] {
+    padding-top: 250px;
+    margin-top: -250px;
+}
+
 .restaurant-header {
-    max-height: 30vh;
+    max-height: 27vh;
 
     img {
         width: 100%;
         object-fit: cover;
         object-position: center;
         z-index: -1;
+        filter: blur(2px);
     }
 
     .restaurant-banner {
         width: 70%;
-        top: 88%;
+        top: 75%;
         left: 38%;
         z-index: 2;
 
@@ -422,22 +446,21 @@ export default {
         box-shadow: 0px 2px 24px -9px rgba(0, 0, 0, 0.75);
     }
 }
-.sticky-wrapper {
-    position: sticky;
-    top: 0;
-
-    // bottom: calc(100% - (100vh - #footer-Div.offsetTop));
-}
 
 .restaurant-menu {
     background-color: #eeeeee;
     .menu-container {
-        padding-top: 20px;
         padding-bottom: 20px;
 
-        margin-top: 85px;
+        margin-top: 40px;
         min-height: 80vh;
         overflow: auto;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 20px;
     }
 }
 
@@ -453,7 +476,7 @@ export default {
     a {
         color: black;
         letter-spacing: 0.02em;
-        font-weight: 600;
+        margin-bottom: 5px !important;
     }
 
     h1,
@@ -480,8 +503,8 @@ export default {
     .flip-box,
     .front,
     .back {
-        width: 560px;
-        height: 240px;
+        width: 540px;
+        height: 180px;
     }
 
     .js_container,
@@ -518,6 +541,7 @@ export default {
     }
 
     .f_subline {
+        font-size: 14px;
     }
 
     .f_headline {
@@ -598,4 +622,6 @@ export default {
         transform: rotate(-180deg);
     }
 }
+
+
 </style>
