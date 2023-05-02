@@ -146,8 +146,18 @@ export default {
 
 <template>
     <div v-if="store.cart.length > 0">
+        <!-- checkout progress -->
+        <div class="my-img-container">
+            <div>
+                <img v-if="!showDropin" src="./../img/checkout/checkout dettagli.png" alt="">
+                <img v-else src="./../img/checkout/checkout completato.png" alt="">
+            </div>
+        </div>
+        <!-- /checkout progress -->
+        
         <!-- LOADING -->
-        <div v-if="showLoading" class="text-center my-5 py-3">
+        <div v-if="showLoading" class="text-center pt-5">
+            <img src="https://bandifsma.mise.gov.it/static/images/loader.gif" alt="Caricamento">
             <h1>CARICAMENTO...</h1>
         </div>
 
@@ -160,16 +170,18 @@ export default {
                 </li>
             </ul>
         </div>
+        
+
 
         <form class="container-xxl my-container p-3">
             <div class="form-cart clickedBtnPay">
                 <!-- CUSTOMER DETAILS -->
                 <div v-if="!showDropin">
                     <h3 class="fontColor">Dettagli cliente</h3>
-                    <!-- NAME-->
+                    <!-- NAME & SURNAME -->
                     <div class="flex-form">
-                        <div class="items">
-                            <div class="items">
+                        <div class="flex-column align-items-center">
+                            <div class="justify-content-center align-items-center">
                                 <label for="costumer_name" class="form-label">
                                     Nome e Cognome<span class="text-danger"> *</span>
                                 </label>
@@ -181,8 +193,8 @@ export default {
 
                     <!-- DELIVERY ADDRESS -->
                     <div class="flex-form">
-                        <div class="items">
-                            <div class="items">
+                        <div class="flex-column align-items-center">
+                            <div class="justify-content-center align-items-center">
                                 <label for="delivery_address" class="form-label">
                                     Indirizzo di consegna<span class="text-danger"> *</span>
                                 </label>
@@ -194,25 +206,29 @@ export default {
 
                     <!-- EMAIL ADDRESS -->
                     <div class="flex-form">
-                        <div class="items">
-                            <label for="email_address" class="form-label">
-                                Indirizzo email<span class="text-danger"> *</span>
-                            </label>
-                            <input type="text" class="form-control" id="email_address" name="email_address"
-                                placeholder="email@example.it" v-model="order.email_address" />
+                        <div class="flex-column align-items-center">
+                            <div class="justify-content-center align-items-center">
+                                <label for="email_address" class="form-label">
+                                    Indirizzo Email<span class="text-danger"> *</span>
+                                </label>
+                                <input type="text" class="form-control" id="email_address" name="email_address"
+                                    placeholder="email@example.it" v-model="order.email_address" />
+                            </div>
                         </div>
                     </div>
 
 
                     <!-- DELIVERY CONTACT -->
                     <div class="flex-form">
-                        <div class="items">
-                            <label for="delivery_contact" class="form-label">
-                                Recapito telefonico<span class="text-danger"> *</span>
-                            </label>
-                            <input type="text" class="form-control" id="delivery_contact" name="delivery_contact"
-                                placeholder="Inserisci il numero di telefono per la consegna.."
-                                v-model="order.delivery_contact" />
+                        <div class="flex-column align-items-center">
+                            <div class="justify-content-center align-items-center">
+                                <label for="delivery_contact" class="form-label">
+                                    Recapito telefonico<span class="text-danger"> *</span>
+                                </label>
+                                <input type="text" class="form-control" id="delivery_contact" name="delivery_contact"
+                                    placeholder="Inserisci il numero di telefono per la consegna.."
+                                    v-model="order.delivery_contact" />
+                            </div>
                         </div>
                     </div>
                     <!-- DISPLAY BRAINTREE BUTTON -->
@@ -253,7 +269,7 @@ export default {
                                 ">
                                 Torna indietro
                             </button>
-                            <button id="submit-button" class="buttonPay mx-2">Conferma pagamento</button>
+                            <button id="submit-button" class="buttonPay mx-2" @click.prevent="(showLoading = true), (dropInLoaded = false)">Conferma pagamento</button>
                         </div>
                     </div>
                 </div>
@@ -272,20 +288,39 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+img {
+    width: 15%;
+    height: 15%;
+}
+
+.my-img-container{
+    width: 100%;
+    height: auto;
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+
 .my-container {
+    display: flex;
     gap: 25px;
 
     .form-cart {
         width: 75%;
         background-color: white;
-        min-height: 400px;
+        min-height: 150px;
         border-radius: 10px;
         padding: 20px 15px;
         margin: 0 auto;
+        display: flex;
+        justify-content: center;
 
+        .my-text-center{
+            text-align: center;
+        }
         .flex-form {
-            display: flex;
-            justify-content: space-between;
             margin: 20px 0;
 
             input {
@@ -328,6 +363,7 @@ export default {
         }
     }
 }
+
 
 .scrittaVuoto {
     font-size: 50px;

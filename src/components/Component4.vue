@@ -18,58 +18,50 @@ export default {
         <div class="restaurantBar text-center container-fluid">
             <p class="">I nostri sponsor</p>
         </div>
-        <swiper-container
-            class="mySwiper"
-            slides-per-view="5"
-            space-between="30"
-            free-mode="true"
-            :autoplay="{
-                delay: 1500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            }"
-            speed="5000"
-            loop="true"
-        >
+        <swiper-container class="mySwiper" slides-per-view="5" space-between="30" free-mode="true" :autoplay="{
+            delay: 1500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        }" speed="5000" loop="true">
             <swiper-slide class="swiper-slide">
                 <!-- burger king -->
-                <img src="./../img/SPONSORS/4.png" /> 
+                <img class="icon" src="./../img/SPONSORS/4.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- mac -->
-                <img src="./../img/SPONSORS/2.png"/>
+                <img class="icon" src="./../img/SPONSORS/2.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/3.png" />
+                <img class="icon" src="./../img/SPONSORS/3.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- ac Milan -->
-                <img src="./../img/SPONSORS/1.png" />
+                <img class="icon" src="./../img/SPONSORS/1.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/5.png" />
+                <img class="icon" src="./../img/SPONSORS/5.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/6.png" />
+                <img class="icon" src="./../img/SPONSORS/6.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- Neymar -->
-                <img src="./../img/SPONSORS/7.png" />
+                <img class="icon" src="./../img/SPONSORS/7.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/8.png" />
+                <img class="icon" src="./../img/SPONSORS/8.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/9.png" />
+                <img class="icon" src="./../img/SPONSORS/9.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- OPEN -->
-                <img src="./../img/SPONSORS/10.png" />
+                <img class="icon" src="./../img/SPONSORS/10.png" />
             </swiper-slide>
         </swiper-container>
     </main>
@@ -113,11 +105,76 @@ main {
     justify-content: center;
     align-items: center;
     height: auto;
+
+    .icon {
+        width: 80%;
+        height: 80%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+    }
 }
 
-img {
-    width: 60%;
-    aspect-ratio: 1/1;
-    object-fit: contain;
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 25px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+
+        .icon {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1/2;
+            object-fit: contain;
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 45px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+
+    .restaurantBar {
+        border-top: 1px solid lightgray;
+
+        p {
+            margin-top: 8px;
+            padding-top: 12px;
+            font-size: 45px;
+            color: black;
+            font-family: "Comfortaa", cursive;
+            vertical-align: middle;
+        }
+    }
 }
 </style>
