@@ -312,7 +312,10 @@ main {
             width: calc(100% / 4 - 20px);
             background-color: white;
             display: flex;
-            margin: 10px 10px;
+            margin-right: 6px;
+            margin-left: 8px;
+            margin-top: 3px;
+            margin-bottom: 3px;
             user-select: none;
             border: 1px solid #000000;
             border-radius: 10px;
@@ -515,11 +518,11 @@ main {
                 width: calc(100% / 1);
                 background-color: white;
                 display: flex;
-                margin: 0px -1px 13px 1px;
                 user-select: none;
                 border: 0.5px solid #000000;
                 border-radius: 10px;
                 box-shadow: 0px 2px 2px 0px #000000;
+                
 
                 img {
                     object-fit: cover;
@@ -554,8 +557,8 @@ main {
             .price_badge {
                 font-size: 10px;
                 position: absolute;
-                top:0;
-                left:0;
+                top: 0;
+                left: 0;
                 width: 65px;
             }
         }
@@ -727,7 +730,6 @@ main {
                 width: calc(100% / 1);
                 background-color: white;
                 display: flex;
-                margin: 0px -1px 13px 1px;
                 user-select: none;
                 border: 0.5px solid #000000;
                 border-radius: 10px;
@@ -813,7 +815,7 @@ main {
     }
 }
 
-@media screen and (min-width: 376px) and (max-width: 425px) {
+@media screen and (min-width: 376px) and (max-width: 426px) {
     main {
         margin-top: -15px;
 
@@ -935,14 +937,13 @@ main {
             .name {
                 color: black;
                 font-size: 15px;
-        
+
             }
 
             .wrapperProperties {
                 width: calc(100% / 1);
                 background-color: white;
                 display: flex;
-                margin: 0px -1px 13px 1px;
                 user-select: none;
                 border: 0.5px solid #000000;
                 border-radius: 10px;
@@ -1158,7 +1159,6 @@ main {
                 width: calc(100% / 1);
                 background-color: white;
                 display: flex;
-                margin: 0px -1px 13px 1px;
                 user-select: none;
                 border: 0.5px solid #000000;
                 border-radius: 10px;
@@ -1374,7 +1374,6 @@ main {
                 width: calc(100% / 1);
                 background-color: white;
                 display: flex;
-                margin: 0px -1px 13px 1px;
                 user-select: none;
                 border: 0.5px solid #000000;
                 border-radius: 10px;
@@ -1461,7 +1460,7 @@ main {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     main {
         margin-top: -15px;
 
@@ -1590,11 +1589,14 @@ main {
                 width: calc(100% / 3 - 20px);
                 background-color: white;
                 display: flex;
-                margin: 10px 10px;
                 user-select: none;
                 border: 1px solid #000000;
                 border-radius: 10px;
                 box-shadow: 0px 5px 5px 0px #000000;
+                margin-right: 6px;
+                margin-left: 8px;
+                margin-top: 3px;
+                margin-bottom: 3px;
 
                 img {
                     object-fit: cover;
@@ -1801,7 +1803,6 @@ main {
                 width: calc(100% / 3 - 20px);
                 background-color: white;
                 display: flex;
-                margin: 10px 10px;
                 user-select: none;
                 border: 1px solid #000000;
                 border-radius: 10px;

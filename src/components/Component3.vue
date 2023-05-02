@@ -178,7 +178,7 @@ main {
 @media screen and (min-width: 320px) and (max-width: 425px) {
 
     .swiper-container {
-        width: 300px;
+        width: 200px;
         margin: 0 80px;
         /* add some margin between the two containers */
     }
