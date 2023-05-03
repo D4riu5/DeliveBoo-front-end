@@ -86,7 +86,7 @@ export default {
     .layover {
         position: absolute;
         background: rgb(0 0 0 / 45%);
-        width: 102%;
+        width: 100%;
         height: 100%;
         z-index: 2;
         top: 0%;
