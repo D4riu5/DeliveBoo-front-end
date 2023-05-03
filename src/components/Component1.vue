@@ -70,7 +70,7 @@ export default {
 .VideoContainer {
     position: relative;
     width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 99px);
 
     video {
         width: 100%;
@@ -86,7 +86,7 @@ export default {
     .layover {
         position: absolute;
         background: rgb(0 0 0 / 45%);
-        width: 100%;
+        width: 102%;
         height: 100%;
         z-index: 2;
         top: 0%;
@@ -164,6 +164,7 @@ export default {
             z-index: 2;
             top: 0%;
             left: 0%;
+            overflow-x: hidden;
         }
 
         .titleContainer {
@@ -196,7 +197,7 @@ export default {
                 border-radius: 36px;
                 cursor: pointer;
 
-                X .disclaimerText:hover {
+                .disclaimerText:hover {
                     color: red;
                 }
             }

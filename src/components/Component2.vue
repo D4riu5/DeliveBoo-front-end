@@ -1053,7 +1053,7 @@ main {
 
         #TypesContainer {
             overflow-y: auto;
-            width: 200px;
+            width: 180px;
             height: 600px;
 
             &::-webkit-scrollbar {
@@ -1179,7 +1179,7 @@ main {
     }
 
     .restaurantsContainer {
-        width: 99%;
+        width: 96%;
         margin-left: 5px;
     }
 

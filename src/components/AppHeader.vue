@@ -633,7 +633,7 @@ header {
     }
 
     .nav-link {
-        font-size: 9px;
+        font-size: 6px;
     }
 
     .iconcina {
@@ -659,8 +659,8 @@ header {
             position: relative;
 
             .imgContainer {
-                width: 67px;
-                height: 39px;
+                width: 58px;
+                height: 35px;
                 margin: -14px;
 
                 img {
@@ -753,7 +753,7 @@ header {
     }
 
     .nav-link {
-        font-size: 9px;
+        font-size: 8px;
     }
 
     .iconcina {
@@ -897,8 +897,8 @@ header {
             position: relative;
 
             .imgContainer {
-                width: 79px;
-                height: 46px;
+                width: 74px;
+                height: 42px;
                 margin: -14px;
 
                 img {
@@ -1107,11 +1107,11 @@ header {
     }
 
     .nav-link {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .iconcina {
-        font-size: 21px;
+        font-size: 16px;
         padding: 0px 0px;
         margin: 0px -12px;
     }
@@ -1133,8 +1133,8 @@ header {
             position: relative;
 
             .imgContainer {
-                width: 100px;
-                height: 59px;
+                width: 99px;
+                height: 55px;
 
                 img {
                     width: 100%;
@@ -1225,7 +1225,7 @@ header {
     }
 
     .iconcina {
-        font-size: 25px;
+        font-size: 22px;
         padding: 0px 10px;
     }
 }
