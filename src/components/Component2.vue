@@ -10,14 +10,10 @@ export default {
             store,
             selectedTypes: [],
             numVisibleRestaurants: 16,
-            shippingCost: false,
+            showFreeShippingOnly: false,
         };
     },
     methods: {
-        freeDelivery() {
-            this.shippingCost = !this.shippingCost;
-            console.log(this.shippingCost, "shipping value");
-        },
         getTypes() {
             axios.get(this.store.backEndLink + "/api/types").then((resp) => {
                 // console.log(resp.data.types);
@@ -44,6 +40,14 @@ export default {
                 this.selectedTypes.push(typeName);
             }
         },
+
+        // Filter restaurants by free shipping only
+        freeShippingRestaurants() {
+            return this.store.restaurants.filter(
+                (restaurant) => restaurant.prezzo_spedizione == 0
+            );
+        },
+
         // Load more restaurants
         loadMoreRestaurants() {
             this.numVisibleRestaurants += 16;
@@ -58,12 +62,34 @@ export default {
     },
     computed: {
         filteredRestaurants() {
-            if (this.selectedTypes.length === 0) {
-                // If no types are selected, return all restaurants
+            if (this.selectedTypes.length === 0 && !this.showFreeShippingOnly) {
+                // If no types are selected and showFreeShippingOnly is false, return all restaurants
                 return this.store.restaurants;
-            } else {
-                // Filter the restaurants by checking if they have at least one type that is included in the selectedTypes array
+            } else if (
+                this.selectedTypes.length === 0 &&
+                this.showFreeShippingOnly
+            ) {
+                // If showFreeShippingOnly is true and no types are selected, return free shipping restaurants
+                return this.freeShippingRestaurants();
+            } else if (
+                this.selectedTypes.length > 0 &&
+                !this.showFreeShippingOnly
+            ) {
+                // If types are selected and showFreeShippingOnly is false, filter the restaurants by selected types
                 return this.store.restaurants.filter((restaurant) => {
+                    return this.selectedTypes.every((typeName) => {
+                        return restaurant.types.some((type) => {
+                            return type.name === typeName;
+                        });
+                    });
+                });
+            } else if (
+                this.selectedTypes.length > 0 &&
+                this.showFreeShippingOnly
+            ) {
+                // If types are selected and showFreeShippingOnly is true, filter the restaurants by selected types and free shipping
+                const freeShippingRestaurants = this.freeShippingRestaurants();
+                return freeShippingRestaurants.filter((restaurant) => {
                     return this.selectedTypes.every((typeName) => {
                         return restaurant.types.some((type) => {
                             return type.name === typeName;
@@ -108,13 +134,30 @@ export default {
         <section class="pt-1 pb-1">
             <div class="container-xxl d-flex flex-column">
                 <div class="d-flex">
-                    <div id="TypesContainer" class="d-flex flex-wrap rounded p-3">
-                        <div class="type-span" @click="freeDelivery()">
+                    <div
+                        id="TypesContainer"
+                        class="d-flex flex-wrap rounded p-3"
+                    >
+                        <div
+                            :class="{
+                                active: showFreeShippingOnly,
+                            }"
+                            @click="
+                                showFreeShippingOnly = !showFreeShippingOnly
+                            "
+                            class="type-span"
+                        >
                             Sped. Gratuita
                         </div>
-                        <div v-bind:class="my - button" v-for="type in store.types" :class="{
+                        <div
+                            v-for="type in store.types"
+                            :class="{
                                 active: selectedTypes.includes(type.name),
-                            }" class="type-span" @click="toggleTypeSelection(type.name)" :key="type.id">
+                            }"
+                            class="type-span"
+                            @click="toggleTypeSelection(type.name)"
+                            :key="type.id"
+                        >
                             {{ type.name }}
                         </div>
                     </div>
@@ -122,31 +165,52 @@ export default {
 
                     <!-- RIGHT SIDE -->
                     <div class="my-container restaurants_box">
-                        <div class="restaurantsContainer" ref="restaurantsContainer">
+                        <div
+                            class="restaurantsContainer"
+                            ref="restaurantsContainer"
+                        >
                             <div class="restaurantWrapper">
-                                <div class="restaurant wrapperProperties" v-for="restaurant in visibleRestaurants"
-                                    :key="restaurant.id">
-                                    <router-link :to="{
+                                <div
+                                    class="restaurant wrapperProperties"
+                                    v-for="restaurant in visibleRestaurants"
+                                    :key="restaurant.id"
+                                >
+                                    <router-link
+                                        :to="{
                                             name: 'restaurant-menu',
                                             params: { id: restaurant.id },
-                                        }">
-                                        <div class="restaurant-img position-relative">
-                                            <img v-if="restaurant.full_image_restaurant
-                                                " :src="restaurant.full_image_restaurant
-        " :alt="restaurant.name" />
-                                            <img v-else
+                                        }"
+                                    >
+                                        <div
+                                            class="restaurant-img position-relative"
+                                        >
+                                            <img
+                                                v-if="
+                                                    restaurant.full_image_restaurant
+                                                "
+                                                :src="
+                                                    restaurant.full_image_restaurant
+                                                "
+                                                :alt="restaurant.name"
+                                            />
+                                            <img
+                                                v-else
                                                 src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
-                                                :alt="restaurant.name" />
+                                                :alt="restaurant.name"
+                                            />
                                             <div
-                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
-                                                <i class="fa-solid fa-truck-fast"></i>
+                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-truck-fast"
+                                                ></i>
                                                 <strong class="ms-2">
                                                     {{
                                                         restaurant.prezzo_spedizione ==
                                                         0
-                                                        ? "Gratis!"
-                                                        : restaurant.prezzo_spedizione +
-                                                        " €"
+                                                            ? "Gratis!"
+                                                            : restaurant.prezzo_spedizione +
+                                                              " €"
                                                     }}
                                                 </strong>
                                             </div>
@@ -154,11 +218,14 @@ export default {
 
                                         <div class="restaurant-info d-flex">
                                             <div class="">
-                                                <div class="name" style="
+                                                <div
+                                                    class="name"
+                                                    style="
                                                         color: orange;
                                                         margin-top: 5px;
                                                         margin-bottom: -5px;
-                                                    ">
+                                                    "
+                                                >
                                                     {{
                                                         ratingToStars(
                                                             restaurant.avg_rating
@@ -173,11 +240,19 @@ export default {
                                             </div>
 
                                             <div class="restaurant-address">
-                                                <i class="fa-solid fa-location-dot"></i>{{ restaurant.address }}
+                                                <i
+                                                    class="fa-solid fa-location-dot"
+                                                ></i
+                                                >{{ restaurant.address }}
                                             </div>
 
-                                            <div class="category-badge d-flex flex-row flex-wrap">
-                                                <div class="me-2" v-for="type in restaurant.types">
+                                            <div
+                                                class="category-badge d-flex flex-row flex-wrap"
+                                            >
+                                                <div
+                                                    class="me-2"
+                                                    v-for="type in restaurant.types"
+                                                >
                                                     {{ type.name }}
                                                 </div>
                                             </div>
@@ -186,15 +261,24 @@ export default {
                                 </div>
 
                                 <!-- SHOW CUSTOM MESSAGE WHEN NO RESTAURANT IS FOUND -->
-                                <div v-if="filteredRestaurants.length === 0" class="no-results">
+                                <div
+                                    v-if="filteredRestaurants.length === 0"
+                                    class="no-results"
+                                >
                                     <h3 class="p-4">
                                         Ci dispiace, non abbiamo trovato nessun
                                         ristorante con le categorie selezionate.
                                     </h3>
                                 </div>
 
-                                <div v-if="showLoadMoreButton" class="d-flex justify-content-center w-100 m-3">
-                                    <button class="btn btn-danger" @click="loadMoreRestaurants">
+                                <div
+                                    v-if="showLoadMoreButton"
+                                    class="d-flex justify-content-center w-100 m-3"
+                                >
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="loadMoreRestaurants"
+                                    >
                                         Carica altri ristoranti
                                     </button>
                                 </div>
@@ -346,7 +430,8 @@ main {
             img {
                 object-fit: cover;
                 width: 140%;
-                height: 92%;            }
+                height: 92%;
+            }
 
             &:hover {
                 border-bottom: 5px solid #000000;
@@ -530,7 +615,8 @@ main {
 
             .name {
                 color: black;
-                font-size: 13px;            }
+                font-size: 13px;
+            }
 
             .wrapperProperties {
                 width: calc(100% / 1);
@@ -1810,7 +1896,8 @@ main {
                 img {
                     object-fit: cover;
                     width: 150%;
-                    height: 92%;                }
+                    height: 92%;
+                }
 
                 &:hover {
                     border-bottom: 5px solid #000000;
