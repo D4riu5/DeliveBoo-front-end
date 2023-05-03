@@ -461,8 +461,8 @@ export default {
 .my-button{
     --color: #e43659;
     display: block;
-    width: 6em;
-    height: 2.6em;
+    width: 5.5em;
+    height: 2.5em;
     border: 2px solid black;
     border-radius: 6px;
     font-size: 16px;
@@ -702,6 +702,7 @@ div[id] {
         background-image: url("https://img-fotki.yandex.ru/get/194549/29644339.5/0_d6c60_1d7815f0_orig");
         background-color: transparent;
         transition: all 0.35s linear;
+        cursor: pointer;
     }
 
     .s_arrow_rotate {

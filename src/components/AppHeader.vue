@@ -287,9 +287,9 @@ export default {
         aria-labelledby="offcanvasScrollingLabel"
         ref="cartOffcanvas"
     >
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
-                <strong>{{ restaurantName }}</strong>
+        <div class="offcanvas-header" style="margin-top: -20px">
+            <h5 class="offcanvas-title d-flex flex-column" id="offcanvasScrollingLabel">
+                <strong class="fs-4">{{ restaurantName }}</strong>
                 <strong v-if="cartCount > 0" class="text-danger">
                     <i class="fa-solid fa-truck-fast mx-2"></i
                     >{{ restaurantDeliveryFee + " €" }}
@@ -371,8 +371,9 @@ export default {
             </router-link>
         </div>
     </div>
-    <!-- SHOPPING CART OFFCANVAS -->
-    <div v-if="$route.path === '/checkout' || $route.path.includes('Attivita')" class="offcanvas offcanvas-end"
+    
+
+    <!-- <div v-if="$route.path === '/checkout' || $route.path.includes('Attivita')" class="offcanvas offcanvas-end"
         data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling"
         aria-labelledby="offcanvasScrollingLabel">
         <div class="offcanvas-header">
@@ -422,19 +423,17 @@ export default {
                 Prezzo totale:
                 <span class="text-danger">{{ totalPrice }} €</span>
             </h3>
-            <!-- EMPTY CART-->
-            <button class="btn btn-danger mx-5" @click="emptyCart" v-if="cartCount > 0">
+
+            <button class="btn btn-warning mx-5" @click="emptyCart" v-if="cartCount > 0">
                 <i class="fa-solid fa-trash"></i>
             </button>
-
-            <!--PAY -> CHECKOUT PAGE -->
             <router-link v-if="cartCount > 0" @click="redirectToCheckout" data-bs-dismiss="offcanvas" :to="{
                     name: 'checkout',
                 }" class="btn btn-primary mx-5 my-2">
                 Checkout
             </router-link>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style lang="scss" scoped>
@@ -668,7 +667,7 @@ header {
     }
 
     .nav-link {
-        font-size: 6px;
+        font-size: 9px;
     }
 
     .iconcina {
@@ -694,8 +693,8 @@ header {
             position: relative;
 
             .imgContainer {
-                width: 58px;
-                height: 35px;
+                width: 67px;
+                height: 39px;
                 margin: -14px;
 
                 img {
@@ -788,7 +787,7 @@ header {
     }
 
     .nav-link {
-        font-size: 8px;
+        font-size: 9px;
     }
 
     .iconcina {
@@ -931,8 +930,8 @@ header {
             position: relative;
 
             .imgContainer {
-                width: 74px;
-                height: 42px;
+                width: 79px;
+                height: 46px;
                 margin: -14px;
 
                 img {
@@ -1139,11 +1138,11 @@ header {
     }
 
     .nav-link {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .iconcina {
-        font-size: 16px;
+        font-size: 21px;
         padding: 0px 0px;
         margin: 0px -12px;
     }
@@ -1165,8 +1164,8 @@ header {
             position: relative;
 
             .imgContainer {
-                width: 99px;
-                height: 55px;
+                width: 100px;
+                height: 59px;
 
                 img {
                     width: 100%;
@@ -1255,7 +1254,7 @@ header {
     }
 
     .iconcina {
-        font-size: 22px;
+        font-size: 25px;
         padding: 0px 10px;
     }
 }
