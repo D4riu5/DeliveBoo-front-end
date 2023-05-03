@@ -188,13 +188,13 @@ export default {
                         </li>
                     </ul>
 
-                    <ul class="d-flex flex-row list-group">
+                    <ul style="margin-top: -13px;" class="d-flex flex-row list-group">
                         <li
                             v-for="course in courses"
                             :key="course"
                             class="mx-3"
                         >
-                            <a :href="'#' + course" class="text-danger">{{
+                            <a :href="'#' + course" class="my-button">{{
                                 displayCourseName(course)
                             }}</a>
                         </li>
@@ -458,9 +458,55 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.my-button{
+    --color: #e43659;
+    display: block;
+    width: 6em;
+    height: 2.6em;
+    border: 2px solid black;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.5s;
+    // margin: 0px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    line-height: 2.5em;
+    // padding-left: 8px;
+    font-weight: bold;
+    color: var(--color);
+    text-align: center;
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--color);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+        color: white;
+    }
+
+    &:hover {
+        color: #fff;
+    }
+
+    &:before {
+        top: 100%;
+        left: 100%;
+        transition: all 0.7s;
+    }
+
+    &:hover:before {
+        top: -30px;
+        left: -30px;
+    }
+}
 div[id] {
-    padding-top: 100px;
-    margin-top: -100px;
+    padding-top: 130px;
+    margin-top: -130px;
 }
 
 .restaurant-header {
