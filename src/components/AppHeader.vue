@@ -18,15 +18,19 @@ export default {
             const restaurants = JSON.parse(localStorage.getItem("restaurants"));
             const randomIndex = Math.floor(Math.random() * restaurants.length);
             const restaurantId = restaurants[randomIndex].id;
+
+            this.$nextTick(() => {
+                // scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            });
             return `${restaurantId}`;
         },
 
         redirectToCheckout() {
-            // close the offcanvas
-            this.$nextTick(() => {
-                this.$el.closest(".offcanvas").classList.remove("show");
-            });
-
+            
             // redirect to checkout page
             this.$router.push({ name: "checkout" });
         },
@@ -273,17 +277,30 @@ export default {
     </header>
 
     <!-- SHOPPING CART OFFCANVAS -->
-    <div v-if="$route.path === '/checkout' || $route.path.includes('Attivita')" class="offcanvas offcanvas-end"
-        data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling"
-        aria-labelledby="offcanvasScrollingLabel">
+    <div
+        v-if="$route.path === '/checkout' || $route.path.includes('Attivita')"
+        class="offcanvas offcanvas-end show"
+        data-bs-scroll="true"
+        data-bs-backdrop="false"
+        tabindex="-1"
+        id="offcanvasScrolling"
+        aria-labelledby="offcanvasScrollingLabel"
+        ref="cartOffcanvas"
+    >
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
                 <strong>{{ restaurantName }}</strong>
                 <strong v-if="cartCount > 0" class="text-danger">
-                    <i class="fa-solid fa-truck-fast mx-2"></i>{{ restaurantDeliveryFee + " €" }}
+                    <i class="fa-solid fa-truck-fast mx-2"></i
+                    >{{ restaurantDeliveryFee + " €" }}
                 </strong>
             </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+            ></button>
         </div>
         <div class="offcanvas-body">
             <ul>
@@ -291,8 +308,11 @@ export default {
                 <div v-else>
                     <strong>Prodotti:</strong>
                 </div>
-                <li v-for="(item, index) in store.cart" :key="index"
-                    class="d-flex align-items-center my-1 bg-dark bg-opacity-10 p-2 rounded">
+                <li
+                    v-for="(item, index) in store.cart"
+                    :key="index"
+                    class="d-flex align-items-center my-1 bg-dark bg-opacity-10 p-2 rounded"
+                >
                     <div class="w-100">
                         {{ item.name }}
                     </div>
@@ -307,11 +327,17 @@ export default {
                     </div>
 
                     <div class="d-flex flex-row mx-2">
-                        <button class="btn btn-danger me-2" @click="removeFromCart(index)">
+                        <button
+                            class="btn btn-danger me-2"
+                            @click="removeFromCart(index)"
+                        >
                             -
                         </button>
 
-                        <button class="btn btn-success" @click="addToCart(index)">
+                        <button
+                            class="btn btn-success"
+                            @click="addToCart(index)"
+                        >
                             +
                         </button>
                     </div>
@@ -324,14 +350,23 @@ export default {
                 <span class="text-danger">{{ totalPrice }} €</span>
             </h3>
             <!-- EMPTY CART-->
-            <button class="btn btn-danger mx-5" @click="emptyCart" v-if="cartCount > 0">
+            <button
+                class="btn btn-danger mx-5"
+                @click="emptyCart"
+                v-if="cartCount > 0"
+            >
                 <i class="fa-solid fa-trash"></i>
             </button>
 
             <!--PAY -> CHECKOUT PAGE -->
-            <router-link v-if="cartCount > 0" @click="redirectToCheckout" data-bs-dismiss="offcanvas" :to="{
+            <router-link
+                v-if="cartCount > 0"
+                @click="redirectToCheckout"
+                :to="{
                     name: 'checkout',
-                }" class="btn btn-primary mx-5 my-2">
+                }"
+                class="btn btn-primary mx-5 my-2"
+            >
                 Checkout
             </router-link>
         </div>
@@ -855,7 +890,6 @@ header {
         width: 12%;
         margin: 0px !important;
     }
-
 }
 
 @media screen and (min-width: 504px) and (max-width: 592px) {
@@ -952,7 +986,6 @@ header {
         }
     }
 
-
     .offcanvas {
         width: 20%;
         z-index: 1;
@@ -971,7 +1004,6 @@ header {
         width: 12%;
         margin: 0px !important;
     }
-
 }
 
 
@@ -1187,7 +1219,6 @@ header {
         }
     }
 
-
     .offcanvas {
         width: 20%;
         z-index: 1;
@@ -1206,7 +1237,6 @@ header {
         width: 12%;
         margin: 0px !important;
     }
-
 }
 
 @media screen and (min-width: 767px) and (max-width: 1026px) {

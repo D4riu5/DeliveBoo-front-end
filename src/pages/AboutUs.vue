@@ -4,7 +4,16 @@ export default {
     data() {
         return {
         };
-    }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            // scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+    },
 };
 </script>
 

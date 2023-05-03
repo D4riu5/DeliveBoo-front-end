@@ -100,6 +100,14 @@ export default {
                 }
             });
         }
+        // scroll to top
+        this.$nextTick(() => {
+            // scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
     },
     computed: {
         courses() {
@@ -117,6 +125,15 @@ export default {
                 return order.indexOf(a) - order.indexOf(b);
             });
         },
+
+        ratingToStars() {
+            return (rating) => {
+                const roundedRating = Math.ceil(rating / 2); // divide by 2 and round up
+                const fullStars = "★".repeat(roundedRating); // repeat the star symbol
+                const emptyStars = "☆".repeat(5 - roundedRating); // repeat the empty star symbol
+                return fullStars + emptyStars; // concatenate the full and empty stars
+            };
+        },
     },
 };
 </script>
@@ -125,17 +142,25 @@ export default {
     <section>
         <!-- RESTAURANT HEADER -->
         <div class="restaurant-header d-flex position-relative">
-            <img
+            <img v-if="store.restaurant.full_image_restaurant"
                 class="img-fluid"
                 :src="store.restaurant.full_image_restaurant"
                 :alt="store.restaurant.name"
             />
+            <img v-else src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" alt="">
             <div
                 class="p-4 restaurant-banner position-absolute translate-middle bg-white rounded"
             >
                 <h1 class="fw-bold" style="font-size: 60px">
                     {{ store.restaurant.name }}
                 </h1>
+
+                <div
+                    class="fw-bold fs-3"
+                    style="color: orange; margin-top: -15px"
+                >
+                    {{ ratingToStars(store.restaurant.avg_rating) }}
+                </div>
                 <div class="d-flex flex-row justify-content-between">
                     <ul class="d-flex flex-row list-group">
                         <li>
@@ -222,9 +247,16 @@ export default {
                                                 "
                                             >
                                                 <img
+                                                    v-if="food.full_image_food"
                                                     class="rounded"
                                                     :src="food.full_image_food"
                                                     :alt="food.name"
+                                                />
+                                                <img
+                                                    v-else
+                                                    class="rounded"
+                                                    src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
+                                                    alt=""
                                                 />
                                             </div>
                                             <div class="d-flex flex-column">
@@ -245,6 +277,10 @@ export default {
                                                 </p>
                                                 <div class="d-flex flex-row">
                                                     <span
+                                                        v-if="
+                                                            food.food_detail
+                                                                .spicy
+                                                        "
                                                         class="me-3 fs-6 text-primary"
                                                     >
                                                         <i
@@ -356,7 +392,11 @@ export default {
                 <!--/ lower side -->
             </div>
             <div class="d-flex justify-content-start mx-5 my-3 px-5">
-                <button id="special_button" class="btn btn-danger" @click="scrollToTop">
+                <button
+                    id="special_button"
+                    class="btn btn-danger"
+                    @click="scrollToTop"
+                >
                     <a href="#nogo"><i class="fa-solid fa-arrow-up"></i></a>
                 </button>
             </div>
@@ -419,8 +459,8 @@ export default {
 
 <style lang="scss" scoped>
 div[id] {
-    padding-top: 250px;
-    margin-top: -250px;
+    padding-top: 100px;
+    margin-top: -100px;
 }
 
 .restaurant-header {
@@ -452,7 +492,7 @@ div[id] {
     .menu-container {
         padding-bottom: 20px;
 
-        margin-top: 40px;
+        margin-top: 70px;
         min-height: 80vh;
         overflow: auto;
     }
@@ -622,6 +662,4 @@ div[id] {
         transform: rotate(-180deg);
     }
 }
-
-
 </style>

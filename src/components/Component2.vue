@@ -85,6 +85,15 @@ export default {
         showLoadMoreButton() {
             return this.numVisibleRestaurants < this.filteredRestaurants.length;
         },
+
+        ratingToStars() {
+            return (rating) => {
+                const roundedRating = Math.ceil(rating / 2); // divide by 2 and round up
+                const fullStars = "★".repeat(roundedRating); // repeat the star symbol
+                const emptyStars = "☆".repeat(5 - roundedRating); // repeat the empty star symbol
+                return fullStars + emptyStars; // concatenate the full and empty stars
+            };
+        },
     },
 };
 </script>
@@ -99,49 +108,98 @@ export default {
         <section class="pt-1 pb-1">
             <div class="container-xxl d-flex flex-column">
                 <div class="d-flex">
-                    <div id="TypesContainer" class="d-flex flex-wrap rounded p-3">
+                    <div
+                        id="TypesContainer"
+                        class="d-flex flex-wrap rounded p-3"
+                    >
                         <div class="type-span" @click="freeDelivery()">
                             Sped. Gratuita
                         </div>
-                        <div v-bind:class="my - button" v-for="type in store.types" :class="{
+                        <div
+                            v-bind:class="my - button"
+                            v-for="type in store.types"
+                            :class="{
                                 active: selectedTypes.includes(type.name),
-                            }" class="type-span" @click="toggleTypeSelection(type.name)" :key="type.id">
+                            }"
+                            class="type-span"
+                            @click="toggleTypeSelection(type.name)"
+                            :key="type.id"
+                        >
                             {{ type.name }}
                         </div>
-
                     </div>
                     <!-- / Left side -->
 
-
                     <!-- RIGHT SIDE -->
                     <div class="my-container restaurants_box">
-                        <div class="restaurantsContainer" ref="restaurantsContainer">
+                        <div
+                            class="restaurantsContainer"
+                            ref="restaurantsContainer"
+                        >
                             <div class="restaurantWrapper">
-                                <div class="restaurant wrapperProperties" v-for="restaurant in visibleRestaurants"
-                                    :key="restaurant.id">
-                                    <router-link :to="{
+                                <div
+                                    class="restaurant wrapperProperties"
+                                    v-for="restaurant in visibleRestaurants"
+                                    :key="restaurant.id"
+                                >
+                                    <router-link
+                                        :to="{
                                             name: 'restaurant-menu',
                                             params: { id: restaurant.id },
-                                        }">
-                                        <div class="restaurant-img position-relative">
-                                            <img :src="restaurant.full_image_restaurant
-                                                " :alt="restaurant.name" />
+                                        }"
+                                    >
+                                        <div
+                                            class="restaurant-img position-relative"
+                                        >
+                                            <img
+                                                v-if="
+                                                    restaurant.full_image_restaurant
+                                                "
+                                                :src="
+                                                    restaurant.full_image_restaurant
+                                                "
+                                                :alt="restaurant.name"
+                                            />
+                                            <img
+                                                v-else
+                                                src="https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
+                                                :alt="restaurant.name"
+                                            />
                                             <div
-                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom">
-                                                <i class="fa-solid fa-truck-fast"></i>
+                                                class="price_badge position-absolute top-0 end-0 p-2 text-dark bg-warning rounded-bottom"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-truck-fast"
+                                                ></i>
                                                 <strong class="ms-2">
                                                     {{
                                                         restaurant.prezzo_spedizione ==
                                                         0
-                                                        ? "Gratis!"
-                                                        : restaurant.prezzo_spedizione +
-                                                        " €"
+                                                            ? "Gratis!"
+                                                            : restaurant.prezzo_spedizione +
+                                                              " €"
                                                     }}
                                                 </strong>
                                             </div>
                                         </div>
 
                                         <div class="restaurant-info d-flex">
+                                            <div class="">
+                                                <div
+                                                    class="name"
+                                                    style="
+                                                        color: orange;
+                                                        margin-top: 5px;
+                                                        margin-bottom: -5px;
+                                                    "
+                                                >
+                                                    {{
+                                                        ratingToStars(
+                                                            restaurant.avg_rating
+                                                        )
+                                                    }}
+                                                </div>
+                                            </div>
                                             <div class="restaurant-info-name">
                                                 <div class="name">
                                                     {{ restaurant.name }}
@@ -149,11 +207,19 @@ export default {
                                             </div>
 
                                             <div class="restaurant-address">
-                                                <i class="fa-solid fa-location-dot"></i>{{ restaurant.address }}
+                                                <i
+                                                    class="fa-solid fa-location-dot"
+                                                ></i
+                                                >{{ restaurant.address }}
                                             </div>
 
-                                            <div class="category-badge d-flex flex-row flex-wrap">
-                                                <div class="me-2" v-for="type in restaurant.types">
+                                            <div
+                                                class="category-badge d-flex flex-row flex-wrap"
+                                            >
+                                                <div
+                                                    class="me-2"
+                                                    v-for="type in restaurant.types"
+                                                >
                                                     {{ type.name }}
                                                 </div>
                                             </div>
@@ -162,15 +228,24 @@ export default {
                                 </div>
 
                                 <!-- SHOW CUSTOM MESSAGE WHEN NO RESTAURANT IS FOUND -->
-                                <div v-if="filteredRestaurants.length === 0" class="no-results">
+                                <div
+                                    v-if="filteredRestaurants.length === 0"
+                                    class="no-results"
+                                >
                                     <h3 class="p-4">
                                         Ci dispiace, non abbiamo trovato nessun
                                         ristorante con le categorie selezionate.
                                     </h3>
                                 </div>
 
-                                <div v-if="showLoadMoreButton" class="d-flex justify-content-center w-100 m-3">
-                                    <button class="btn btn-danger" @click="loadMoreRestaurants">
+                                <div
+                                    v-if="showLoadMoreButton"
+                                    class="d-flex justify-content-center w-100 m-3"
+                                >
+                                    <button
+                                        class="btn btn-danger"
+                                        @click="loadMoreRestaurants"
+                                    >
                                         Carica altri ristoranti
                                     </button>
                                 </div>
@@ -228,7 +303,6 @@ main {
             background-color: rgba($color: #000000, $alpha: 0.8);
         }
 
-
         .type-span {
             --color: #e43659;
             display: block;
@@ -238,7 +312,7 @@ main {
             border-radius: 6px;
             font-size: 17px;
             cursor: pointer;
-            transition: color .5s;
+            transition: color 0.5s;
             margin: 5px;
             position: relative;
             overflow: hidden;
@@ -257,7 +331,6 @@ main {
                 width: 200px;
                 border-radius: 50%;
                 color: white;
-
             }
 
             &:hover {
@@ -267,7 +340,7 @@ main {
             &:before {
                 top: 100%;
                 left: 100%;
-                transition: all .7s;
+                transition: all 0.7s;
             }
 
             &:hover:before {
@@ -433,7 +506,6 @@ main {
                 background-color: rgba($color: #000000, $alpha: 0.8);
             }
 
-
             .type-span {
                 --color: #e43659;
                 display: block;
@@ -443,7 +515,7 @@ main {
                 border-radius: 6px;
                 font-size: 12px;
                 cursor: pointer;
-                transition: color .5s;
+                transition: color 0.5s;
                 margin: 0px;
                 position: relative;
                 overflow: hidden;
@@ -461,7 +533,6 @@ main {
                     width: 200px;
                     border-radius: 50%;
                     color: white;
-
                 }
 
                 &:hover {
@@ -471,7 +542,7 @@ main {
                 &:before {
                     top: 100%;
                     left: 100%;
-                    transition: all .7s;
+                    transition: all 0.7s;
                 }
 
                 &:hover:before {
@@ -522,7 +593,6 @@ main {
                 border: 0.5px solid #000000;
                 border-radius: 10px;
                 box-shadow: 0px 2px 2px 0px #000000;
-                
 
                 img {
                     object-fit: cover;
@@ -645,7 +715,6 @@ main {
                 background-color: rgba($color: #000000, $alpha: 0.8);
             }
 
-
             .type-span {
                 --color: #e43659;
                 display: block;
@@ -655,7 +724,7 @@ main {
                 border-radius: 6px;
                 font-size: 13px;
                 cursor: pointer;
-                transition: color .5s;
+                transition: color 0.5s;
                 margin: 0px;
                 position: relative;
                 overflow: hidden;
@@ -673,7 +742,6 @@ main {
                     width: 200px;
                     border-radius: 50%;
                     color: white;
-
                 }
 
                 &:hover {
@@ -683,7 +751,7 @@ main {
                 &:before {
                     top: 100%;
                     left: 100%;
-                    transition: all .7s;
+                    transition: all 0.7s;
                 }
 
                 &:hover:before {
@@ -784,7 +852,6 @@ main {
             flex-direction: column;
             justify-content: center;
 
-
             .restaurant-info-name {
                 font-size: 14px;
                 font-weight: 600;
@@ -858,7 +925,6 @@ main {
                 background-color: rgba($color: #000000, $alpha: 0.8);
             }
 
-
             .type-span {
                 --color: #e43659;
                 display: block;
@@ -868,7 +934,7 @@ main {
                 border-radius: 6px;
                 font-size: 15px;
                 cursor: pointer;
-                transition: color .5s;
+                transition: color 0.5s;
                 margin: 0px 0px 0px 0px;
                 position: relative;
                 overflow: hidden;
@@ -886,7 +952,6 @@ main {
                     width: 200px;
                     border-radius: 50%;
                     color: white;
-
                 }
 
                 &:hover {
@@ -896,7 +961,7 @@ main {
                 &:before {
                     top: 100%;
                     left: 100%;
-                    transition: all .7s;
+                    transition: all 0.7s;
                 }
 
                 &:hover:before {
@@ -937,7 +1002,6 @@ main {
             .name {
                 color: black;
                 font-size: 15px;
-
             }
 
             .wrapperProperties {
@@ -997,7 +1061,6 @@ main {
             display: flex;
             flex-direction: column;
             justify-content: center;
-
 
             .restaurant-info-name {
                 font-size: 14px;
@@ -1072,7 +1135,6 @@ main {
                 background-color: rgba($color: #000000, $alpha: 0.8);
             }
 
-
             .type-span {
                 --color: #e43659;
                 display: block;
@@ -1082,7 +1144,7 @@ main {
                 border-radius: 6px;
                 font-size: 15px;
                 cursor: pointer;
-                transition: color .5s;
+                transition: color 0.5s;
                 margin: 0px 0px 0px 0px;
                 position: relative;
                 overflow: hidden;
@@ -1101,7 +1163,6 @@ main {
                     width: 200px;
                     border-radius: 50%;
                     color: white;
-
                 }
 
                 &:hover {
@@ -1111,7 +1172,7 @@ main {
                 &:before {
                     top: 100%;
                     left: 100%;
-                    transition: all .7s;
+                    transition: all 0.7s;
                 }
 
                 &:hover:before {
@@ -1213,7 +1274,6 @@ main {
             flex-direction: column;
             justify-content: center;
 
-
             .restaurant-info-name {
                 font-size: 14px;
                 font-weight: 600;
@@ -1287,7 +1347,6 @@ main {
                 background-color: rgba($color: #000000, $alpha: 0.8);
             }
 
-
             .type-span {
                 --color: #e43659;
                 display: block;
@@ -1297,7 +1356,7 @@ main {
                 border-radius: 6px;
                 font-size: 15px;
                 cursor: pointer;
-                transition: color .5s;
+                transition: color 0.5s;
                 margin: 0px 0px 0px 0px;
                 position: relative;
                 overflow: hidden;
@@ -1316,7 +1375,6 @@ main {
                     width: 200px;
                     border-radius: 50%;
                     color: white;
-
                 }
 
                 &:hover {
@@ -1326,7 +1384,7 @@ main {
                 &:before {
                     top: 100%;
                     left: 100%;
-                    transition: all .7s;
+                    transition: all 0.7s;
                 }
 
                 &:hover:before {
@@ -1429,7 +1487,6 @@ main {
             flex-direction: column;
             justify-content: center;
 
-
             .restaurant-info-name {
                 font-size: 14px;
                 font-weight: 600;
@@ -1505,7 +1562,6 @@ main {
                 background-color: rgba($color: #000000, $alpha: 0.8);
             }
 
-
             .type-span {
                 --color: #e43659;
                 display: block;
@@ -1515,7 +1571,7 @@ main {
                 border-radius: 6px;
                 font-size: 17px;
                 cursor: pointer;
-                transition: color .5s;
+                transition: color 0.5s;
                 margin: 5px;
                 position: relative;
                 overflow: hidden;
@@ -1534,7 +1590,6 @@ main {
                     width: 200px;
                     border-radius: 50%;
                     color: white;
-
                 }
 
                 &:hover {
@@ -1544,7 +1599,7 @@ main {
                 &:before {
                     top: 100%;
                     left: 100%;
-                    transition: all .7s;
+                    transition: all 0.7s;
                 }
 
                 &:hover:before {
@@ -1670,9 +1725,7 @@ main {
             }
         }
     }
-
 }
-
 
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
     main {
@@ -1719,7 +1772,6 @@ main {
                 background-color: rgba($color: #000000, $alpha: 0.8);
             }
 
-
             .type-span {
                 --color: #e43659;
                 display: block;
@@ -1729,7 +1781,7 @@ main {
                 border-radius: 6px;
                 font-size: 17px;
                 cursor: pointer;
-                transition: color .5s;
+                transition: color 0.5s;
                 margin: 5px;
                 position: relative;
                 overflow: hidden;
@@ -1748,7 +1800,6 @@ main {
                     width: 200px;
                     border-radius: 50%;
                     color: white;
-
                 }
 
                 &:hover {
@@ -1758,7 +1809,7 @@ main {
                 &:before {
                     top: 100%;
                     left: 100%;
-                    transition: all .7s;
+                    transition: all 0.7s;
                 }
 
                 &:hover:before {
@@ -1880,6 +1931,5 @@ main {
             }
         }
     }
-
 }
 </style>
