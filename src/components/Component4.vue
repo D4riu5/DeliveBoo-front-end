@@ -25,7 +25,7 @@ export default {
         }" speed="5000" loop="true">
             <swiper-slide class="swiper-slide">
                 <!-- burger king -->
-                <img class="icon" src="./../img/SPONSORS/4.png" />
+                <img class="icon" src="./../img/SPONSORS/4.png" /> /
             </swiper-slide>
             <swiper-slide class="swiper-slide">
                 <!-- mac -->
@@ -40,28 +40,32 @@ export default {
                 <img class="icon" src="./../img/SPONSORS/1.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
-                <!-- OPEN -->
+                <!-- KFC -->
                 <img class="icon" src="./../img/SPONSORS/5.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
-                <!-- OPEN -->
+                <!-- PEPSI -->
                 <img class="icon" src="./../img/SPONSORS/6.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
-                <!-- Neymar -->
+                <!-- IACOPO -->
+                <img class="icon" src="./../img/SPONSORS/11.png" />
+            </swiper-slide>
+            <swiper-slide class="swiper-slide">
+                <!-- Pizza HUT -->
                 <img class="icon" src="./../img/SPONSORS/7.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
-                <!-- OPEN -->
+                <!-- GORDON -->
                 <img class="icon" src="./../img/SPONSORS/8.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
-                <!-- OPEN -->
-                <img class="icon" src="./../img/SPONSORS/9.png" />
+                <!-- STARBUKS -->
+                <img class="icon" src="./../img/SPONSORS/10.png" />
             </swiper-slide>
             <swiper-slide class="swiper-slide">
-                <!-- OPEN -->
-                <img class="icon" src="./../img/SPONSORS/10.png" />
+                <!-- ALE -->
+                <img class="icon" src="./../img/SPONSORS/9.png" />
             </swiper-slide>
         </swiper-container>
     </main>
@@ -146,6 +150,7 @@ main {
         }
     }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 
 
@@ -162,6 +167,7 @@ main {
         }
     }
 }
+
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
 
     .restaurantBar {
